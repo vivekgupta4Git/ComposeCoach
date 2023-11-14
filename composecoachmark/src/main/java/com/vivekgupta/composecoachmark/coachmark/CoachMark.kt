@@ -28,11 +28,6 @@ fun CoachMark(
     onShowBegin: () -> Unit = {},
     onBeforeShowingCoachMark: (Int, Int) -> Unit = { _, _ -> },
     onAfterShowingCoachMark : (Int, Int) -> Unit = { _ , _-> },
-    messageBoxShape: Shape = CloudShape,
-    messageBoxWidth : Dp = 120.dp,
-    messageBoxHeight : Dp = 100.dp,
-    messageBoxModifier : Modifier = Modifier,
-    messageBoxTextStyle : TextStyle = TextStyle.Default,
     skipButtonModifier: Modifier = Modifier,
     skipButtonText: String = "Skip",
     skipButtonAlignment: Alignment = Alignment.BottomStart,
@@ -71,8 +66,9 @@ fun CoachMark(
             LaunchedEffect(key1 = coachMarkElementList.nextKey(count), block = {
                 onBeforeShowingCoachMark(count,coachMarkElementList.firstKey(count))
             })
+            val nextValue =  coachMarkElementList.nextValue(count)
             Coach(
-                coordinates = coachMarkElementList.nextValue(count).coachMarkCoordinates,
+                coordinates = nextValue.coordinates,
                 onSkip = {
                     canDrawCoachMark = false
                     canShowNext = false
@@ -89,12 +85,14 @@ fun CoachMark(
                         canDrawCoachMark = false
                     }
                 }
-            , message = coachMarkElementList.nextValue(count).coachMarkMessage ?: "",
-                messageBoxModifier = messageBoxModifier,
-                messageBoxHeight = messageBoxHeight,
-                messageBoxWidth = messageBoxWidth,
-                messageBoxShape = messageBoxShape,
-                messageBoxTextStyle = messageBoxTextStyle,
+            , message = nextValue.message ,
+                messageBoxShape = nextValue.containerShape,
+                messageBoxTextStyle = nextValue.textStyle,
+                messageBoxBackgroundColor = nextValue.containerColor,
+                messageBoxTextColor = nextValue.textColor,
+                distanceFromCoordinates = nextValue.distanceFromComposable,
+                messageBoxHeight = nextValue.containerHeight,
+                messageBoxWidth = nextValue.containerWidth,
                 skipButtonAlignment = skipButtonAlignment,
                 skipButtonColors = skipButtonColors,
                 skipButtonModifier = skipButtonModifier,

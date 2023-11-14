@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -17,11 +18,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.vivekgupta.composecoachmark.coachmark.BubbleMessageBox
+import com.vivekgupta.composecoachmark.coachmark.CloudShape
 import com.vivekgupta.composecoachmark.coachmark.CoachData
 import com.vivekgupta.composecoachmark.coachmark.CoachMark
 import com.vivekgupta.tutor.ui.theme.TutorTheme
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +60,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Box(Modifier.fillMaxSize()) {
-                        Greeting("Android 1", modifier = Modifier
+                        Greeting("Android 1",
+                            modifier = Modifier
                             .align(Alignment.TopCenter)
                             /**
                              * Use onGloballyPositioned or onPlaced modifier on your composable
@@ -60,13 +69,27 @@ class MainActivity : ComponentActivity() {
                             .onGloballyPositioned {
                                 /**
                                  * update List with co-ordinates and use key for position
+                                 *
+                                 * Customize Message
                                  */
-                                coachMarkList[1] = CoachData("Android 1", it)
+                                coachMarkList[2] = CoachData(
+                                    "Android 1", it,
+                                    containerShape = CloudShape,
+                                    containerHeight = 150.dp,
+                                    containerWidth = 150.dp
+                                )
                             })
-                        Greeting("Android 2", modifier = Modifier
+                        Greeting("Android 2 ", modifier = Modifier
                             .align(Alignment.Center)
                             .onGloballyPositioned {
-                                coachMarkList[2] = CoachData("Android 2", it)
+                                coachMarkList[1] = CoachData(
+                                    "Android 2\n yo !! on second line", it,
+                                    containerShape = RoundedCornerShape(50),
+                                    containerColor = Color.Transparent,
+                                    textColor = Color.White,
+                                    distanceFromComposable = 10.dp,
+                                    textStyle = TextStyle().copy(fontSize = 50.sp)
+                                )
                             })
                     }
                     /**
@@ -100,7 +123,8 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-    companion object{
+
+    companion object {
         const val TAG = "MyCoach"
     }
 }

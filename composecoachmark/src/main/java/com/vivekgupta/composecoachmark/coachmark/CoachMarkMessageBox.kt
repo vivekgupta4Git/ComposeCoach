@@ -1,6 +1,9 @@
 package com.vivekgupta.composecoachmark.coachmark
 
+import androidx.compose.foundation.layout.IntrinsicSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -16,13 +19,28 @@ import androidx.compose.ui.unit.dp
 internal fun CoachMarkMessageBox(
     modifier: Modifier = Modifier,
     shape: Shape = EllipseMessageShape(),
-    width: Dp = 100.dp,
-    height: Dp = 100.dp,
     backgroundColor: Color = Color.White,
+    messageBoxWidth: Dp? = null,
+    messageBoxHeight: Dp? = null,
     contentColor: Color = Color.Black,
     content: @Composable () -> Unit
 ) {
-    Surface(shape = shape, modifier = modifier.requiredSize(width = width, height = height), color = backgroundColor, contentColor = contentColor) {
+
+    Surface(
+        shape = shape, modifier = modifier
+            .then(
+                if (messageBoxHeight == null)
+                    Modifier.height(IntrinsicSize.Min)
+                else
+                    Modifier.height(messageBoxHeight)
+            )
+            .then(
+                if (messageBoxWidth == null)
+                    Modifier.width(IntrinsicSize.Max)
+                else
+                    Modifier.width(messageBoxWidth)
+            ), color = backgroundColor, contentColor = contentColor
+    ) {
         content()
     }
 

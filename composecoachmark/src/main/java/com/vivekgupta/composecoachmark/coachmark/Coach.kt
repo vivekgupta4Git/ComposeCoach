@@ -29,6 +29,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.boundsInRoot
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntOffset
@@ -44,10 +45,12 @@ internal fun Coach(
     coordinates: LayoutCoordinates,
     message : String = "",
     messageBoxShape: Shape = EllipseMessageShape(),
-    messageBoxWidth : Dp = 120.dp,
-    messageBoxHeight : Dp = 100.dp,
-    messageBoxModifier : Modifier = Modifier,
+    messageBoxBackgroundColor : Color = Color.White,
+    messageBoxTextColor : Color = Color.Black,
     messageBoxTextStyle : TextStyle = TextStyle.Default,
+    messageBoxWidth: Dp? = null,
+    messageBoxHeight: Dp? = null,
+    distanceFromCoordinates : Dp = 50.dp,
     skipButtonModifier: Modifier = Modifier,
     skipButtonText: String = "Skip",
     skipButtonAlignment: Alignment = Alignment.BottomStart,
@@ -65,6 +68,10 @@ internal fun Coach(
     onSkip: () -> Unit = {},
     onNext: () -> Unit,
 ) {
+    val density = LocalDensity.current
+    val distance = with(density){
+        distanceFromCoordinates.toPx()
+    }
     val offsetY = remember { Animatable(0f) }
     val coroutineScope = rememberCoroutineScope()
     Surface(
@@ -116,17 +123,19 @@ internal fun Coach(
             })
             CoachMarkMessageBox(
                 modifier = Modifier.offset {
-                    IntOffset(x = bounds.left.toInt() + 50, y = bounds.bottom.toInt() + 100)
+                    IntOffset(x = bounds.left.toInt() , y = bounds.bottom.toInt() + distance.toInt())
                 },
+                backgroundColor = messageBoxBackgroundColor,
                 shape = messageBoxShape,
-                width = messageBoxWidth,
-                height = messageBoxHeight
+                messageBoxWidth = messageBoxWidth,
+                messageBoxHeight = messageBoxHeight
             ) {
                 Box(Modifier.fillMaxSize()) {
                     Text(text = message,
-                        modifier = messageBoxModifier.padding(horizontal = 10.dp, vertical = 10.dp)
+                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
                             .align(Alignment.Center),
-                        style = messageBoxTextStyle)
+                        style = messageBoxTextStyle,
+                    color = messageBoxTextColor)
                 }
             }
 
