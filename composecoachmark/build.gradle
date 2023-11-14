@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
 }
 
 android {
@@ -42,9 +43,20 @@ dependencies {
     androidTestImplementation composeBom
     implementation "androidx.compose.ui:ui"
     implementation 'androidx.compose.foundation:foundation'
-    implementation "androidx.compose.foundation:foundation-layout"
     implementation 'androidx.compose.material:material'
-    implementation 'androidx.compose.ui:ui-tooling-preview'
-    debugImplementation 'androidx.compose.ui:ui-tooling'
 
+}
+
+afterEvaluate {
+    publishing {
+        publications{
+            release(MavenPublication){
+                from components.release
+
+                groupId = 'com.github.vivekgupta4Git'
+                artifactId = 'composecoachmark'
+                version = '1.0.0'
+            }
+        }
+    }
 }
