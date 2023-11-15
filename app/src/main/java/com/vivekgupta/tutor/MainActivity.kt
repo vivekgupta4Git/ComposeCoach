@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
@@ -28,6 +30,8 @@ import com.vivekgupta.composecoachmark.coachmark.BubbleMessageBox
 import com.vivekgupta.composecoachmark.coachmark.CloudShape
 import com.vivekgupta.composecoachmark.coachmark.CoachData
 import com.vivekgupta.composecoachmark.coachmark.CoachMark
+import com.vivekgupta.composecoachmark.coachmark.EllipseMessageShape
+import com.vivekgupta.composecoachmark.coachmark.RevealAnimation
 import com.vivekgupta.tutor.ui.theme.TutorTheme
 
 class MainActivity : ComponentActivity() {
@@ -59,10 +63,15 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Box(Modifier.fillMaxSize()) {
+                    Column(Modifier.fillMaxSize()
+                    , horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.spacedBy(50.dp)
+                    ) {
                         Greeting("Android 1",
                             modifier = Modifier
-                            .align(Alignment.TopCenter)
+                                /**
+                             * Use onGloballyPositioned or onPlaced modifier on your composable
+                             */
                             /**
                              * Use onGloballyPositioned or onPlaced modifier on your composable
                              */
@@ -72,24 +81,36 @@ class MainActivity : ComponentActivity() {
                                  *
                                  * Customize Message
                                  */
+                                /**
+                                 * update List with co-ordinates and use key for position
+                                 *
+                                 * Customize Message
+                                 */
                                 coachMarkList[2] = CoachData(
                                     "Android 1", it,
-                                    containerShape = CloudShape,
+                                    containerShape = EllipseMessageShape(),
                                     containerHeight = 150.dp,
-                                    containerWidth = 150.dp
+                                    containerWidth = 150.dp,
+                                    distanceFromComposable = 50.dp,
+                                    revealAnimation = RevealAnimation.RECTANGLE
                                 )
                             })
                         Greeting("Android 2 ", modifier = Modifier
-                            .align(Alignment.Center)
                             .onGloballyPositioned {
                                 coachMarkList[1] = CoachData(
                                     "Android 2\n yo !! on second line", it,
                                     containerShape = RoundedCornerShape(50),
                                     containerColor = Color.Transparent,
                                     textColor = Color.White,
-                                    distanceFromComposable = 10.dp,
-                                    textStyle = TextStyle().copy(fontSize = 50.sp)
+                                    distanceFromComposable = 50.dp,
+                                    textStyle = TextStyle().copy(fontSize = 24.sp),
+                                    revealAnimation = RevealAnimation.CIRCLE
                                 )
+                            })
+                        Greeting("Android 3 ", modifier = Modifier
+                            .onGloballyPositioned {
+                                coachMarkList[3] = CoachData(
+                                    "Android 3 Default ", it)
                             })
                     }
                     /**

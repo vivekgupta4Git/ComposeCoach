@@ -22,4 +22,10 @@ data class CoachData(
     val textColor : Color = Color.Black,
     val canPointToComposable : Boolean = true,      //this will draw an arrow to the co-ordinates.
     val distanceFromComposable : Dp = 10.dp,
+    val revealAnimation : RevealAnimation = RevealAnimation.RECTANGLE
 )
+
+enum class RevealAnimation{
+    CIRCLE,
+    RECTANGLE
+}

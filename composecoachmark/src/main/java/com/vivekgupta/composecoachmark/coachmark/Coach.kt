@@ -1,7 +1,12 @@
 package com.vivekgupta.composecoachmark.coachmark
 
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffXfermode
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.AnimationVector4D
+import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.TwoWayConverter
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.clickable
@@ -22,6 +27,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
@@ -43,44 +49,81 @@ import kotlinx.coroutines.launch
 internal fun Coach(
     modifier: Modifier = Modifier,
     coordinates: LayoutCoordinates,
-    message : String = "",
+    message: String = "",
     messageBoxShape: Shape = EllipseMessageShape(),
-    messageBoxBackgroundColor : Color = Color.White,
-    messageBoxTextColor : Color = Color.Black,
-    messageBoxTextStyle : TextStyle = TextStyle.Default,
+    messageBoxBackgroundColor: Color = Color.White,
+    messageBoxTextColor: Color = Color.Black,
+    messageBoxTextStyle: TextStyle = TextStyle.Default,
     messageBoxWidth: Dp? = null,
     messageBoxHeight: Dp? = null,
-    distanceFromCoordinates : Dp = 50.dp,
+    distanceFromCoordinates: Dp = 50.dp,
     skipButtonModifier: Modifier = Modifier,
     skipButtonText: String = "Skip",
     skipButtonAlignment: Alignment = Alignment.BottomStart,
     skipButtonColors: ButtonColors = ButtonDefaults.buttonColors(
         backgroundColor = Color.White,
-        contentColor= Color.Black,
+        contentColor = Color.Black,
     ),
     nextButtonModifier: Modifier = Modifier,
     nextButtonText: String = "Next",
     nextButtonAlignment: Alignment = Alignment.BottomEnd,
     nextButtonColors: ButtonColors = ButtonDefaults.buttonColors(
         backgroundColor = Color.White,
-        contentColor= Color.Black,
+        contentColor = Color.Black,
     ),
+    revealAnimation: RevealAnimation = RevealAnimation.RECTANGLE,
     onSkip: () -> Unit = {},
     onNext: () -> Unit,
 ) {
+    val bounds = coordinates.boundsInRoot()
+    val radius = remember {
+        Animatable(0f)
+    }
+
+    var newOffset = Offset.Zero
+    var newSize = Size(0f,0f)
+    val rect = remember {
+        Animatable(Rect(offset = bounds.center, size = Size.Zero),rectToVector)
+    }
+    when(revealAnimation){
+        RevealAnimation.CIRCLE->{
+            LaunchedEffect(key1 = bounds, block = {
+                radius.snapTo(0f)
+                radius.animateTo(bounds.width / 2, tween(500, easing = LinearEasing))
+            })
+        }
+        RevealAnimation.RECTANGLE->{
+            //extra padding from top to reveal view
+            val x = bounds.topLeft.x - 20f
+            val y = bounds.topLeft.y - 20f
+            newOffset = Offset(x, y)
+            //extra width and height to reveal view
+            val height = bounds.size.height + 20f
+            val width = bounds.size.width + 20f
+            newSize = Size(width, height)
+            //new bound for the view
+            val newBound = Rect(newOffset,newSize)
+            //animating view from center
+            LaunchedEffect(key1 = newBound, block = {
+                   rect.snapTo(Rect(bounds.center, size = Size.Zero))
+                    rect.animateTo(newBound, tween(500, easing = LinearEasing))
+            })
+        }
+    }
+
     val density = LocalDensity.current
-    val distance = with(density){
+    val distance = with(density) {
         distanceFromCoordinates.toPx()
     }
     val offsetY = remember { Animatable(0f) }
     val coroutineScope = rememberCoroutineScope()
+
     Surface(
         modifier = modifier
             .fillMaxSize()
             .clickable { onNext() },
         color = Color.Black.copy(alpha = 0.05f)
     ) {
-        val bounds = coordinates.boundsInRoot()
         Canvas(modifier = Modifier, onDraw = {
 
             with(drawContext.canvas.nativeCanvas) {
@@ -88,23 +131,29 @@ internal fun Coach(
                 //this is must to act as a destination...
                 drawRect(Color.Black.copy(alpha = 0.8f))
                 //this the source , we are using blend mode to clear the destination pixels
-                val x = bounds.topLeft.x - 20f
-                val y = bounds.topLeft.y - 20f
-                val newBound = Offset(x, y)
-                val height = bounds.size.height + 20f
-                val width = bounds.size.width + 20f
-                val newSize = Size(width,height)
-                drawRect(
-                    color = Color.White, topLeft = newBound,
-                    size = newSize,
-                    blendMode = BlendMode.Clear
-                )
-                /*  drawCircle(bounds.center.x,bounds.center.y,bounds.width/2,android.graphics.Paint().apply {
-                      color = android.graphics.Color.WHITE
-                      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-                          blendMode = android.graphics.BlendMode.CLEAR
-                      }
-                  })*/
+
+                when (revealAnimation) {
+                    RevealAnimation.RECTANGLE -> {
+                        drawRect(
+                            color = Color.White, topLeft = rect.value.topLeft,
+                            size = rect.value.size,
+                            blendMode = BlendMode.Clear
+                        )
+
+                    }
+                    RevealAnimation.CIRCLE -> {
+                        drawCircle(
+                            bounds.center.x,
+                            bounds.center.y,
+                            radius.value,
+                            android.graphics.Paint().apply {
+                                color = android.graphics.Color.WHITE
+                                xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
+                            })
+                    }
+                }
+
+
                 restoreToCount(checkPoint)
             }
         })
@@ -123,7 +172,7 @@ internal fun Coach(
             })
             CoachMarkMessageBox(
                 modifier = Modifier.offset {
-                    IntOffset(x = bounds.left.toInt() , y = bounds.bottom.toInt() + distance.toInt())
+                    IntOffset(x = bounds.left.toInt(), y = bounds.bottom.toInt() + distance.toInt())
                 },
                 backgroundColor = messageBoxBackgroundColor,
                 shape = messageBoxShape,
@@ -131,11 +180,14 @@ internal fun Coach(
                 messageBoxHeight = messageBoxHeight
             ) {
                 Box(Modifier.fillMaxSize()) {
-                    Text(text = message,
-                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 10.dp)
+                    Text(
+                        text = message,
+                        modifier = Modifier
+                            .padding(horizontal = 10.dp, vertical = 10.dp)
                             .align(Alignment.Center),
                         style = messageBoxTextStyle,
-                    color = messageBoxTextColor)
+                        color = messageBoxTextColor
+                    )
                 }
             }
 
@@ -156,4 +208,14 @@ internal fun Coach(
         }
     }
 }
-
+val rectToVector = TwoWayConverter(
+    convertToVector = { rect: Rect ->
+        AnimationVector4D(rect.left, rect.top, rect.width, rect.height)
+    },
+    convertFromVector = { vector: AnimationVector4D ->
+        Rect(
+            offset = Offset(vector.v1, vector.v2),
+            size = Size(vector.v3, vector.v4)
+        )
+    }
+)

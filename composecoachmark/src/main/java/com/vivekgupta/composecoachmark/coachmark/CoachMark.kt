@@ -93,6 +93,7 @@ fun CoachMark(
                 distanceFromCoordinates = nextValue.distanceFromComposable,
                 messageBoxHeight = nextValue.containerHeight,
                 messageBoxWidth = nextValue.containerWidth,
+                revealAnimation = nextValue.revealAnimation,
                 skipButtonAlignment = skipButtonAlignment,
                 skipButtonColors = skipButtonColors,
                 skipButtonModifier = skipButtonModifier,
