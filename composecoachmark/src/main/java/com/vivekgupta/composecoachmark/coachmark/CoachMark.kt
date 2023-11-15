@@ -30,7 +30,7 @@ fun CoachMark(
     onAfterShowingCoachMark : (Int, Int) -> Unit = { _ , _-> },
     skipButtonModifier: Modifier = Modifier,
     skipButtonText: String = "Skip",
-    skipButtonAlignment: Alignment = Alignment.BottomStart,
+    skipButtonAlignment: Alignment = Alignment.BottomCenter,
     skipButtonColors: ButtonColors = ButtonDefaults.buttonColors(
         backgroundColor = Color.White,
         contentColor= Color.Black,
@@ -42,8 +42,16 @@ fun CoachMark(
         backgroundColor = Color.White,
         contentColor= Color.Black,
     ),
+    backButtonModifier: Modifier = Modifier,
+    backButtonText: String = "Back",
+    backButtonAlignment: Alignment = Alignment.BottomStart,
+    backButtonColors: ButtonColors = ButtonDefaults.buttonColors(
+        backgroundColor = Color.White,
+        contentColor= Color.Black,
+    ),
+    onBack : () -> Unit = {},
     onCancelled: () -> Unit,
-    onCompleted: () -> Unit
+    onCompleted: () -> Unit,
 ) {
     var canDrawCoachMark by rememberSaveable {
         mutableStateOf(showCoachMark)
@@ -69,6 +77,15 @@ fun CoachMark(
             val nextValue =  coachMarkElementList.nextValue(count)
             Coach(
                 coordinates = nextValue.coordinates,
+                onBack = {
+                    canShowNext = if(count == 0) false
+                    else {
+                        onBack()
+                        --count
+                        coachMarkElementList.hasNextValue(count)
+
+                    }
+                },
                 onSkip = {
                     canDrawCoachMark = false
                     canShowNext = false
@@ -102,6 +119,10 @@ fun CoachMark(
                 nextButtonColors = nextButtonColors,
                 nextButtonText = nextButtonText,
                 nextButtonModifier = nextButtonModifier,
+                backButtonAlignment = backButtonAlignment,
+                backButtonColors = backButtonColors,
+                backButtonText = backButtonText,
+                backButtonModifier = backButtonModifier,
                 modifier = modifier,
             )
         }

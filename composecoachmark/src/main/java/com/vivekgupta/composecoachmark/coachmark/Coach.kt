@@ -32,6 +32,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.nativeCanvas
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.boundsInRoot
@@ -59,7 +60,7 @@ internal fun Coach(
     distanceFromCoordinates: Dp = 50.dp,
     skipButtonModifier: Modifier = Modifier,
     skipButtonText: String = "Skip",
-    skipButtonAlignment: Alignment = Alignment.BottomStart,
+    skipButtonAlignment: Alignment = Alignment.BottomCenter,
     skipButtonColors: ButtonColors = ButtonDefaults.buttonColors(
         backgroundColor = Color.White,
         contentColor = Color.Black,
@@ -71,7 +72,15 @@ internal fun Coach(
         backgroundColor = Color.White,
         contentColor = Color.Black,
     ),
+    backButtonModifier: Modifier = Modifier,
+    backButtonText: String = "Back",
+    backButtonAlignment: Alignment = Alignment.BottomStart,
+    backButtonColors: ButtonColors = ButtonDefaults.buttonColors(
+        backgroundColor = Color.White,
+        contentColor = Color.Black,
+    ),
     revealAnimation: RevealAnimation = RevealAnimation.RECTANGLE,
+    onBack : () ->Unit = {},
     onSkip: () -> Unit = {},
     onNext: () -> Unit,
 ) {
@@ -116,7 +125,7 @@ internal fun Coach(
         distanceFromCoordinates.toPx()
     }
     val offsetY = remember { Animatable(0f) }
-    val coroutineScope = rememberCoroutineScope()
+    val alphaAnimation = remember { Animatable(0f) }
     Surface(
         modifier = modifier
             .fillMaxSize()
@@ -158,7 +167,7 @@ internal fun Coach(
         })
         BoxWithConstraints {
             LaunchedEffect(key1 = bounds.bottomRight.y, block = {
-                coroutineScope.launch {
+                launch {
                     offsetY.snapTo(0f)
                     offsetY.animateTo(
                         targetValue = bounds.bottomRight.y + distance,
@@ -168,10 +177,16 @@ internal fun Coach(
                         )
                     )
                 }
+                launch {
+                    alphaAnimation.snapTo(0f)
+                    alphaAnimation.animateTo(1f, tween(1000, easing = LinearEasing))
+                }
             })
             CoachMarkMessageBox(
                 modifier = Modifier.offset {
-                    IntOffset(x = bounds.left.toInt(), y = offsetY.value.toInt())
+                    IntOffset(x = bounds.left.toInt(), y = bounds.bottomRight.y.toInt() + distance.toInt())
+                }.graphicsLayer {
+                                alpha = alphaAnimation.value
                 },
                 backgroundColor = messageBoxBackgroundColor,
                 shape = messageBoxShape,
@@ -203,6 +218,13 @@ internal fun Coach(
                 colors = nextButtonColors
             ) {
                 Text(text = nextButtonText)
+            }
+            Button(
+                onClick = onBack, modifier = backButtonModifier
+                    .align(backButtonAlignment),
+                colors = backButtonColors
+            ) {
+                Text(text = backButtonText)
             }
         }
     }

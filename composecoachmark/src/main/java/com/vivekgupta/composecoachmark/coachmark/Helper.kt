@@ -11,10 +11,10 @@ import androidx.compose.ui.geometry.Size
  */
 
 
-internal fun Map<Int, CoachData>.hasNextValue(dropCount : Int)= values.drop(dropCount).iterator().hasNext()
-internal fun Map<Int, CoachData>.nextKey(dropCount: Int) = keys.drop(dropCount).iterator().next()
-internal fun Map<Int, CoachData>.firstKey(dropCount : Int) = keys.drop(dropCount).first()
-internal fun Map<Int, CoachData>.nextValue(dropCount: Int) = values.drop(dropCount).iterator().next()
+internal fun Map<Int, CoachData>.hasNextValue(dropCount : Int)= values.drop(dropCount.coerceAtLeast(0)).iterator().hasNext()
+internal fun Map<Int, CoachData>.nextKey(dropCount: Int) = keys.drop(dropCount.coerceAtLeast(0)).iterator().next()
+internal fun Map<Int, CoachData>.firstKey(dropCount : Int) = keys.drop(dropCount.coerceAtLeast(0)).first()
+internal fun Map<Int, CoachData>.nextValue(dropCount: Int) = values.drop(dropCount.coerceAtLeast(0)).iterator().next()
 /**
  *a position based object should be converted to
  * AnimationVector2D, whereas an object that describes

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -86,9 +87,9 @@ class MainActivity : ComponentActivity() {
                                  *
                                  * Customize Message
                                  */
-                                coachMarkList[2] = CoachData(
+                                coachMarkList[1] = CoachData(
                                     "Android 1", it,
-                                    containerShape = EllipseMessageShape(),
+                                    containerShape = CutCornerShape(10.dp),
                                     containerHeight = 150.dp,
                                     containerWidth = 150.dp,
                                     distanceFromComposable = 50.dp,
@@ -97,7 +98,7 @@ class MainActivity : ComponentActivity() {
                             })
                         Greeting("Android 2 ", modifier = Modifier
                             .onGloballyPositioned {
-                                coachMarkList[1] = CoachData(
+                                coachMarkList[2] = CoachData(
                                     "Android 2\n yo !! on second line", it,
                                     containerShape = RoundedCornerShape(50),
                                     containerColor = Color.Transparent,
@@ -120,6 +121,9 @@ class MainActivity : ComponentActivity() {
                     CoachMark(
                         coachMarkElementList = coachMarkList,
                         showCoachMark = canDrawCoachMark,
+                        onBack = {
+                                 Log.d(TAG,"Re-showing CoachMark!!")
+                        },
                         onCancelled = {
                             canDrawCoachMark = false
                             Log.d(TAG, "On Show Cancelled...")
