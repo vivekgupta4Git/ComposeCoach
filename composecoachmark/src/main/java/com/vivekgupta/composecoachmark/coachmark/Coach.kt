@@ -117,12 +117,11 @@ internal fun Coach(
     }
     val offsetY = remember { Animatable(0f) }
     val coroutineScope = rememberCoroutineScope()
-
     Surface(
         modifier = modifier
             .fillMaxSize()
             .clickable { onNext() },
-        color = Color.Black.copy(alpha = 0.05f)
+        color = Color.Black.copy(alpha =0.05f)
     ) {
         Canvas(modifier = Modifier, onDraw = {
 
@@ -162,7 +161,7 @@ internal fun Coach(
                 coroutineScope.launch {
                     offsetY.snapTo(0f)
                     offsetY.animateTo(
-                        targetValue = bounds.bottomRight.y,
+                        targetValue = bounds.bottomRight.y + distance,
                         animationSpec = tween(
                             durationMillis = 1000,
                             easing = LinearOutSlowInEasing
@@ -172,7 +171,7 @@ internal fun Coach(
             })
             CoachMarkMessageBox(
                 modifier = Modifier.offset {
-                    IntOffset(x = bounds.left.toInt(), y = bounds.bottom.toInt() + distance.toInt())
+                    IntOffset(x = bounds.left.toInt(), y = offsetY.value.toInt())
                 },
                 backgroundColor = messageBoxBackgroundColor,
                 shape = messageBoxShape,
@@ -208,14 +207,4 @@ internal fun Coach(
         }
     }
 }
-val rectToVector = TwoWayConverter(
-    convertToVector = { rect: Rect ->
-        AnimationVector4D(rect.left, rect.top, rect.width, rect.height)
-    },
-    convertFromVector = { vector: AnimationVector4D ->
-        Rect(
-            offset = Offset(vector.v1, vector.v2),
-            size = Size(vector.v3, vector.v4)
-        )
-    }
-)
+
