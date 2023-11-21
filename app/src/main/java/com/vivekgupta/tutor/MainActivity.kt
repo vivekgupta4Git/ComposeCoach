@@ -8,8 +8,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -22,7 +26,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -64,7 +70,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Column(Modifier.fillMaxSize()
+                    Column(Modifier.fillMaxSize().padding(20.dp)
                     , horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(50.dp)
                     ) {
@@ -73,15 +79,7 @@ class MainActivity : ComponentActivity() {
                                 /**
                              * Use onGloballyPositioned or onPlaced modifier on your composable
                              */
-                            /**
-                             * Use onGloballyPositioned or onPlaced modifier on your composable
-                             */
                             .onGloballyPositioned {
-                                /**
-                                 * update List with co-ordinates and use key for position
-                                 *
-                                 * Customize Message
-                                 */
                                 /**
                                  * update List with co-ordinates and use key for position
                                  *
@@ -92,8 +90,8 @@ class MainActivity : ComponentActivity() {
                                     containerShape = CutCornerShape(10.dp),
                                     containerHeight = 150.dp,
                                     containerWidth = 150.dp,
-                                    distanceFromComposable = 50.dp,
-                                    revealAnimation = RevealAnimation.RECTANGLE
+                                    distanceFromComposable = 20.dp,
+                                revealAnimation = RevealAnimation.RECTANGLE
                                 )
                             })
                         Greeting("Android 2 ", modifier = Modifier
@@ -103,15 +101,41 @@ class MainActivity : ComponentActivity() {
                                     containerShape = RoundedCornerShape(50),
                                     containerColor = Color.Transparent,
                                     textColor = Color.White,
-                                    distanceFromComposable = 50.dp,
+                                    distanceFromComposable = 20.dp,
                                     textStyle = TextStyle().copy(fontSize = 24.sp),
-                                    revealAnimation = RevealAnimation.CIRCLE
+                                revealAnimation = RevealAnimation.RECTANGLE
                                 )
                             })
                         Greeting("Android 3 ", modifier = Modifier
                             .onGloballyPositioned {
                                 coachMarkList[3] = CoachData(
-                                    "Android 3 Default ", it)
+                                    "Android 3 Default ", it, revealAnimation = RevealAnimation.RECTANGLE, distanceFromComposable = 20.dp)
+                            })
+                        IconButton(onClick = { /*TODO*/ }) {
+                            Icon(imageVector = ImageVector.vectorResource(id = R.drawable.ic_launcher_background)
+                                , contentDescription = null, tint = Color.Unspecified, modifier = Modifier.requiredSize(150.dp)
+                                    .onGloballyPositioned {
+
+                                        coachMarkList[4] = CoachData(
+                                            "Android 2\n yo !! on second line", it,
+                                            containerShape = RoundedCornerShape(50),
+                                            containerColor = Color.Transparent,
+                                            textColor = Color.White,
+                                            distanceFromComposable = 20.dp,
+                                            textStyle = TextStyle().copy(fontSize = 24.sp),
+                                        revealAnimation = RevealAnimation.RECTANGLE
+                                        )
+
+                                    })
+
+                        }
+                        Greeting("Android 5", modifier = Modifier
+                            .onGloballyPositioned {
+                                coachMarkList[5] = CoachData(
+                                    "Android 5 ", it,
+                                    containerShape = RoundedCornerShape(20.dp),
+                                    revealAnimation = RevealAnimation.RECTANGLE,
+                                    distanceFromComposable = 20.dp)
                             })
                     }
                     /**
@@ -130,7 +154,7 @@ class MainActivity : ComponentActivity() {
                         },
                         onCompleted = {
                             canDrawCoachMark = false
-                            Log.d(TAG, "End of the show...")
+                            Log.d(TAG, "End of the show..")
                         },
                         onShowBegin = {
                             Log.d(TAG, "Beginning of the show...")
