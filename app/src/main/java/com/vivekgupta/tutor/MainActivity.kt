@@ -4,12 +4,16 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -18,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,6 +39,7 @@ import com.vivekgupta.composecoachmark.coachmark.CoachMark
 import com.vivekgupta.composecoachmark.coachmark.EllipseMessageShape
 import com.vivekgupta.composecoachmark.coachmark.RevealAnimation
 import com.vivekgupta.tutor.ui.theme.TutorTheme
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,17 +62,21 @@ class MainActivity : ComponentActivity() {
             var canDrawCoachMark by remember {
                 mutableStateOf(true)
             }
-
-
+            val scrollState = rememberScrollState()
+         //   val scope = rememberCoroutineScope()
             TutorTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Column(Modifier.fillMaxSize()
+                    Column(
+                        Modifier
+                            .fillMaxSize()
+                            .padding(100.dp)
+                            .verticalScroll(scrollState)
                     , horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(50.dp)
+                        verticalArrangement = Arrangement.spacedBy(200.dp)
                     ) {
                         Greeting("Android 1",
                             modifier = Modifier
@@ -93,7 +103,9 @@ class MainActivity : ComponentActivity() {
                                     containerHeight = 150.dp,
                                     containerWidth = 150.dp,
                                     distanceFromComposable = 50.dp,
-                                    revealAnimation = RevealAnimation.RECTANGLE
+                                    revealAnimation = RevealAnimation.RECTANGLE,
+                                    alignment = Alignment.TopCenter,
+                                    isForcedAlignment = false
                                 )
                             })
                         Greeting("Android 2 ", modifier = Modifier
@@ -111,7 +123,15 @@ class MainActivity : ComponentActivity() {
                         Greeting("Android 3 ", modifier = Modifier
                             .onGloballyPositioned {
                                 coachMarkList[3] = CoachData(
-                                    "Android 3 Default ", it)
+                                    "Android 3 Default ", it, containerShape = RoundedCornerShape(10.dp)
+                                )
+                            })
+
+                        Greeting("Android 4 ", modifier = Modifier
+                            .onGloballyPositioned {
+                                coachMarkList[4] = CoachData(
+                                    "Android 4 Default ", it, containerShape = RoundedCornerShape(10.dp)
+                                )
                             })
                     }
                     /**
@@ -140,6 +160,7 @@ class MainActivity : ComponentActivity() {
 
                         }, onAfterShowingCoachMark = { index, position ->
                             Log.d(TAG, "After Showing for CoachMark $position, at index = $index")
+
                         })
 
                 }

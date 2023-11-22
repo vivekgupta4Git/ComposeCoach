@@ -111,6 +111,8 @@ fun CoachMark(
                 messageBoxHeight = nextValue.containerHeight,
                 messageBoxWidth = nextValue.containerWidth,
                 revealAnimation = nextValue.revealAnimation,
+                isForcedAlignment = nextValue.isForcedAlignment,
+                alignment = nextValue.alignment,
                 skipButtonAlignment = skipButtonAlignment,
                 skipButtonColors = skipButtonColors,
                 skipButtonModifier = skipButtonModifier,

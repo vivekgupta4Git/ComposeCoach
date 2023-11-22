@@ -3,17 +3,14 @@ package com.vivekgupta.composecoachmark.coachmark
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.AnimationVector4D
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
-import androidx.compose.animation.core.TwoWayConverter
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonColors
@@ -23,7 +20,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -39,7 +35,7 @@ import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.IntOffset
+import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
 
@@ -80,6 +76,8 @@ internal fun Coach(
         contentColor = Color.Black,
     ),
     revealAnimation: RevealAnimation = RevealAnimation.RECTANGLE,
+    alignment: Alignment = Alignment.BottomCenter,
+    isForcedAlignment : Boolean =false,
     onBack : () ->Unit = {},
     onSkip: () -> Unit = {},
     onNext: () -> Unit,
@@ -98,7 +96,8 @@ internal fun Coach(
         RevealAnimation.CIRCLE->{
             LaunchedEffect(key1 = bounds, block = {
                 radius.snapTo(0f)
-                radius.animateTo(bounds.width / 2, tween(500, easing = LinearEasing))
+                val maxOf = maxOf(bounds.width,bounds.height)
+                radius.animateTo(maxOf / 2, tween(500, easing = LinearEasing))
             })
         }
         RevealAnimation.RECTANGLE->{
@@ -165,7 +164,15 @@ internal fun Coach(
                 restoreToCount(checkPoint)
             }
         })
-        BoxWithConstraints {
+        BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+            val scope = this
+
+            val canvasHeight  = with(density){
+                scope.maxHeight.roundToPx()
+            }
+            val canvasWidth = with(density){
+                scope.maxWidth.roundToPx()
+            }
             LaunchedEffect(key1 = bounds.bottomRight.y, block = {
                 launch {
                     offsetY.snapTo(0f)
@@ -182,28 +189,35 @@ internal fun Coach(
                     alphaAnimation.animateTo(1f, tween(1000, easing = LinearEasing))
                 }
             })
-            CoachMarkMessageBox(
-                modifier = Modifier.offset {
-                    IntOffset(x = bounds.left.toInt(), y = bounds.bottomRight.y.toInt() + distance.toInt())
-                }.graphicsLayer {
-                                alpha = alphaAnimation.value
-                },
-                backgroundColor = messageBoxBackgroundColor,
-                shape = messageBoxShape,
-                messageBoxWidth = messageBoxWidth,
-                messageBoxHeight = messageBoxHeight
+            CoachLayout(targetBound = bounds,
+                revealAnimation = revealAnimation,
+                canvasSize = IntSize(canvasWidth, canvasHeight),
+                alignment = alignment,
+                isForcedAlignment = isForcedAlignment,
             ) {
-                Box(Modifier.fillMaxSize()) {
-                    Text(
-                        text = message,
-                        modifier = Modifier
-                            .padding(horizontal = 10.dp, vertical = 10.dp)
-                            .align(Alignment.Center),
-                        style = messageBoxTextStyle,
-                        color = messageBoxTextColor
-                    )
+                CoachMarkMessageBox(
+                    modifier = Modifier
+                        .graphicsLayer {
+                            alpha = alphaAnimation.value
+                        },
+                    backgroundColor = messageBoxBackgroundColor,
+                    shape = messageBoxShape,
+                    messageBoxWidth = messageBoxWidth,
+                    messageBoxHeight = messageBoxHeight
+                ) {
+                    Box(Modifier.fillMaxSize()) {
+                        Text(
+                            text = message,
+                            modifier = Modifier
+                                .padding(horizontal = 10.dp, vertical = 10.dp)
+                                .align(Alignment.Center),
+                            style = messageBoxTextStyle,
+                            color = messageBoxTextColor
+                        )
+                    }
                 }
             }
+
 
             Button(
                 onClick = onSkip, modifier = skipButtonModifier
