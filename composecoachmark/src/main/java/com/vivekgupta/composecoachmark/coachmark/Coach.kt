@@ -3,8 +3,12 @@ package com.vivekgupta.composecoachmark.coachmark
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffXfermode
 import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.clickable
@@ -37,7 +41,9 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.math.absoluteValue
 
 /**
  *@author Vivek Gupta on 13-9-23
@@ -86,7 +92,18 @@ internal fun Coach(
     val radius = remember {
         Animatable(0f)
     }
-
+    val waves = listOf(
+        remember {
+            Animatable(1f)
+        },
+        remember {
+            Animatable(0f)
+        }
+    )
+    val animationSpec = infiniteRepeatable<Float>(
+        animation = tween(2000, easing = FastOutSlowInEasing),
+        repeatMode = RepeatMode.Restart
+    )
     var newOffset = Offset.Zero
     var newSize = Size(0f,0f)
     val rect = remember {
@@ -98,6 +115,12 @@ internal fun Coach(
                 radius.snapTo(0f)
                 val maxOf = maxOf(bounds.width,bounds.height)
                 radius.animateTo(maxOf / 2, tween(500, easing = LinearEasing))
+                waves.forEachIndexed {
+                    index, anim ->
+                    delay(index*1L)
+                    anim.animateTo(targetValue = 0.5f,animationSpec=animationSpec)
+                }
+
             })
         }
         RevealAnimation.RECTANGLE->{
@@ -118,7 +141,6 @@ internal fun Coach(
             })
         }
     }
-
     val density = LocalDensity.current
     val distance = with(density) {
         distanceFromCoordinates.toPx()
@@ -129,14 +151,14 @@ internal fun Coach(
         modifier = modifier
             .fillMaxSize()
             .clickable { onNext() },
-        color = Color.Black.copy(alpha =0.05f)
+        color = Color.Blue.copy(alpha =0.05f)
     ) {
         Canvas(modifier = Modifier, onDraw = {
 
             with(drawContext.canvas.nativeCanvas) {
                 val checkPoint = saveLayer(null, null)
                 //this is must to act as a destination...
-                drawRect(Color.Black.copy(alpha = 0.8f))
+                drawRect(Color.Blue.copy(alpha = 0.8f))
                 //this the source , we are using blend mode to clear the destination pixels
 
                 when (revealAnimation) {
@@ -160,10 +182,20 @@ internal fun Coach(
                     }
                 }
 
-
                 restoreToCount(checkPoint)
             }
+
+            if(revealAnimation == RevealAnimation.CIRCLE){
+                drawCircle(
+                    radius = maxOf(bounds.width.absoluteValue/2,bounds.height.absoluteValue/2) *  waves[0].value *3f,
+                    center = bounds.center,
+                    color = Color.Blue,
+                    alpha = 1- waves[0].value,
+                    blendMode = BlendMode.Xor
+                )
+            }
         })
+
         BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
             val scope = this
 

@@ -63,7 +63,7 @@ class MainActivity : ComponentActivity() {
                 mutableStateOf(true)
             }
             val scrollState = rememberScrollState()
-         //   val scope = rememberCoroutineScope()
+            //   val scope = rememberCoroutineScope()
             TutorTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -74,40 +74,32 @@ class MainActivity : ComponentActivity() {
                         Modifier
                             .fillMaxSize()
                             .padding(100.dp)
-                            .verticalScroll(scrollState)
-                    , horizontalAlignment = Alignment.CenterHorizontally,
+                            .verticalScroll(scrollState),
+                        horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(200.dp)
                     ) {
                         Greeting("Android 1",
                             modifier = Modifier
                                 /**
-                             * Use onGloballyPositioned or onPlaced modifier on your composable
-                             */
-                            /**
-                             * Use onGloballyPositioned or onPlaced modifier on your composable
-                             */
-                            .onGloballyPositioned {
-                                /**
-                                 * update List with co-ordinates and use key for position
-                                 *
-                                 * Customize Message
+                                 * Use onGloballyPositioned or onPlaced modifier on your composable
                                  */
-                                /**
-                                 * update List with co-ordinates and use key for position
-                                 *
-                                 * Customize Message
-                                 */
-                                coachMarkList[1] = CoachData(
-                                    "Android 1", it,
-                                    containerShape = CutCornerShape(10.dp),
-                                    containerHeight = 150.dp,
-                                    containerWidth = 150.dp,
-                                    distanceFromComposable = 50.dp,
-                                    revealAnimation = RevealAnimation.RECTANGLE,
-                                    alignment = Alignment.TopCenter,
-                                    isForcedAlignment = false
-                                )
-                            })
+                                .onGloballyPositioned {
+                                    /**
+                                     * update List with co-ordinates and use key for position
+                                     *
+                                     * Customize Message
+                                     */
+                                    coachMarkList[1] = CoachData(
+                                        "Android 1", it,
+                                        containerShape = CutCornerShape(10.dp),
+                                        containerHeight = 150.dp,
+                                        containerWidth = 150.dp,
+                                        distanceFromComposable = 50.dp,
+                                        revealAnimation = RevealAnimation.RECTANGLE,
+                                        alignment = Alignment.TopCenter,
+                                        isForcedAlignment = false
+                                    )
+                                })
                         Greeting("Android 2 ", modifier = Modifier
                             .onGloballyPositioned {
                                 coachMarkList[2] = CoachData(
@@ -123,14 +115,19 @@ class MainActivity : ComponentActivity() {
                         Greeting("Android 3 ", modifier = Modifier
                             .onGloballyPositioned {
                                 coachMarkList[3] = CoachData(
-                                    "Android 3 Default ", it, containerShape = RoundedCornerShape(10.dp)
+                                    "Android 3 Default ",
+                                    it,
+                                    revealAnimation = RevealAnimation.CIRCLE,
+                                    containerShape = RoundedCornerShape(50)
                                 )
                             })
 
                         Greeting("Android 4 ", modifier = Modifier
                             .onGloballyPositioned {
                                 coachMarkList[4] = CoachData(
-                                    "Android 4 Default ", it, containerShape = RoundedCornerShape(10.dp)
+                                    "Android 4 Default ",
+                                    it,
+                                    containerShape = RoundedCornerShape(10.dp)
                                 )
                             })
                     }
@@ -142,7 +139,7 @@ class MainActivity : ComponentActivity() {
                         coachMarkElementList = coachMarkList,
                         showCoachMark = canDrawCoachMark,
                         onBack = {
-                                 Log.d(TAG,"Re-showing CoachMark!!")
+                            Log.d(TAG, "Re-showing CoachMark!!")
                         },
                         onCancelled = {
                             canDrawCoachMark = false
