@@ -8,7 +8,6 @@ import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.clickable
@@ -92,14 +91,9 @@ internal fun Coach(
     val radius = remember {
         Animatable(0f)
     }
-    val waves = listOf(
-        remember {
+    val focus = remember {
             Animatable(1f)
-        },
-        remember {
-            Animatable(0f)
         }
-    )
     val animationSpec = infiniteRepeatable<Float>(
         animation = tween(2000, easing = FastOutSlowInEasing),
         repeatMode = RepeatMode.Restart
@@ -114,13 +108,9 @@ internal fun Coach(
             LaunchedEffect(key1 = bounds, block = {
                 radius.snapTo(0f)
                 val maxOf = maxOf(bounds.width,bounds.height)
-                radius.animateTo(maxOf / 2, tween(500, easing = LinearEasing))
-                waves.forEachIndexed {
-                    index, anim ->
-                    delay(index*1L)
-                    anim.animateTo(targetValue = 0.5f,animationSpec=animationSpec)
-                }
-
+                radius.animateTo(maxOf / 2 + 20f, tween(500, easing = LinearEasing))
+                focus.snapTo(1f)
+                focus.animateTo(targetValue = 0.5f,animationSpec=animationSpec)
             })
         }
         RevealAnimation.RECTANGLE->{
@@ -147,18 +137,12 @@ internal fun Coach(
     }
     val offsetY = remember { Animatable(0f) }
     val alphaAnimation = remember { Animatable(0f) }
-    Surface(
-        modifier = modifier
-            .fillMaxSize()
-            .clickable { onNext() },
-        color = Color.Blue.copy(alpha =0.05f)
-    ) {
-        Canvas(modifier = Modifier, onDraw = {
+        Canvas(modifier = Modifier.fillMaxSize().clickable { onNext() }, onDraw = {
 
             with(drawContext.canvas.nativeCanvas) {
                 val checkPoint = saveLayer(null, null)
                 //this is must to act as a destination...
-                drawRect(Color.Blue.copy(alpha = 0.8f))
+                drawRect(Color.Black.copy(alpha = 0.8f))
                 //this the source , we are using blend mode to clear the destination pixels
 
                 when (revealAnimation) {
@@ -187,11 +171,11 @@ internal fun Coach(
 
             if(revealAnimation == RevealAnimation.CIRCLE){
                 drawCircle(
-                    radius = maxOf(bounds.width.absoluteValue/2,bounds.height.absoluteValue/2) *  waves[0].value *3f,
+                    radius = maxOf(bounds.width.absoluteValue/2,bounds.height.absoluteValue/2) *  focus.value *3f,
                     center = bounds.center,
-                    color = Color.Blue,
-                    alpha = 1- waves[0].value,
-                    blendMode = BlendMode.Xor
+                    color = Color.White,
+                    alpha = 1- focus.value,
+                    blendMode = BlendMode.Overlay
                 )
             }
         })
@@ -274,5 +258,4 @@ internal fun Coach(
             }
         }
     }
-}
 

@@ -78,7 +78,7 @@ class MainActivity : ComponentActivity() {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(200.dp)
                     ) {
-                        Greeting("Android 1",
+                        Greeting("Android 1 ",
                             modifier = Modifier
                                 /**
                                  * Use onGloballyPositioned or onPlaced modifier on your composable
@@ -95,7 +95,7 @@ class MainActivity : ComponentActivity() {
                                         containerHeight = 150.dp,
                                         containerWidth = 150.dp,
                                         distanceFromComposable = 50.dp,
-                                        revealAnimation = RevealAnimation.RECTANGLE,
+                                        revealAnimation = RevealAnimation.CIRCLE,
                                         alignment = Alignment.TopCenter,
                                         isForcedAlignment = false
                                     )
@@ -115,10 +115,12 @@ class MainActivity : ComponentActivity() {
                         Greeting("Android 3 ", modifier = Modifier
                             .onGloballyPositioned {
                                 coachMarkList[3] = CoachData(
-                                    "Android 3 Default ",
+                                    "Android 3 Default with a long text",
                                     it,
                                     revealAnimation = RevealAnimation.CIRCLE,
-                                    containerShape = RoundedCornerShape(50)
+                                    alignment = Alignment.TopCenter,
+                                    isForcedAlignment = true,
+                                    containerShape = BubbleMessageBox(50f)
                                 )
                             })
 
