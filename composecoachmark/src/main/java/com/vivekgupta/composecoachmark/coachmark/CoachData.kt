@@ -1,5 +1,7 @@
 package com.vivekgupta.composecoachmark.coachmark
 
+import androidx.compose.foundation.layout.BoxWithConstraintsScope
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.graphics.Canvas
 import androidx.compose.ui.graphics.Color
@@ -14,14 +16,8 @@ import androidx.compose.ui.unit.dp
  */
 
 data class CoachData(
-    val message : String,
     val coordinates: LayoutCoordinates,
-    val containerShape : Shape = CloudShape,
-    val containerHeight : Dp? = null,
-    val containerWidth : Dp? = null,
-    val containerColor : Color = Color.White,
-    val textStyle : TextStyle = TextStyle.Default,
-    val textColor : Color = Color.Black,
+    val content : @Composable (BoxWithConstraintsScope.() -> Unit),
     val revealEffect: RevealEffect = RectangleRevealEffect(),
     val alignment: Alignment = Alignment.BottomCenter,
     val isForcedAlignment : Boolean = false,

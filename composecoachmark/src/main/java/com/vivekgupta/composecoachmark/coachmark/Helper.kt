@@ -2,6 +2,7 @@ package com.vivekgupta.composecoachmark.coachmark
 
 import androidx.compose.animation.core.AnimationVector4D
 import androidx.compose.animation.core.TwoWayConverter
+import androidx.compose.foundation.layout.BoxWithConstraintsScope
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.remember
@@ -44,13 +45,7 @@ internal val rectToVector = TwoWayConverter(
 fun Modifier.addTarget(
     position : Int,
     state : CoachMarkState,
-    message : String,
-    containerShape : Shape = CloudShape,
-    containerHeight : Dp? = null,
-    containerWidth : Dp? = null,
-    containerColor : Color = Color.White,
-    textStyle : TextStyle = TextStyle.Default,
-    textColor : Color = Color.Black,
+    content : @Composable BoxWithConstraintsScope.() -> Unit,
     revealEffect: RevealEffect = RectangleRevealEffect(),
     style: CoachStyle = DefaultCoachStyle(),
     alignment: Alignment = Alignment.BottomCenter,
@@ -58,18 +53,12 @@ fun Modifier.addTarget(
     ) = onGloballyPositioned {
     layoutCoordinates ->
     state.targetList[position] = CoachData(
-        message = message,
+        content= content,
         coordinates = layoutCoordinates,
-        containerShape,
-        containerHeight,
-        containerWidth,
-        containerColor,
-        textStyle,
-        textColor,
-        revealEffect,
-        alignment,
-        isForcedAlignment,
-        style
+        revealEffect = revealEffect,
+        alignment = alignment,
+        isForcedAlignment = isForcedAlignment,
+        coachStyle = style
     )
 }
 
@@ -82,4 +71,11 @@ fun rememberCoachMarkState() : CoachMarkState {
     return remember {
         CoachMarkState()
     }
+}
+
+fun Color.invert(): Color {
+    val red = 1f - this.red
+    val green = 1f - this.green
+    val blue = 1f - this.blue
+    return Color(red, green, blue,this.alpha,this.colorSpace)
 }

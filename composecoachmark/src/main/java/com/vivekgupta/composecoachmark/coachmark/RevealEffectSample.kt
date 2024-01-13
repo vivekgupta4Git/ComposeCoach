@@ -30,7 +30,7 @@ class CircleRevealEffect : RevealEffect {
         focus.animateTo(targetValue = 0.5f, animationSpec = animationSpec)
     }
 
-    override fun drawTargetShape(targetBounds: Rect, drawScope: DrawScope) {
+    override fun drawTargetShape(targetBounds: Rect, drawScope: DrawScope) : Rect {
         drawScope.apply {
             drawCircle(
                 color = Color.White,
@@ -46,6 +46,7 @@ class CircleRevealEffect : RevealEffect {
                 blendMode = BlendMode.Clear
             )
         }
+        return Rect(offset = Offset(targetBounds.width*2f,targetBounds.height*2f), size = targetBounds.size * 2f)
     }
 
 
@@ -67,7 +68,14 @@ class RectangleRevealEffect : RevealEffect {
         rect.animateTo(newBound, tween(500, easing = LinearEasing))
     }
 
-    override fun drawTargetShape(targetBounds: Rect, drawScope: DrawScope) {
+    override fun drawTargetShape(targetBounds: Rect, drawScope: DrawScope): Rect {
+        val x = targetBounds.topLeft.x - 50f
+        val y = targetBounds.topLeft.y - 50f
+        val newOffset = Offset(x, y)
+        val height = targetBounds.size.height + 100f
+        val width = targetBounds.size.width + 100f
+        val newSize = Size(width, height)
+        val newBound = Rect(newOffset, newSize)
         drawScope.apply {
             drawRect(
                 color = Color.Unspecified,
@@ -76,5 +84,6 @@ class RectangleRevealEffect : RevealEffect {
                 topLeft = rect.value.topLeft
             )
         }
+        return newBound
     }
 }

@@ -1,13 +1,20 @@
 package com.vivekgupta.composecoachmark.coachmark
 
 import android.util.Log
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material.Surface
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.SubcomposeLayout
 import androidx.compose.ui.unit.IntSize
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 import kotlin.math.roundToInt
 
@@ -24,7 +31,6 @@ fun CoachLayout(
     isForcedAlignment: Boolean = false,
     content: @Composable () -> Unit
 ) {
-
     SubcomposeLayout(modifier = modifier) { constraints ->
         val mainPlaceable = subcompose(Unit, content).map {
             it.measure(constraints)

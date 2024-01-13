@@ -4,10 +4,14 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,15 +26,22 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vivekgupta.composecoachmark.coachmark.CanopasStyle
 import com.vivekgupta.composecoachmark.coachmark.CircleRevealEffect
 import com.vivekgupta.composecoachmark.coachmark.CoachMark
+import com.vivekgupta.composecoachmark.coachmark.DefaultCoachStyle
 import com.vivekgupta.composecoachmark.coachmark.addTarget
+import com.vivekgupta.composecoachmark.coachmark.invert
 import com.vivekgupta.composecoachmark.coachmark.rememberCoachMarkState
 import com.vivekgupta.tutor.ui.theme.TutorTheme
 
@@ -69,40 +80,67 @@ class MainActivity : ComponentActivity() {
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(200.dp)
                     ) {
+                        val style = CanopasStyle()
                         Greeting(
                             "Android 1",
                             modifier = Modifier.addTarget(
                                 1,
-                                message = "This is first ",
-                                containerShape = CutCornerShape(10.dp),
-                                containerHeight = 150.dp,
-                                containerWidth = 150.dp,
                                 state = coachMarkState,
-                                style = CanopasStyle()
+                                style = style,
+                                content = {
+                                    Surface(color = style.backGroundColor.invert()) {
+                                        Text(text = "Hello")
+                                    }
+                                }
                             )
                         )
+                        val coachStyle = DefaultCoachStyle()
                         Greeting(
                             "Android 2 ", modifier = Modifier
                                 .addTarget(
                                     position = 2,
-                                    message = "Android 2\n yo !! on second line",
-                                    containerShape = RoundedCornerShape(50),
-                                    containerColor = Color.Transparent,
-                                    textColor = Color.White,
-                                    isForcedAlignment = false,
-                                    textStyle = TextStyle().copy(fontSize = 24.sp),
+                                    isForcedAlignment = true,
                                     state = coachMarkState,
-                                    alignment = Alignment.TopCenter,
-                                    revealEffect = CircleRevealEffect()
+                                    alignment = Alignment.Center,
+                                    style = coachStyle,
+                                    revealEffect = CircleRevealEffect(),
+                                    content = {
+                                        Surface(color = coachStyle.backGroundColor.invert()) {
+
+                                            Column(modifier = Modifier.width(IntrinsicSize.Min)) {
+                                                Image(
+                                                    painterResource(id = R.drawable.ic_launcher_background),
+                                                    contentDescription = null,
+                                                    modifier = Modifier.size(100.dp)
+                                                )
+
+                                                Text(
+                                                    text = "Search " +
+                                                            "anything!!",
+                                                    color = Color.Black,
+                                                    fontSize = 24.sp,
+                                                    fontWeight = FontWeight.Bold
+                                                )
+                                                Text(
+                                                    text = "You can search " +
+                                                            "anything by clicking here.",
+                                                    color = Color.Black,
+                                                    fontSize = 16.sp
+                                                )
+                                            }
+                                        }
+                                    }
                                 )
                         )
                         Greeting(
                             "Android 3 ", modifier = Modifier.addTarget(
                                 3,
-                                state = coachMarkState, message = "abc",
-                                containerShape = RoundedCornerShape(20),
-                                containerHeight = 100.dp,
-                                containerWidth = 200.dp,
+                                state = coachMarkState,
+                                content = {
+                                    Surface(color = coachStyle.backGroundColor.invert()) {
+                                        Text(text = "Hello #3")
+                                    }
+                                }
                             )
                         )
 

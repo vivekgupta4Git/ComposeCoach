@@ -3,20 +3,30 @@ package com.vivekgupta.composecoachmark.coachmark
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.BoxWithConstraintsScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.boundsInRoot
+import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntSize
 
 /**
  *@author Vivek Gupta on 13-9-23
@@ -25,13 +35,7 @@ import androidx.compose.ui.unit.Dp
 internal fun Coach(
     modifier: Modifier = Modifier,
     coordinates: LayoutCoordinates,
-    message: String = "",
-    messageBoxShape: Shape = EllipseMessageShape(),
-    messageBoxBackgroundColor: Color = Color.White,
-    messageBoxTextColor: Color = Color.Black,
-    messageBoxTextStyle: TextStyle = TextStyle.Default,
-    messageBoxWidth: Dp? = null,
-    messageBoxHeight: Dp? = null,
+    content: @Composable BoxWithConstraintsScope.() -> Unit,
     coachStyle: CoachStyle = DefaultCoachStyle(),
     revealEffect: RevealEffect = RectangleRevealEffect(),
     alignment: Alignment = Alignment.BottomCenter,
@@ -45,7 +49,13 @@ internal fun Coach(
         revealEffect.animate(bounds)
     }
 
-    //  val density = LocalDensity.current
+    val density = LocalDensity.current
+    val newBound = remember {
+        mutableStateOf(Rect(Offset.Zero, Size.Zero))
+    }
+    var newSize by remember {
+        mutableStateOf(Rect(Offset.Zero, Size.Zero))
+    }
     //  val distance = with(density) {
     //      distanceFromCoordinates.toPx()
     //  }
@@ -61,8 +71,8 @@ internal fun Coach(
         })
     {
         Canvas(modifier = Modifier, onDraw = {
-            coachStyle.drawCoachShape(bounds, this@Canvas)
-            revealEffect.drawTargetShape(bounds, this@Canvas)
+            newSize = coachStyle.drawCoachShape(bounds, this@Canvas)
+            newBound.value = revealEffect.drawTargetShape(bounds, this@Canvas)
         })
         BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
             coachStyle.drawCoachButtons(
@@ -72,6 +82,18 @@ internal fun Coach(
                 onBack = onBack,
                 targetBounds = bounds
             )
+            CoachLayout(
+                canvasSize =
+                IntSize(
+                    newSize.width.toInt(),
+                    newSize.height.toInt()
+                ),
+                targetBound = newBound.value,
+                isForcedAlignment = isForcedAlignment,
+                alignment = alignment
+            ) {
+                content()
+            }
             /*  val scope = this
 
               val canvasHeight  = with(density){

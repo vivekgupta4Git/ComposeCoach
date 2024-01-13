@@ -24,27 +24,6 @@ fun CoachMark(
     onShowBegin: () -> Unit = {},
     onBeforeShowingCoachMark: (Int, Int) -> Unit = { _, _ -> },
     onAfterShowingCoachMark : (Int, Int) -> Unit = { _ , _-> },
-    /*skipButtonModifier: Modifier = Modifier,
-    skipButtonText: String = "Skip",
-    skipButtonAlignment: Alignment = Alignment.BottomCenter,
-    skipButtonColors: ButtonColors = ButtonDefaults.buttonColors(
-        backgroundColor = Color.White,
-        contentColor= Color.Black,
-    ),
-    nextButtonModifier: Modifier = Modifier,
-    nextButtonText: String = "Next",
-    nextButtonAlignment: Alignment = Alignment.BottomEnd,
-    nextButtonColors: ButtonColors = ButtonDefaults.buttonColors(
-        backgroundColor = Color.White,
-        contentColor= Color.Black,
-    ),
-    backButtonModifier: Modifier = Modifier,
-    backButtonText: String = "Back",
-    backButtonAlignment: Alignment = Alignment.BottomStart,
-    backButtonColors: ButtonColors = ButtonDefaults.buttonColors(
-        backgroundColor = Color.White,
-        contentColor= Color.Black,
-    ),*/
     onBack : () -> Unit = {},
     onCancelled: () -> Unit,
     onCompleted: () -> Unit,
@@ -72,6 +51,7 @@ fun CoachMark(
             })
             val currentTarget =  coachMarkElementList.nextValue(count)
             Coach(
+                content = currentTarget.content,
                 coordinates = currentTarget.coordinates,
                 onBack = {
                     canShowNext = if(count == 0) false
@@ -97,28 +77,9 @@ fun CoachMark(
                         onCompleted()
                         canDrawCoachMark = false
                     }
-                }
-            , message = currentTarget.message ,
-                messageBoxShape = currentTarget.containerShape,
-                messageBoxTextStyle = currentTarget.textStyle,
-                messageBoxBackgroundColor = currentTarget.containerColor,
-                messageBoxTextColor = currentTarget.textColor,
-                messageBoxHeight = currentTarget.containerHeight,
-                messageBoxWidth = currentTarget.containerWidth,
+                },
                 isForcedAlignment = currentTarget.isForcedAlignment,
                 alignment = currentTarget.alignment,
-             /*   skipButtonAlignment = skipButtonAlignment,
-                skipButtonColors = skipButtonColors,
-                skipButtonModifier = skipButtonModifier,
-                skipButtonText = skipButtonText,
-                nextButtonAlignment = nextButtonAlignment,
-                nextButtonColors = nextButtonColors,
-                nextButtonText = nextButtonText,
-                nextButtonModifier = nextButtonModifier,
-                backButtonAlignment = backButtonAlignment,
-                backButtonColors = backButtonColors,
-                backButtonText = backButtonText,
-                backButtonModifier = backButtonModifier,*/
                 modifier = modifier,
                 revealEffect = currentTarget.revealEffect,
                 coachStyle = currentTarget.coachStyle
