@@ -151,7 +151,7 @@ class MainActivity : ComponentActivity() {
                      * Step 4 : Call CoachMark Composable
                      */
                     CoachMark(
-                        coachMarkElementList = coachMarkState.targetList,
+                        coachMarkState = coachMarkState,
                         showCoachMark = canDrawCoachMark,
                         onBack = {
                             Log.d(TAG, "Re-showing CoachMark!!")

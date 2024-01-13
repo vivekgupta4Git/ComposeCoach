@@ -63,7 +63,7 @@ fun Modifier.addTarget(
 }
 
 class CoachMarkState{
-    val targetList = mutableStateMapOf<Int, CoachData>()
+    internal val targetList = mutableStateMapOf<Int, CoachData>()
 }
 
 @Composable

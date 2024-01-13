@@ -19,7 +19,7 @@ import androidx.compose.ui.graphics.Color
 @Composable
 fun CoachMark(
     modifier: Modifier = Modifier,
-    coachMarkElementList: Map<Int, CoachData>,
+    coachMarkState: CoachMarkState,
     showCoachMark: Boolean = true,
     onShowBegin: () -> Unit = {},
     onBeforeShowingCoachMark: (Int, Int) -> Unit = { _, _ -> },
@@ -34,22 +34,22 @@ fun CoachMark(
     var count by rememberSaveable {
         mutableStateOf(0)
     }
-    var canShowNext by rememberSaveable(coachMarkElementList.size) {
-        mutableStateOf(coachMarkElementList.hasNextValue(count) && canDrawCoachMark)
+    var canShowNext by rememberSaveable(coachMarkState.targetList.size) {
+        mutableStateOf(coachMarkState.targetList.hasNextValue(count) && canDrawCoachMark)
     }
 
     val onShowStart by rememberUpdatedState(onShowBegin)
 
     if (canShowNext) {
-        if (coachMarkElementList.isNotEmpty()) {
+        if (coachMarkState.targetList.isNotEmpty()) {
             //even after the recomposition this shouldn't fire again
             LaunchedEffect(key1 = Unit) {
                 onShowStart()
             }
-            LaunchedEffect(key1 = coachMarkElementList.nextKey(count), block = {
-                onBeforeShowingCoachMark(count,coachMarkElementList.firstKey(count))
+            LaunchedEffect(key1 = coachMarkState.targetList.nextKey(count), block = {
+                onBeforeShowingCoachMark(count,coachMarkState.targetList.firstKey(count))
             })
-            val currentTarget =  coachMarkElementList.nextValue(count)
+            val currentTarget =  coachMarkState.targetList.nextValue(count)
             Coach(
                 content = currentTarget.content,
                 coordinates = currentTarget.coordinates,
@@ -58,7 +58,7 @@ fun CoachMark(
                     else {
                         onBack()
                         --count
-                        coachMarkElementList.hasNextValue(count)
+                        coachMarkState.targetList.hasNextValue(count)
 
                     }
                 },
@@ -68,9 +68,9 @@ fun CoachMark(
                     onCancelled()
                 },
                 onNext = {
-                    onAfterShowingCoachMark(count,coachMarkElementList.firstKey(count))
+                    onAfterShowingCoachMark(count,coachMarkState.targetList.firstKey(count))
                     ++count
-                    canShowNext = coachMarkElementList.hasNextValue(count)
+                    canShowNext = coachMarkState.targetList.hasNextValue(count)
                     //reset count and mark finish
                     if (!canShowNext) {
                         count = 0
