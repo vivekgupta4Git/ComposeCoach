@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.gestures.scrollBy
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -19,27 +17,20 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.vivekgupta.composecoachmark.coachmark.BubbleMessageBox
-import com.vivekgupta.composecoachmark.coachmark.CloudShape
-import com.vivekgupta.composecoachmark.coachmark.CoachData
 import com.vivekgupta.composecoachmark.coachmark.CoachMark
-import com.vivekgupta.composecoachmark.coachmark.EllipseMessageShape
-import com.vivekgupta.composecoachmark.coachmark.RevealAnimation
+import com.vivekgupta.composecoachmark.coachmark.addTarget
+import com.vivekgupta.composecoachmark.coachmark.rememberCoachMarkState
 import com.vivekgupta.tutor.ui.theme.TutorTheme
-import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,9 +43,7 @@ class MainActivity : ComponentActivity() {
             /**
              * Step 1 : Create a MutableStateMap
              */
-            val coachMarkList = remember {
-                mutableStateMapOf<Int, CoachData>()
-            }
+            val coachMarkState = rememberCoachMarkState()
 
             /**
              * Step 2 : Create a mutable State Variable to show CoachMark
@@ -63,7 +52,7 @@ class MainActivity : ComponentActivity() {
                 mutableStateOf(true)
             }
             val scrollState = rememberScrollState()
-         //   val scope = rememberCoroutineScope()
+            //   val scope = rememberCoroutineScope()
             TutorTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -74,75 +63,58 @@ class MainActivity : ComponentActivity() {
                         Modifier
                             .fillMaxSize()
                             .padding(100.dp)
-                            .verticalScroll(scrollState)
-                    , horizontalAlignment = Alignment.CenterHorizontally,
+                            .verticalScroll(scrollState),
+                        horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(200.dp)
                     ) {
-                        Greeting("Android 1",
-                            modifier = Modifier
-                                /**
-                             * Use onGloballyPositioned or onPlaced modifier on your composable
-                             */
-                            /**
-                             * Use onGloballyPositioned or onPlaced modifier on your composable
-                             */
-                            .onGloballyPositioned {
-                                /**
-                                 * update List with co-ordinates and use key for position
-                                 *
-                                 * Customize Message
-                                 */
-                                /**
-                                 * update List with co-ordinates and use key for position
-                                 *
-                                 * Customize Message
-                                 */
-                                coachMarkList[1] = CoachData(
-                                    "Android 1", it,
-                                    containerShape = CutCornerShape(10.dp),
-                                    containerHeight = 150.dp,
-                                    containerWidth = 150.dp,
-                                    distanceFromComposable = 50.dp,
-                                    revealAnimation = RevealAnimation.RECTANGLE,
-                                    alignment = Alignment.TopCenter,
-                                    isForcedAlignment = false
-                                )
-                            })
-                        Greeting("Android 2 ", modifier = Modifier
-                            .onGloballyPositioned {
-                                coachMarkList[2] = CoachData(
-                                    "Android 2\n yo !! on second line", it,
+                        Greeting(
+                            "Android 1",
+                            modifier = Modifier.addTarget(
+                                1,
+                                message = "This is first ",
+                                containerShape = CutCornerShape(10.dp),
+                                containerHeight = 150.dp,
+                                containerWidth = 150.dp,
+                                distanceFromComposable = 50.dp,
+                                state = coachMarkState
+                            )
+                        )
+                        Greeting(
+                            "Android 2 ", modifier = Modifier
+                                .addTarget(
+                                    position = 2,
+                                    message = "Android 2\n yo !! on second line",
                                     containerShape = RoundedCornerShape(50),
                                     containerColor = Color.Transparent,
                                     textColor = Color.White,
                                     distanceFromComposable = 50.dp,
+                                    isForcedAlignment = false,
                                     textStyle = TextStyle().copy(fontSize = 24.sp),
-                                    revealAnimation = RevealAnimation.CIRCLE
+                                    state = coachMarkState,
+                                    alignment = Alignment.TopCenter
                                 )
-                            })
-                        Greeting("Android 3 ", modifier = Modifier
-                            .onGloballyPositioned {
-                                coachMarkList[3] = CoachData(
-                                    "Android 3 Default ", it, containerShape = RoundedCornerShape(10.dp)
-                                )
-                            })
+                        )
+                        Greeting(
+                            "Android 3 ", modifier = Modifier.addTarget(
+                                3,
+                                state = coachMarkState, message = "abc",
+                                containerShape = RoundedCornerShape(20),
+                                containerHeight = 100.dp,
+                                containerWidth = 200.dp,
+                            )
+                        )
 
-                        Greeting("Android 4 ", modifier = Modifier
-                            .onGloballyPositioned {
-                                coachMarkList[4] = CoachData(
-                                    "Android 4 Default ", it, containerShape = RoundedCornerShape(10.dp)
-                                )
-                            })
+                        Greeting("Android 4 ", modifier = Modifier)
                     }
                     /**
                      *
                      * Step 4 : Call CoachMark Composable
                      */
                     CoachMark(
-                        coachMarkElementList = coachMarkList,
+                        coachMarkElementList = coachMarkState.targetList,
                         showCoachMark = canDrawCoachMark,
                         onBack = {
-                                 Log.d(TAG,"Re-showing CoachMark!!")
+                            Log.d(TAG, "Re-showing CoachMark!!")
                         },
                         onCancelled = {
                             canDrawCoachMark = false
@@ -161,7 +133,10 @@ class MainActivity : ComponentActivity() {
                         }, onAfterShowingCoachMark = { index, position ->
                             Log.d(TAG, "After Showing for CoachMark $position, at index = $index")
 
-                        })
+                        }, skipButtonAlignment = Alignment.TopCenter,
+                        nextButtonAlignment = Alignment.CenterEnd,
+                        backButtonAlignment = Alignment.CenterStart
+                    )
 
                 }
 

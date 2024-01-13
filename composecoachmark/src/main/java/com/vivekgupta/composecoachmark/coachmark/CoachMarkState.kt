@@ -22,7 +22,6 @@ fun CoachLayout(
     targetBound: Rect,
     alignment: Alignment = Alignment.BottomCenter,
     isForcedAlignment: Boolean = false,
-    revealAnimation: RevealAnimation,
     content: @Composable () -> Unit
 ) {
 
@@ -39,7 +38,6 @@ fun CoachLayout(
 
         val (xPosition, yPosition) = if (!isForcedAlignment)
                                             findVisiblePositions(
-                                                revealAnimation,
                                                 targetBound,
                                                 messageBoxSize,
                                                 canvasSize)
@@ -48,7 +46,6 @@ fun CoachLayout(
                                                 alignment,
                                                 targetBound,
                                                 messageBoxSize,
-                                                revealAnimation
                                             )
 
         layout(width = canvasSize.width, canvasSize.height) {
@@ -72,22 +69,11 @@ private val validAlignmentList = listOf(
 )
 
 private fun findVisiblePositions(
-    revealAnimation: RevealAnimation,
     targetBound: Rect,
     messageBoxSize: IntSize,
     canvasSize: IntSize
 ): Pair<Float, Float> {
 
-    val adjustedY = when (revealAnimation) {
-        RevealAnimation.RECTANGLE -> {
-            targetBound.height.toInt()
-        }
-
-        RevealAnimation.CIRCLE -> {
-            val maxOf = maxOf(targetBound.width, targetBound.height)
-            (maxOf / 2).toInt()
-        }
-    }
     var validAlignment = validAlignmentList.find { alignment ->
         val (xPositionOfMsg, yPositionOfMsg, adjustOffset) = when (alignment) {
             Alignment.TopStart -> {
@@ -104,7 +90,7 @@ private fun findVisiblePositions(
                     targetBound.topCenter.y,
                     Offset(
                         messageBoxSize.width.toFloat() / 2,
-                        messageBoxSize.height.toFloat() + adjustedY
+                        messageBoxSize.height.toFloat()+ 20f
                     )
                 )
             }
@@ -129,7 +115,7 @@ private fun findVisiblePositions(
                 Triple(
                     targetBound.bottomCenter.x,
                     targetBound.bottomCenter.y,
-                    Offset(targetBound.width / 2f, -adjustedY.toFloat())
+                    Offset(targetBound.width / 2f, -20f)
                 )
             }
 
@@ -179,7 +165,6 @@ private fun findVisiblePositions(
         validAlignment,
         targetBound,
         messageBoxSize,
-        revealAnimation
     )
 }
 
@@ -187,18 +172,8 @@ private fun returnPositionBasedOnAlignment(
     alignment: Alignment,
     targetBound: Rect,
     messageBoxSize: IntSize,
-    revealAnimation: RevealAnimation
 ): Pair<Float, Float> {
-    val adjustedY = when (revealAnimation) {
-        RevealAnimation.RECTANGLE -> {
-            targetBound.height.toInt()
-        }
 
-        RevealAnimation.CIRCLE -> {
-            val maxOf = maxOf(targetBound.width, targetBound.height)
-            (maxOf / 2).toInt()
-        }
-    }
     val (xPositionOfMsg, yPositionOfMsg, adjustOffset) = when (alignment) {
         Alignment.TopStart -> {
             Triple(
@@ -214,7 +189,7 @@ private fun returnPositionBasedOnAlignment(
                 targetBound.topCenter.y,
                 Offset(
                     messageBoxSize.width.toFloat() / 2,
-                    messageBoxSize.height.toFloat() + adjustedY
+                    messageBoxSize.height.toFloat() + 20f
                 )
             )
         }
@@ -239,7 +214,7 @@ private fun returnPositionBasedOnAlignment(
             Triple(
                 targetBound.bottomCenter.x,
                 targetBound.bottomCenter.y,
-                Offset(targetBound.width / 2f, -adjustedY.toFloat())
+                Offset(targetBound.width / 2f, -20f)
             )
         }
 

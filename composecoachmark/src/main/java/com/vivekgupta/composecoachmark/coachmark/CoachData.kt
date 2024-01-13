@@ -1,6 +1,7 @@
 package com.vivekgupta.composecoachmark.coachmark
 
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Canvas
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.LayoutCoordinates
@@ -23,12 +24,9 @@ data class CoachData(
     val textColor : Color = Color.Black,
     val canPointToComposable : Boolean = true,      //this will draw an arrow to the co-ordinates.
     val distanceFromComposable : Dp = 10.dp,
-    val revealAnimation : RevealAnimation = RevealAnimation.RECTANGLE,
+    val revealEffect: RevealEffect = RectangleRevealEffect(),
     val alignment: Alignment = Alignment.BottomCenter,
     val isForcedAlignment : Boolean = false,
 )
 
-enum class RevealAnimation{
-    CIRCLE,
-    RECTANGLE
-}
+

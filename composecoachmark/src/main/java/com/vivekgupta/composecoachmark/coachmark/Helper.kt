@@ -2,9 +2,20 @@ package com.vivekgupta.composecoachmark.coachmark
 
 import androidx.compose.animation.core.AnimationVector4D
 import androidx.compose.animation.core.TwoWayConverter
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 
 /**
  *@author Vivek Gupta on 13-11-23
@@ -31,3 +42,47 @@ internal val rectToVector = TwoWayConverter(
         )
     }
 )
+fun Modifier.addTarget(
+    position : Int,
+    state : CoachMarkState,
+    message : String,
+    containerShape : Shape = CloudShape,
+    containerHeight : Dp? = null,
+    containerWidth : Dp? = null,
+    containerColor : Color = Color.White,
+    textStyle : TextStyle = TextStyle.Default,
+    textColor : Color = Color.Black,
+    canPointToComposable : Boolean = true,      //this will draw an arrow to the co-ordinates.
+    distanceFromComposable : Dp = 10.dp,
+    revealEffect: RevealEffect = RectangleRevealEffect(),
+    alignment: Alignment = Alignment.BottomCenter,
+    isForcedAlignment : Boolean = false,
+    ) = onGloballyPositioned {
+    layoutCoordinates ->
+    state.targetList[position] = CoachData(
+        message = message,
+        coordinates = layoutCoordinates,
+        containerShape,
+        containerHeight,
+        containerWidth,
+        containerColor,
+        textStyle,
+        textColor,
+        canPointToComposable,
+        distanceFromComposable,
+        revealEffect,
+        alignment,
+        isForcedAlignment,
+    )
+}
+
+class CoachMarkState{
+    val targetList = mutableStateMapOf<Int, CoachData>()
+}
+
+@Composable
+fun rememberCoachMarkState() : CoachMarkState {
+    return remember {
+        CoachMarkState()
+    }
+}

@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.layout.boundsInRoot
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -110,7 +111,6 @@ fun CoachMark(
                 distanceFromCoordinates = nextValue.distanceFromComposable,
                 messageBoxHeight = nextValue.containerHeight,
                 messageBoxWidth = nextValue.containerWidth,
-                revealAnimation = nextValue.revealAnimation,
                 isForcedAlignment = nextValue.isForcedAlignment,
                 alignment = nextValue.alignment,
                 skipButtonAlignment = skipButtonAlignment,
@@ -125,7 +125,7 @@ fun CoachMark(
                 backButtonColors = backButtonColors,
                 backButtonText = backButtonText,
                 backButtonModifier = backButtonModifier,
-                modifier = modifier,
+                modifier = modifier
             )
         }
     }

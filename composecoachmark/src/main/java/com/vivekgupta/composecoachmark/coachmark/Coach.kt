@@ -1,11 +1,8 @@
 package com.vivekgupta.composecoachmark.coachmark
 
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.LinearOutSlowInEasing
-import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.gestures.detectTapGestures
@@ -23,10 +20,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Rect
-import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.graphicsLayer
@@ -39,7 +32,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntSize
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
-import kotlin.math.absoluteValue
 
 /**
  *@author Vivek Gupta on 13-9-23
@@ -77,7 +69,7 @@ internal fun Coach(
         backgroundColor = Color.White,
         contentColor = Color.Black,
     ),
-    revealAnimation: RevealAnimation = RevealAnimation.RECTANGLE,
+    revealEffect: RevealEffect = RectangleRevealEffect(),
     alignment: Alignment = Alignment.BottomCenter,
     isForcedAlignment: Boolean = false,
     onBack: () -> Unit = {},
@@ -85,49 +77,8 @@ internal fun Coach(
     onNext: () -> Unit,
 ) {
     val bounds = coordinates.boundsInRoot()
-    val radius = remember {
-        Animatable(0f)
-    }
-    val focus = remember {
-            Animatable(1f)
-        }
-    val animationSpec = infiniteRepeatable<Float>(
-        animation = tween(2000, easing = FastOutSlowInEasing),
-        repeatMode = RepeatMode.Restart
-    )
-    var newOffset = Offset.Zero
-    var newSize = Size(0f, 0f)
-    val rect = remember {
-        Animatable(Rect(offset = bounds.center, size = Size.Zero), rectToVector)
-    }
-    when (revealAnimation) {
-        RevealAnimation.CIRCLE -> {
-            LaunchedEffect(key1 = bounds, block = {
-                radius.snapTo(0f)
-                val maxOf = maxOf(bounds.width, bounds.height)
-                radius.animateTo(maxOf / 2 + 20f, tween(500, easing = LinearEasing))
-                focus.snapTo(1f)
-                focus.animateTo(targetValue = 0.5f,animationSpec=animationSpec)
-            })
-        }
-
-        RevealAnimation.RECTANGLE -> {
-            //extra padding from top to reveal view
-            val x = bounds.topLeft.x - 20f
-            val y = bounds.topLeft.y - 20f
-            newOffset = Offset(x, y)
-            //extra width and height to reveal view
-            val height = bounds.size.height + 20f
-            val width = bounds.size.width + 20f
-            newSize = Size(width, height)
-            //new bound for the view
-            val newBound = Rect(newOffset, newSize)
-            //animating view from center
-            LaunchedEffect(key1 = newBound, block = {
-                rect.snapTo(Rect(bounds.center, size = Size.Zero))
-                rect.animateTo(newBound, tween(500, easing = LinearEasing))
-            })
-        }
+    LaunchedEffect(key1 = bounds){
+        revealEffect.animate(bounds)
     }
 
     val density = LocalDensity.current
@@ -147,36 +98,7 @@ internal fun Coach(
     {
         Canvas(modifier = Modifier, onDraw = {
             drawRect(color = Color.Black.copy(alpha = 0.8f))
-            when (revealAnimation) {
-                RevealAnimation.CIRCLE -> {
-                    drawCircle(
-                        color = Color.White,
-                        radius = maxOf(bounds.width.absoluteValue/2,bounds.height.absoluteValue/2) *  focus.value *3f,
-                        center = bounds.center,
-                        alpha = 1- focus.value,
-                        blendMode = BlendMode.Overlay
-                    )
-                    drawCircle(
-                        color = Color.White,
-                        radius = radius.value,
-                        center=bounds.center,
-                        blendMode = BlendMode.Clear
-                    )
-
-
-                }
-
-                RevealAnimation.RECTANGLE -> {
-                    drawRect(
-                        color = Color.Unspecified,
-                        size = rect.value.size,
-                        blendMode = BlendMode.Clear,
-                        topLeft = rect.value.topLeft
-                    )
-
-                }
-            }
-
+            revealEffect.drawTargetShape(bounds,this@Canvas)
         })
         BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
             val scope = this
@@ -204,7 +126,6 @@ internal fun Coach(
                 }
             })
             CoachLayout(targetBound = bounds,
-                revealAnimation = revealAnimation,
                 canvasSize = IntSize(canvasWidth, canvasHeight),
                 alignment = alignment,
                 isForcedAlignment = isForcedAlignment,
