@@ -11,6 +11,7 @@ import androidx.compose.ui.layout.LayoutCoordinates
 data class Target(
     val coordinates : LayoutCoordinates,
     val revealEffect: RevealEffect = CircleRevealEffect(),
+    val coachStyle: CoachStyle = DefaultCoachStyle(),
     val alignment: Alignment = Alignment.BottomCenter,
     val isForcedAlignment : Boolean = false,
     val content : BoxScope.() -> Unit

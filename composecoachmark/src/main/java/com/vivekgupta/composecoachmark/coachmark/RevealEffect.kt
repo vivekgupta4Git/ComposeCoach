@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 
 interface RevealEffect {
     /**
-     * method to animate the around target's bound
+     * method to animate shape defined by [drawTargetShape] method around target's bound
      */
     suspend fun animate(targetBounds: Rect)
 

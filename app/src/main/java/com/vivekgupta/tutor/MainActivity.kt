@@ -27,6 +27,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.vivekgupta.composecoachmark.coachmark.CanopasStyle
+import com.vivekgupta.composecoachmark.coachmark.CircleRevealEffect
 import com.vivekgupta.composecoachmark.coachmark.CoachMark
 import com.vivekgupta.composecoachmark.coachmark.addTarget
 import com.vivekgupta.composecoachmark.coachmark.rememberCoachMarkState
@@ -41,7 +43,7 @@ class MainActivity : ComponentActivity() {
              */
 
             /**
-             * Step 1 : Create a MutableStateMap
+             * Step 1 : Create a CoachMarkState
              */
             val coachMarkState = rememberCoachMarkState()
 
@@ -75,8 +77,8 @@ class MainActivity : ComponentActivity() {
                                 containerShape = CutCornerShape(10.dp),
                                 containerHeight = 150.dp,
                                 containerWidth = 150.dp,
-                                distanceFromComposable = 50.dp,
-                                state = coachMarkState
+                                state = coachMarkState,
+                                style = CanopasStyle()
                             )
                         )
                         Greeting(
@@ -87,11 +89,11 @@ class MainActivity : ComponentActivity() {
                                     containerShape = RoundedCornerShape(50),
                                     containerColor = Color.Transparent,
                                     textColor = Color.White,
-                                    distanceFromComposable = 50.dp,
                                     isForcedAlignment = false,
                                     textStyle = TextStyle().copy(fontSize = 24.sp),
                                     state = coachMarkState,
-                                    alignment = Alignment.TopCenter
+                                    alignment = Alignment.TopCenter,
+                                    revealEffect = CircleRevealEffect()
                                 )
                         )
                         Greeting(
@@ -133,9 +135,7 @@ class MainActivity : ComponentActivity() {
                         }, onAfterShowingCoachMark = { index, position ->
                             Log.d(TAG, "After Showing for CoachMark $position, at index = $index")
 
-                        }, skipButtonAlignment = Alignment.TopCenter,
-                        nextButtonAlignment = Alignment.CenterEnd,
-                        backButtonAlignment = Alignment.CenterStart
+                        }
                     )
 
                 }

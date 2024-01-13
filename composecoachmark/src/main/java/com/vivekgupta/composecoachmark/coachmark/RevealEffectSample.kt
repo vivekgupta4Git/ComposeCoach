@@ -55,11 +55,11 @@ class RectangleRevealEffect : RevealEffect {
     private val rect = Animatable(Rect(offset = Offset.Zero, size = Size.Zero), rectToVector)
 
     override suspend fun animate(targetBounds: Rect) {
-        val x = targetBounds.topLeft.x - 40f
-        val y = targetBounds.topLeft.y - 40f
+        val x = targetBounds.topLeft.x - 50f
+        val y = targetBounds.topLeft.y - 50f
         val newOffset = Offset(x, y)
-        val height = targetBounds.size.height + 40f
-        val width = targetBounds.size.width + 40f
+        val height = targetBounds.size.height + 100f
+        val width = targetBounds.size.width + 100f
         val newSize = Size(width, height)
         val newBound = Rect(newOffset, newSize)
 

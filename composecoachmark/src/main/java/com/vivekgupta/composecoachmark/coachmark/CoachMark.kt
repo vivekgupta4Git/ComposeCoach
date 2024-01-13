@@ -12,11 +12,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.layout.boundsInRoot
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 
 /**
  *@author Vivek Gupta on 13-11-23
@@ -29,7 +24,7 @@ fun CoachMark(
     onShowBegin: () -> Unit = {},
     onBeforeShowingCoachMark: (Int, Int) -> Unit = { _, _ -> },
     onAfterShowingCoachMark : (Int, Int) -> Unit = { _ , _-> },
-    skipButtonModifier: Modifier = Modifier,
+    /*skipButtonModifier: Modifier = Modifier,
     skipButtonText: String = "Skip",
     skipButtonAlignment: Alignment = Alignment.BottomCenter,
     skipButtonColors: ButtonColors = ButtonDefaults.buttonColors(
@@ -49,7 +44,7 @@ fun CoachMark(
     backButtonColors: ButtonColors = ButtonDefaults.buttonColors(
         backgroundColor = Color.White,
         contentColor= Color.Black,
-    ),
+    ),*/
     onBack : () -> Unit = {},
     onCancelled: () -> Unit,
     onCompleted: () -> Unit,
@@ -75,9 +70,9 @@ fun CoachMark(
             LaunchedEffect(key1 = coachMarkElementList.nextKey(count), block = {
                 onBeforeShowingCoachMark(count,coachMarkElementList.firstKey(count))
             })
-            val nextValue =  coachMarkElementList.nextValue(count)
+            val currentTarget =  coachMarkElementList.nextValue(count)
             Coach(
-                coordinates = nextValue.coordinates,
+                coordinates = currentTarget.coordinates,
                 onBack = {
                     canShowNext = if(count == 0) false
                     else {
@@ -103,17 +98,16 @@ fun CoachMark(
                         canDrawCoachMark = false
                     }
                 }
-            , message = nextValue.message ,
-                messageBoxShape = nextValue.containerShape,
-                messageBoxTextStyle = nextValue.textStyle,
-                messageBoxBackgroundColor = nextValue.containerColor,
-                messageBoxTextColor = nextValue.textColor,
-                distanceFromCoordinates = nextValue.distanceFromComposable,
-                messageBoxHeight = nextValue.containerHeight,
-                messageBoxWidth = nextValue.containerWidth,
-                isForcedAlignment = nextValue.isForcedAlignment,
-                alignment = nextValue.alignment,
-                skipButtonAlignment = skipButtonAlignment,
+            , message = currentTarget.message ,
+                messageBoxShape = currentTarget.containerShape,
+                messageBoxTextStyle = currentTarget.textStyle,
+                messageBoxBackgroundColor = currentTarget.containerColor,
+                messageBoxTextColor = currentTarget.textColor,
+                messageBoxHeight = currentTarget.containerHeight,
+                messageBoxWidth = currentTarget.containerWidth,
+                isForcedAlignment = currentTarget.isForcedAlignment,
+                alignment = currentTarget.alignment,
+             /*   skipButtonAlignment = skipButtonAlignment,
                 skipButtonColors = skipButtonColors,
                 skipButtonModifier = skipButtonModifier,
                 skipButtonText = skipButtonText,
@@ -124,8 +118,10 @@ fun CoachMark(
                 backButtonAlignment = backButtonAlignment,
                 backButtonColors = backButtonColors,
                 backButtonText = backButtonText,
-                backButtonModifier = backButtonModifier,
-                modifier = modifier
+                backButtonModifier = backButtonModifier,*/
+                modifier = modifier,
+                revealEffect = currentTarget.revealEffect,
+                coachStyle = currentTarget.coachStyle
             )
         }
     }

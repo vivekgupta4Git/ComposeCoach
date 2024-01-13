@@ -22,11 +22,10 @@ data class CoachData(
     val containerColor : Color = Color.White,
     val textStyle : TextStyle = TextStyle.Default,
     val textColor : Color = Color.Black,
-    val canPointToComposable : Boolean = true,      //this will draw an arrow to the co-ordinates.
-    val distanceFromComposable : Dp = 10.dp,
     val revealEffect: RevealEffect = RectangleRevealEffect(),
     val alignment: Alignment = Alignment.BottomCenter,
     val isForcedAlignment : Boolean = false,
+    val coachStyle: CoachStyle = DefaultCoachStyle()
 )
 
 

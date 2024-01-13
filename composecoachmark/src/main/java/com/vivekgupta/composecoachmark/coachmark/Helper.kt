@@ -15,7 +15,6 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 
 /**
  *@author Vivek Gupta on 13-11-23
@@ -52,9 +51,8 @@ fun Modifier.addTarget(
     containerColor : Color = Color.White,
     textStyle : TextStyle = TextStyle.Default,
     textColor : Color = Color.Black,
-    canPointToComposable : Boolean = true,      //this will draw an arrow to the co-ordinates.
-    distanceFromComposable : Dp = 10.dp,
     revealEffect: RevealEffect = RectangleRevealEffect(),
+    style: CoachStyle = DefaultCoachStyle(),
     alignment: Alignment = Alignment.BottomCenter,
     isForcedAlignment : Boolean = false,
     ) = onGloballyPositioned {
@@ -68,11 +66,10 @@ fun Modifier.addTarget(
         containerColor,
         textStyle,
         textColor,
-        canPointToComposable,
-        distanceFromComposable,
         revealEffect,
         alignment,
         isForcedAlignment,
+        style
     )
 }
 
