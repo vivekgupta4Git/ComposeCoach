@@ -100,7 +100,7 @@ class CanopasStyle : CoachStyle {
         onSkip: () -> Unit,
         onNext: () -> Unit
     ) {
-        LaunchedEffect(key1 = Unit, block = {
+        LaunchedEffect(key1 = targetBounds, block = {
             radius.animateTo(targetBounds.maxDimension.absoluteValue*3f,
             animationSpec = tween(2000, easing = FastOutSlowInEasing)
             )

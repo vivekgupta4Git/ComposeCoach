@@ -62,7 +62,7 @@ fun CoachLayout(
     }
 }
 
-private val validAlignmentList = listOf(
+val validAlignmentList = listOf(
     Alignment.BottomStart,
     Alignment.BottomCenter,
     Alignment.BottomEnd,

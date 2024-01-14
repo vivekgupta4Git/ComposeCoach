@@ -93,7 +93,7 @@ internal fun Coach(
                 },
                 targetBounds = bounds
             )
-            CoachLayout(
+          /*  CoachLayout(
                 canvasSize =
                 IntSize(
                     newSize.width.toInt(),
@@ -103,6 +103,13 @@ internal fun Coach(
                 isForcedAlignment = isForcedAlignment,
                 alignment = alignment
             ) {
+                content()
+            }*/
+
+            NewCoachLayout(
+                canvasRect = newSize,
+                newTargetBound = newBound
+            ){
                 content()
             }
         }

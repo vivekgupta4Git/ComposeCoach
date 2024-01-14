@@ -74,7 +74,7 @@ class MainActivity : ComponentActivity() {
                             .fillMaxSize()
                             .padding(20.dp)
                             .verticalScroll(scrollState),
-                        horizontalAlignment = Alignment.Start,
+                        horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.spacedBy(200.dp)
                     ) {
 
@@ -100,12 +100,12 @@ class MainActivity : ComponentActivity() {
                                     isForcedAlignment = true,
                                     state = coachMarkState,
                                     alignment = Alignment.Center,
-                                    backgroundCoachStyle = coachStyle,
+                                    backgroundCoachStyle =coachStyle,
                                     revealEffect = CircleRevealEffect(),
                                     content = {
                                         Surface(color = coachStyle.backGroundColor.invert()) {
 
-                                            Column(modifier = Modifier.width(IntrinsicSize.Min).wrapContentHeight(),
+                                            Column(modifier = Modifier,
                                             verticalArrangement = Arrangement.Center,
                                                 horizontalAlignment = Alignment.CenterHorizontally) {
                                                 Image(

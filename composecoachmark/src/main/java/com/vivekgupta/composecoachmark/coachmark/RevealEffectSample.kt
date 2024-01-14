@@ -51,7 +51,8 @@ class CircleRevealEffect : RevealEffect {
                 blendMode = BlendMode.Clear
             )
         }
-        return Rect(offset = Offset(targetBounds.width*2f,targetBounds.height*2f), size = targetBounds.size * 2f)
+       return Rect(offset = Offset(x=targetBounds.topLeft.x-40f,y=targetBounds.topLeft.y - targetBounds.maxDimension/4f),
+            size= Size(width =targetBounds.maxDimension + 80f, height = targetBounds.maxDimension))
     }
 
 
@@ -135,7 +136,9 @@ class CanopasRevealEffect : RevealEffect {
                 blendMode = BlendMode.Xor
             )
         }
-        return Rect(offset = Offset(targetBounds.width*2f,targetBounds.height*2f), size = targetBounds.size * 2f)
+
+        return Rect(offset = Offset(x=targetBounds.topLeft.x-40f,y=targetBounds.topLeft.y - targetBounds.maxDimension/4f),
+            size= Size(width =targetBounds.maxDimension + 80f, height = targetBounds.maxDimension))
     }
 
 
