@@ -79,9 +79,9 @@ class CombinedRevealAndCoachStyle(private val color: Color,
         )
     }
 
-    override suspend fun animate(targetBounds: Rect) {
+    override suspend fun enterAnimation(targetBounds: Rect) {
         radius.snapTo(0f)
-        radius.animateTo((targetBounds.maxDimension/2f) + 40f, tween(500, easing = LinearEasing))
+        radius.animateTo((targetBounds.maxDimension/2f) + 40f, tween(500, easing = FastOutSlowInEasing))
 
         outerRadius.snapTo(targetBounds.maxDimension)
         outerRadius.animateTo(targetBounds.maxDimension * 2f, animationSpec = animationSpec)
@@ -108,4 +108,7 @@ class CombinedRevealAndCoachStyle(private val color: Color,
 
     }
 
+    override suspend fun exitAnimation(targetBounds: Rect) {
+        radius.animateTo(0f, tween(500, easing = FastOutSlowInEasing))
+    }
 }

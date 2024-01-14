@@ -23,11 +23,16 @@ class CircleRevealEffect : RevealEffect {
         repeatMode = RepeatMode.Restart
     )
 
-    override suspend fun animate(targetBounds: Rect) {
-        radius.animateTo(0f)
+    override suspend fun enterAnimation(targetBounds: Rect) {
+        radius.snapTo(0f)
         radius.animateTo(targetBounds.maxDimension / 2f + 40f, tween(500, easing = LinearEasing))
         focus.snapTo(1f)
         focus.animateTo(targetValue = 0.5f, animationSpec = animationSpec)
+    }
+
+    override suspend fun exitAnimation(targetBounds: Rect) {
+        focus.animateTo(0f, animationSpec = tween(500, easing = LinearEasing))
+        radius.animateTo(0f, tween(500, easing = LinearEasing))
     }
 
     override fun drawTargetShape(targetBounds: Rect, drawScope: DrawScope) : Rect {
@@ -55,7 +60,7 @@ class CircleRevealEffect : RevealEffect {
 class RectangleRevealEffect : RevealEffect {
     private val rect = Animatable(Rect(offset = Offset.Zero, size = Size.Zero), rectToVector)
 
-    override suspend fun animate(targetBounds: Rect) {
+    override suspend fun enterAnimation(targetBounds: Rect) {
         val x = targetBounds.topLeft.x - 50f
         val y = targetBounds.topLeft.y - 50f
         val newOffset = Offset(x, y)
@@ -66,6 +71,10 @@ class RectangleRevealEffect : RevealEffect {
 
         rect.snapTo(Rect(targetBounds.center, size = Size.Zero))
         rect.animateTo(newBound, tween(500, easing = LinearEasing))
+    }
+
+    override suspend fun exitAnimation(targetBounds: Rect) {
+        rect.animateTo(Rect(targetBounds.center, size = Size.Zero), tween(500, easing = LinearEasing))
     }
 
     override fun drawTargetShape(targetBounds: Rect, drawScope: DrawScope): Rect {
@@ -97,7 +106,7 @@ class CanopasRevealEffect : RevealEffect {
         repeatMode = RepeatMode.Restart
     )
 
-    override suspend fun animate(targetBounds: Rect) {
+    override suspend fun enterAnimation(targetBounds: Rect) {
         radius.snapTo(0f)
         radius.animateTo(targetBounds.maxDimension / 2f + 40f, tween(500, easing = LinearEasing))
 
@@ -105,6 +114,11 @@ class CanopasRevealEffect : RevealEffect {
         outerRadius.animateTo(targetBounds.maxDimension * 2f, animationSpec = animationSpec)
         outerAlphaAnim.animateTo(targetValue = 0f, animationSpec = animationSpec)
      }
+
+    override suspend fun exitAnimation(targetBounds: Rect) {
+        radius.animateTo(0f, tween(500, easing = LinearEasing))
+        outerRadius.animateTo(0f, tween(500, easing = LinearEasing))
+    }
 
     override fun drawTargetShape(targetBounds: Rect, drawScope: DrawScope) : Rect {
         drawScope.apply {

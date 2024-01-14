@@ -11,22 +11,19 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.boundsInRoot
-import androidx.compose.ui.platform.LocalDensity
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.IntSize
+import kotlinx.coroutines.launch
 
 /**
  *@author Vivek Gupta on 13-9-23
@@ -46,8 +43,9 @@ internal fun Coach(
 ) {
     val bounds = coordinates.boundsInRoot()
     LaunchedEffect(key1 = bounds) {
-        revealEffect.animate(bounds)
+        revealEffect.enterAnimation(bounds)
     }
+    val scope = rememberCoroutineScope()
     var newBound by remember {
         mutableStateOf(Rect(Offset.Zero, Size.Zero))
     }
@@ -59,7 +57,11 @@ internal fun Coach(
         .graphicsLayer(alpha = 0.99f)
         .pointerInput(bounds) {
             detectTapGestures {
-                onNext()
+                scope.launch {
+                    revealEffect.exitAnimation(bounds)
+                    onNext()
+                }
+
             }
         })
     {
@@ -70,9 +72,25 @@ internal fun Coach(
         BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
             coachStyle.drawCoachButtons(
                 contentScope = this,
-                onSkip = onSkip,
-                onNext = onNext,
-                onBack = onBack,
+                onSkip = {
+                    scope.launch {
+                        revealEffect.exitAnimation(bounds)
+                        onSkip()
+                    }
+                },
+                onNext = {
+                    scope.launch {
+                        revealEffect.exitAnimation(bounds)
+                        onNext()
+                    }
+                },
+                onBack = {
+                    scope.launch {
+                        revealEffect.exitAnimation(bounds)
+                        onBack()
+                    }
+
+                },
                 targetBounds = bounds
             )
             CoachLayout(

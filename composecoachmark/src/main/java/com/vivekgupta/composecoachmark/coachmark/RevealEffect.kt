@@ -9,9 +9,14 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 
 interface RevealEffect {
     /**
-     * animate shape defined by [drawTargetShape] method around target's bound
+     * enter animate shape defined by [drawTargetShape] method around target's bound
      */
-    suspend fun animate(targetBounds: Rect)
+    suspend fun enterAnimation(targetBounds: Rect)
+
+    /**
+     * exit animate shape defined by [drawTargetShape] method around target's bound
+     */
+    suspend fun exitAnimation(targetBounds: Rect)
 
     /**
      * draw Target Shape with the given bounds [targetBounds]

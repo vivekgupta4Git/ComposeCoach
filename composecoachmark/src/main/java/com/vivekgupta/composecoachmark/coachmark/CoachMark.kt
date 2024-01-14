@@ -1,17 +1,17 @@
 package com.vivekgupta.composecoachmark.coachmark
 
-import androidx.compose.material.ButtonColors
-import androidx.compose.material.ButtonDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.boundsInRoot
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  *@author Vivek Gupta on 13-11-23
@@ -37,7 +37,6 @@ fun CoachMark(
     var canShowNext by rememberSaveable(coachMarkState.targetList.size) {
         mutableStateOf(coachMarkState.targetList.hasNextValue(count) && canDrawCoachMark)
     }
-
     val onShowStart by rememberUpdatedState(onShowBegin)
 
     if (canShowNext) {
