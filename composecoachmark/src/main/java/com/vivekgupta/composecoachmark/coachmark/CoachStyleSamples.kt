@@ -101,7 +101,7 @@ class CanopasStyle : CoachStyle {
         onNext: () -> Unit
     ) {
         LaunchedEffect(key1 = Unit, block = {
-            radius.animateTo(targetBounds.maxDimension.absoluteValue*2f,
+            radius.animateTo(targetBounds.maxDimension.absoluteValue*3f,
             animationSpec = tween(2000, easing = FastOutSlowInEasing)
             )
         })
@@ -131,8 +131,8 @@ class CanopasStyle : CoachStyle {
         return Rect(
             offset = Offset.Zero -targetBounds.topLeft, size =
             Size(
-                width = targetBounds.maxDimension.absoluteValue * 4f,
-                height = targetBounds.maxDimension.absoluteValue * 2f
+                width = drawScope.size.width,
+                height = targetBounds.maxDimension.absoluteValue * 3f
             )
         )
     }

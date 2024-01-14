@@ -1,7 +1,6 @@
 package com.vivekgupta.composecoachmark.coachmark
 
 import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.Animation
 import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
@@ -14,7 +13,6 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import kotlinx.coroutines.delay
 import kotlin.math.absoluteValue
 
 class CircleRevealEffect : RevealEffect {
@@ -90,7 +88,7 @@ class RectangleRevealEffect : RevealEffect {
     }
 }
 
-class CanopusRevealEffect : RevealEffect {
+class CanopasRevealEffect : RevealEffect {
     private val radius: Animatable<Float, AnimationVector1D> = Animatable(0f)
     private val outerRadius: Animatable<Float, AnimationVector1D> = Animatable(0f)
     private val outerAlphaAnim : Animatable<Float,AnimationVector1D> = Animatable(0.6f)

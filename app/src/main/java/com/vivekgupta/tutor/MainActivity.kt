@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -27,11 +28,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vivekgupta.composecoachmark.coachmark.CanopasStyle
-import com.vivekgupta.composecoachmark.coachmark.CanopusRevealEffect
+import com.vivekgupta.composecoachmark.coachmark.CanopasRevealEffect
 import com.vivekgupta.composecoachmark.coachmark.CircleRevealEffect
 import com.vivekgupta.composecoachmark.coachmark.CoachMark
 import com.vivekgupta.composecoachmark.coachmark.DefaultCoachStyle
@@ -75,16 +77,16 @@ class MainActivity : ComponentActivity() {
                         horizontalAlignment = Alignment.Start,
                         verticalArrangement = Arrangement.spacedBy(200.dp)
                     ) {
-                        val style = CanopasStyle()
+
                         Greeting(
                             "Android 1",
                             modifier = Modifier.addTarget(
                                 1,
                                 state = coachMarkState,
-                                revealEffect = CanopusRevealEffect(),
-                                backgroundCoachStyle = style,
+                                revealEffect = CanopasRevealEffect(),
+                                backgroundCoachStyle = CanopasStyle(),
                                 content = {
-                                    Surface(color = style.backGroundColor.invert()) {
+                                    Surface(color = Color.Green) {
                                         Text(text = "Hello")
                                     }
                                 }
@@ -103,7 +105,9 @@ class MainActivity : ComponentActivity() {
                                     content = {
                                         Surface(color = coachStyle.backGroundColor.invert()) {
 
-                                            Column(modifier = Modifier.width(IntrinsicSize.Min)) {
+                                            Column(modifier = Modifier.width(IntrinsicSize.Min).wrapContentHeight(),
+                                            verticalArrangement = Arrangement.Center,
+                                                horizontalAlignment = Alignment.CenterHorizontally) {
                                                 Image(
                                                     painterResource(id = R.drawable.ic_launcher_background),
                                                     contentDescription = null,
@@ -115,13 +119,15 @@ class MainActivity : ComponentActivity() {
                                                             "anything!!",
                                                     color = Color.Black,
                                                     fontSize = 24.sp,
-                                                    fontWeight = FontWeight.Bold
+                                                    fontWeight = FontWeight.Bold,
+                                                    textAlign = TextAlign.Justify
                                                 )
                                                 Text(
-                                                    text = "You can search " +
-                                                            "anything by clicking here.",
+                                                    text = "You can search anything by clicking here.",
                                                     color = Color.Black,
-                                                    fontSize = 16.sp
+                                                    fontSize = 16.sp,
+                                                    textAlign = TextAlign.Justify
+
                                                 )
                                             }
                                         }

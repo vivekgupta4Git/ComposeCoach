@@ -48,19 +48,12 @@ internal fun Coach(
     LaunchedEffect(key1 = bounds) {
         revealEffect.animate(bounds)
     }
-
-    val density = LocalDensity.current
-    val newBound = remember {
+    var newBound by remember {
         mutableStateOf(Rect(Offset.Zero, Size.Zero))
     }
     var newSize by remember {
         mutableStateOf(Rect(Offset.Zero, Size.Zero))
     }
-    //  val distance = with(density) {
-    //      distanceFromCoordinates.toPx()
-    //  }
-    //  val offsetY = remember { Animatable(0f) }
-    //  val alphaAnimation = remember { Animatable(0f) }
     Surface(modifier = modifier
         .fillMaxSize()
         .graphicsLayer(alpha = 0.99f)
@@ -72,7 +65,7 @@ internal fun Coach(
     {
         Canvas(modifier = Modifier, onDraw = {
             newSize = coachStyle.drawCoachShape(bounds, this@Canvas)
-            newBound.value = revealEffect.drawTargetShape(bounds, this@Canvas)
+            newBound = revealEffect.drawTargetShape(bounds, this@Canvas)
         })
         BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
             coachStyle.drawCoachButtons(
@@ -88,86 +81,12 @@ internal fun Coach(
                     newSize.width.toInt(),
                     newSize.height.toInt()
                 ),
-                targetBound = newBound.value,
+                targetBound = newBound,
                 isForcedAlignment = isForcedAlignment,
                 alignment = alignment
             ) {
                 content()
             }
-            /*  val scope = this
-
-              val canvasHeight  = with(density){
-                  scope.maxHeight.roundToPx()
-              }
-              val canvasWidth = with(density){
-                  scope.maxWidth.roundToPx()
-              }
-              LaunchedEffect(key1 = bounds.bottomRight.y, block = {
-                  launch {
-                      offsetY.snapTo(0f)
-                      offsetY.animateTo(
-                          targetValue = bounds.bottomRight.y + distance,
-                          animationSpec = tween(
-                              durationMillis = 1000,
-                              easing = LinearOutSlowInEasing
-                          )
-                      )
-                  }
-                  launch {
-                      alphaAnimation.snapTo(0f)
-                      alphaAnimation.animateTo(1f, tween(1000, easing = LinearEasing))
-                  }
-              })
-              CoachLayout(targetBound = bounds,
-                  canvasSize = IntSize(canvasWidth, canvasHeight),
-                  alignment = alignment,
-                  isForcedAlignment = isForcedAlignment,
-              ) {
-                  CoachMarkMessageBox(
-                      modifier = Modifier
-                          .graphicsLayer {
-                              alpha = alphaAnimation.value
-                          },
-                      backgroundColor = messageBoxBackgroundColor,
-                      shape = messageBoxShape,
-                      messageBoxWidth = messageBoxWidth,
-                      messageBoxHeight = messageBoxHeight
-                  ) {
-                      Box(Modifier.fillMaxSize()) {
-                          Text(
-                              text = message,
-                              modifier = Modifier
-                                  .padding(horizontal = 10.dp, vertical = 10.dp)
-                                  .align(Alignment.Center),
-                              style = messageBoxTextStyle,
-                              color = messageBoxTextColor
-                          )
-                      }
-                  }
-              }
-
-
-              Button(
-                  onClick = onSkip, modifier = skipButtonModifier
-                      .align(skipButtonAlignment),
-                  colors = skipButtonColors
-              ) {
-                  Text(text = skipButtonText)
-              }
-              Button(
-                  onClick = onNext, modifier = nextButtonModifier
-                      .align(nextButtonAlignment),
-                  colors = nextButtonColors
-              ) {
-                  Text(text = nextButtonText)
-              }
-              Button(
-                  onClick = onBack, modifier = backButtonModifier
-                      .align(backButtonAlignment),
-                  colors = backButtonColors
-              ) {
-                  Text(text = backButtonText)
-              }*/
         }
     }
 }
