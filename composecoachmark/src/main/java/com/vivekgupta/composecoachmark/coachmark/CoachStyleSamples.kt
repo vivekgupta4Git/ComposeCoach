@@ -1,11 +1,17 @@
 package com.vivekgupta.composecoachmark.coachmark
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.Animatable
+import androidx.compose.animation.core.Animatable
+import androidx.compose.animation.core.AnimationVector1D
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.BoxWithConstraintsScope
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -83,7 +89,7 @@ class CanopasStyle : CoachStyle {
         get() = Color.Blue
     override val backgroundAlpha: Float
         get() = 0.8f
-
+    private val radius :Animatable<Float,AnimationVector1D> = Animatable(0f)
 
     @SuppressLint("ComposableNaming")
     @Composable
@@ -94,6 +100,11 @@ class CanopasStyle : CoachStyle {
         onSkip: () -> Unit,
         onNext: () -> Unit
     ) {
+        LaunchedEffect(key1 = Unit, block = {
+            radius.animateTo(targetBounds.maxDimension.absoluteValue*2f,
+            animationSpec = tween(2000, easing = FastOutSlowInEasing)
+            )
+        })
         contentScope.apply {
             Button(onClick = {
                 onSkip()
@@ -112,7 +123,7 @@ class CanopasStyle : CoachStyle {
         drawScope.apply {
             drawCircle(
                 color = backGroundColor,
-                radius = targetBounds.maxDimension.absoluteValue * 2f,
+                radius = radius.value,
                 center = targetBounds.center,
                 alpha = backgroundAlpha
             )

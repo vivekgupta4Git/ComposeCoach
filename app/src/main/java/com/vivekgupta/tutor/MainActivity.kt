@@ -13,8 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CutCornerShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -26,17 +24,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vivekgupta.composecoachmark.coachmark.CanopasStyle
+import com.vivekgupta.composecoachmark.coachmark.CanopusRevealEffect
 import com.vivekgupta.composecoachmark.coachmark.CircleRevealEffect
 import com.vivekgupta.composecoachmark.coachmark.CoachMark
 import com.vivekgupta.composecoachmark.coachmark.DefaultCoachStyle
@@ -75,9 +70,9 @@ class MainActivity : ComponentActivity() {
                     Column(
                         Modifier
                             .fillMaxSize()
-                            .padding(100.dp)
+                            .padding(20.dp)
                             .verticalScroll(scrollState),
-                        horizontalAlignment = Alignment.CenterHorizontally,
+                        horizontalAlignment = Alignment.Start,
                         verticalArrangement = Arrangement.spacedBy(200.dp)
                     ) {
                         val style = CanopasStyle()
@@ -86,7 +81,8 @@ class MainActivity : ComponentActivity() {
                             modifier = Modifier.addTarget(
                                 1,
                                 state = coachMarkState,
-                                style = style,
+                                revealEffect = CanopusRevealEffect(),
+                                backgroundCoachStyle = style,
                                 content = {
                                     Surface(color = style.backGroundColor.invert()) {
                                         Text(text = "Hello")
@@ -102,7 +98,7 @@ class MainActivity : ComponentActivity() {
                                     isForcedAlignment = true,
                                     state = coachMarkState,
                                     alignment = Alignment.Center,
-                                    style = coachStyle,
+                                    backgroundCoachStyle = coachStyle,
                                     revealEffect = CircleRevealEffect(),
                                     content = {
                                         Surface(color = coachStyle.backGroundColor.invert()) {

@@ -12,10 +12,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.layout.onGloballyPositioned
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.unit.Dp
 
 /**
  *@author Vivek Gupta on 13-11-23
@@ -47,7 +44,7 @@ fun Modifier.addTarget(
     state : CoachMarkState,
     content : @Composable BoxWithConstraintsScope.() -> Unit,
     revealEffect: RevealEffect = RectangleRevealEffect(),
-    style: CoachStyle = DefaultCoachStyle(),
+    backgroundCoachStyle: CoachStyle = DefaultCoachStyle(),
     alignment: Alignment = Alignment.BottomCenter,
     isForcedAlignment : Boolean = false,
     ) = onGloballyPositioned {
@@ -58,7 +55,7 @@ fun Modifier.addTarget(
         revealEffect = revealEffect,
         alignment = alignment,
         isForcedAlignment = isForcedAlignment,
-        coachStyle = style
+        coachStyle = backgroundCoachStyle
     )
 }
 
