@@ -53,7 +53,7 @@ class DefaultCoachStyle : CoachStyle {
             Button(
                 onClick = {
                     onNext()
-                }, modifier = Modifier.align(Alignment.CenterEnd),
+                }, modifier = Modifier.align(Alignment.TopEnd),
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = backGroundColor.invert(),
                     contentColor = backGroundColor
@@ -64,7 +64,7 @@ class DefaultCoachStyle : CoachStyle {
             Button(
                 onClick = {
                     onBack()
-                }, modifier = Modifier.align(Alignment.CenterStart),
+                }, modifier = Modifier.align(Alignment.TopStart),
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = backGroundColor.invert(),
                     contentColor = backGroundColor

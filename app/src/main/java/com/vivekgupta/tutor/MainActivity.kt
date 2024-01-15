@@ -86,7 +86,7 @@ class MainActivity : ComponentActivity() {
                     ) {
 
                         Greeting(
-                            "Android 1",
+                            "Canopas FTW",
                             modifier = Modifier.addTarget(
                                 1,
                                 state = coachMarkState,
@@ -97,24 +97,16 @@ class MainActivity : ComponentActivity() {
                                         verticalArrangement = Arrangement.Center,
                                         horizontalAlignment = Alignment.CenterHorizontally,) {
                                         Image(
-                                            painterResource(id = R.drawable.ic_launcher_background),
+                                            painterResource(id = R.drawable.animated_insightful_bulb),
                                             contentDescription = null,
                                             modifier = Modifier.size(100.dp)
                                         )
 
                                         Text(
-                                            text = "Search anything!!",
+                                            text = "Welcome to The Compose Coach",
                                             color = Color.White,
                                             fontSize = 24.sp,
                                             fontWeight = FontWeight.Bold,
-                                            textAlign = TextAlign.Justify
-                                        )
-                                        Text(
-                                            text = "You can search anything by clicking here.",
-                                            color = Color.White,
-                                            fontSize = 16.sp,
-                                            textAlign = TextAlign.Justify
-
                                         )
 
                                     }
@@ -123,46 +115,34 @@ class MainActivity : ComponentActivity() {
                             )
                         )
                         Greeting(
-                            "Android 2 ", modifier = Modifier
+                            "Compose Coach", modifier = Modifier
                                 .addTarget(
                                     position = 2,
                                     state = coachMarkState,
-                                    backgroundCoachStyle =CanopasStyle(),
                                     revealEffect = CircleRevealEffect(),
                                     content = {
                                             Column(modifier = Modifier.padding(horizontal = 20.dp),
                                             verticalArrangement = Arrangement.Center,
                                                 horizontalAlignment = Alignment.CenterHorizontally,) {
-                                                Image(
-                                                    painterResource(id = R.drawable.ic_launcher_background),
-                                                    contentDescription = null,
-                                                    modifier = Modifier.size(100.dp)
-                                                )
 
                                                 Text(
-                                                    text = "Search anything!!",
+                                                    text = "A Highly Customizable Coach Mark Library!!",
                                                     color = Color.White,
                                                     fontSize = 24.sp,
                                                     fontWeight = FontWeight.Bold,
                                                     textAlign = TextAlign.Justify
                                                 )
-                                                Text(
-                                                    text = "You can search anything by clicking here.",
-                                                    color = Color.White,
-                                                    fontSize = 16.sp,
-                                                    textAlign = TextAlign.Justify
 
-                                                )
                                             }
                                     }
                                 )
                         )
                         Greeting(
-                            "Android 3 ", modifier = Modifier.addTarget(
+                            "Default Style", modifier = Modifier.addTarget(
                                 3,
                                 state = coachMarkState,
                                 content = {
-                                        Text(text = "here text could be more and lets see if it breaks after the width is full",
+                                        Text(text = "Use Samples to Create your own Style !!",
                                             color = Color.White, modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp))
                                 },
                                 alignment = Alignment.TopStart,
@@ -170,31 +150,27 @@ class MainActivity : ComponentActivity() {
                             )
                         )
 
-                        Greeting("Android 4 ", modifier = Modifier)
+                        Greeting("Happy Coding !!", modifier = Modifier)
                         FloatingActionButton(onClick = { /*TODO*/ }, modifier = Modifier
-                            .addTarget(4, state = coachMarkState, content = {
+                            .addTarget(4, state = coachMarkState,
+                                revealEffect = CircleRevealEffect(),
+                                backgroundCoachStyle = DefaultCoachStyle(),
+                                content = {
                                 Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp),
                                     verticalArrangement = Arrangement.Center,
                                     horizontalAlignment = Alignment.CenterHorizontally,) {
                                     Image(
-                                        painterResource(id = R.drawable.ic_launcher_background),
+                                        painterResource(id = R.drawable.animated_insightful_bulb),
                                         contentDescription = null,
                                         modifier = Modifier.size(100.dp)
                                     )
 
                                     Text(
-                                        text = "Search anything!!",
+                                        text = "Happy Coding !!",
                                         color = Color.White,
                                         fontSize = 24.sp,
                                         fontWeight = FontWeight.Bold,
                                         textAlign = TextAlign.Justify
-                                    )
-                                    Text(
-                                        text = "You can search anything by clicking here.",
-                                        color = Color.White,
-                                        fontSize = 16.sp,
-                                        textAlign = TextAlign.Justify
-
                                     )
                                 }
                             })
@@ -251,7 +227,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
     Text(
-        text = "Hello $name!",
+        text = "$name!",
         modifier = modifier
     )
 }

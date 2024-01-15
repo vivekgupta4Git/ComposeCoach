@@ -39,7 +39,7 @@ class CircleRevealEffect : RevealEffect {
     override fun drawTargetShape(targetBounds: Rect, drawScope: DrawScope): Rect {
         drawScope.apply {
             drawCircle(
-                color = Color.White,
+                color = Color.Blue,
                 radius = targetBounds.maxDimension.absoluteValue * focus.value * 2f,
                 center = targetBounds.center,
                 alpha = 1 - focus.value,
