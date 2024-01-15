@@ -102,7 +102,9 @@ internal fun Coach(
             )
                 NewCoachLayout(
                     canvasRect = newSize,
-                    targetBound = newBound
+                    targetBound = newBound,
+                    alignment= alignment,
+                    isForcedAlignment= isForcedAlignment
                 ) {
                         content()
                 }

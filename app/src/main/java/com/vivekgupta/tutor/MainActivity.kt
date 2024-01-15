@@ -126,9 +126,7 @@ class MainActivity : ComponentActivity() {
                             "Android 2 ", modifier = Modifier
                                 .addTarget(
                                     position = 2,
-                                    isForcedAlignment = true,
                                     state = coachMarkState,
-                                    alignment = Alignment.Center,
                                     backgroundCoachStyle =CanopasStyle(),
                                     revealEffect = CircleRevealEffect(),
                                     content = {
@@ -165,8 +163,10 @@ class MainActivity : ComponentActivity() {
                                 state = coachMarkState,
                                 content = {
                                         Text(text = "here text could be more and lets see if it breaks after the width is full",
-                                            color = Color.White, modifier = Modifier.padding(horizontal = 20.dp))
-                                }
+                                            color = Color.White, modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp))
+                                },
+                                alignment = Alignment.TopStart,
+                                isForcedAlignment = true
                             )
                         )
 
