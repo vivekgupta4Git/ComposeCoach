@@ -16,6 +16,7 @@ import androidx.compose.ui.graphics.drawscope.DrawScope
 import kotlin.math.absoluteValue
 
 class CircleRevealEffect : RevealEffect {
+
     private val radius: Animatable<Float, AnimationVector1D> = Animatable(0f)
     private val focus: Animatable<Float, AnimationVector1D> = Animatable(1f)
     private val animationSpec = infiniteRepeatable<Float>(
@@ -35,7 +36,7 @@ class CircleRevealEffect : RevealEffect {
         radius.animateTo(0f, tween(500, easing = LinearEasing))
     }
 
-    override fun drawTargetShape(targetBounds: Rect, drawScope: DrawScope) : Rect {
+    override fun drawTargetShape(targetBounds: Rect, drawScope: DrawScope): Rect {
         drawScope.apply {
             drawCircle(
                 color = Color.White,
@@ -51,8 +52,16 @@ class CircleRevealEffect : RevealEffect {
                 blendMode = BlendMode.Clear
             )
         }
-       return Rect(offset = Offset(x=targetBounds.topLeft.x-40f,y=targetBounds.topLeft.y - targetBounds.maxDimension/4f),
-            size= Size(width =targetBounds.maxDimension + 80f, height = targetBounds.maxDimension))
+        return Rect(
+            offset = Offset(
+                x = targetBounds.topLeft.x - 40f,
+                y = targetBounds.topLeft.y - targetBounds.maxDimension / 2f
+            ),
+            size = Size(
+                width = targetBounds.maxDimension + 80f,
+                height = targetBounds.maxDimension + 80f
+            )
+        )
     }
 
 
@@ -72,10 +81,14 @@ class RectangleRevealEffect : RevealEffect {
 
         rect.snapTo(Rect(targetBounds.center, size = Size.Zero))
         rect.animateTo(newBound, tween(500, easing = LinearEasing))
+
     }
 
     override suspend fun exitAnimation(targetBounds: Rect) {
-        rect.animateTo(Rect(targetBounds.center, size = Size.Zero), tween(500, easing = LinearEasing))
+        rect.animateTo(
+            Rect(targetBounds.center, size = Size.Zero),
+            tween(500, easing = LinearEasing)
+        )
     }
 
     override fun drawTargetShape(targetBounds: Rect, drawScope: DrawScope): Rect {
@@ -88,7 +101,7 @@ class RectangleRevealEffect : RevealEffect {
         val newBound = Rect(newOffset, newSize)
         drawScope.apply {
             drawRect(
-                color = Color.Unspecified,
+                color = Color.White,
                 size = rect.value.size,
                 blendMode = BlendMode.Clear,
                 topLeft = rect.value.topLeft
@@ -101,7 +114,7 @@ class RectangleRevealEffect : RevealEffect {
 class CanopasRevealEffect : RevealEffect {
     private val radius: Animatable<Float, AnimationVector1D> = Animatable(0f)
     private val outerRadius: Animatable<Float, AnimationVector1D> = Animatable(0f)
-    private val outerAlphaAnim : Animatable<Float,AnimationVector1D> = Animatable(0.6f)
+    private val outerAlphaAnim: Animatable<Float, AnimationVector1D> = Animatable(0.6f)
     private val animationSpec = infiniteRepeatable<Float>(
         animation = tween(2000, easing = FastOutSlowInEasing),
         repeatMode = RepeatMode.Restart
@@ -114,14 +127,15 @@ class CanopasRevealEffect : RevealEffect {
         outerRadius.snapTo(targetBounds.maxDimension)
         outerRadius.animateTo(targetBounds.maxDimension * 2f, animationSpec = animationSpec)
         outerAlphaAnim.animateTo(targetValue = 0f, animationSpec = animationSpec)
-     }
+
+    }
 
     override suspend fun exitAnimation(targetBounds: Rect) {
         radius.animateTo(0f, tween(500, easing = LinearEasing))
         outerRadius.animateTo(0f, tween(500, easing = LinearEasing))
     }
 
-    override fun drawTargetShape(targetBounds: Rect, drawScope: DrawScope) : Rect {
+    override fun drawTargetShape(targetBounds: Rect, drawScope: DrawScope): Rect {
         drawScope.apply {
             drawCircle(
                 color = Color.Blue,
@@ -136,9 +150,16 @@ class CanopasRevealEffect : RevealEffect {
                 blendMode = BlendMode.Xor
             )
         }
-
-        return Rect(offset = Offset(x=targetBounds.topLeft.x-40f,y=targetBounds.topLeft.y - targetBounds.maxDimension/4f),
-            size= Size(width =targetBounds.maxDimension + 80f, height = targetBounds.maxDimension))
+        return Rect(
+            offset = Offset(
+                x = targetBounds.topLeft.x - 40f,
+                y = targetBounds.topLeft.y - targetBounds.maxDimension / 2
+            ),
+            size = Size(
+                width = targetBounds.maxDimension + 80f,
+                height = targetBounds.maxDimension + 80f
+            )
+        )
     }
 
 

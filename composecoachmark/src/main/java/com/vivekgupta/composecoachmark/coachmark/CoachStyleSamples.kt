@@ -129,7 +129,7 @@ class CanopasStyle : CoachStyle {
             )
         }
         return Rect(
-            offset = Offset.Zero -targetBounds.topLeft, size =
+            offset = Offset.Zero, size =
             Size(
                 width = drawScope.size.width,
                 height = targetBounds.maxDimension.absoluteValue * 3f

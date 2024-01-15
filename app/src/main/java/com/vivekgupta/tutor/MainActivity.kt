@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
@@ -15,6 +16,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -26,6 +32,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -75,7 +82,7 @@ class MainActivity : ComponentActivity() {
                             .padding(20.dp)
                             .verticalScroll(scrollState),
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.spacedBy(200.dp)
+                        verticalArrangement = Arrangement.spacedBy(120.dp)
                     ) {
 
                         Greeting(
@@ -86,13 +93,35 @@ class MainActivity : ComponentActivity() {
                                 revealEffect = CanopasRevealEffect(),
                                 backgroundCoachStyle = CanopasStyle(),
                                 content = {
-                                    Surface(color = Color.Green) {
-                                        Text(text = "Hello")
+                                    Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp),
+                                        verticalArrangement = Arrangement.Center,
+                                        horizontalAlignment = Alignment.CenterHorizontally,) {
+                                        Image(
+                                            painterResource(id = R.drawable.ic_launcher_background),
+                                            contentDescription = null,
+                                            modifier = Modifier.size(100.dp)
+                                        )
+
+                                        Text(
+                                            text = "Search anything!!",
+                                            color = Color.White,
+                                            fontSize = 24.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            textAlign = TextAlign.Justify
+                                        )
+                                        Text(
+                                            text = "You can search anything by clicking here.",
+                                            color = Color.White,
+                                            fontSize = 16.sp,
+                                            textAlign = TextAlign.Justify
+
+                                        )
+
                                     }
+
                                 }
                             )
                         )
-                        val coachStyle = DefaultCoachStyle()
                         Greeting(
                             "Android 2 ", modifier = Modifier
                                 .addTarget(
@@ -100,14 +129,12 @@ class MainActivity : ComponentActivity() {
                                     isForcedAlignment = true,
                                     state = coachMarkState,
                                     alignment = Alignment.Center,
-                                    backgroundCoachStyle =coachStyle,
+                                    backgroundCoachStyle =CanopasStyle(),
                                     revealEffect = CircleRevealEffect(),
                                     content = {
-                                        Surface(color = coachStyle.backGroundColor.invert()) {
-
-                                            Column(modifier = Modifier,
+                                            Column(modifier = Modifier.padding(horizontal = 20.dp),
                                             verticalArrangement = Arrangement.Center,
-                                                horizontalAlignment = Alignment.CenterHorizontally) {
+                                                horizontalAlignment = Alignment.CenterHorizontally,) {
                                                 Image(
                                                     painterResource(id = R.drawable.ic_launcher_background),
                                                     contentDescription = null,
@@ -115,22 +142,20 @@ class MainActivity : ComponentActivity() {
                                                 )
 
                                                 Text(
-                                                    text = "Search " +
-                                                            "anything!!",
-                                                    color = Color.Black,
+                                                    text = "Search anything!!",
+                                                    color = Color.White,
                                                     fontSize = 24.sp,
                                                     fontWeight = FontWeight.Bold,
                                                     textAlign = TextAlign.Justify
                                                 )
                                                 Text(
                                                     text = "You can search anything by clicking here.",
-                                                    color = Color.Black,
+                                                    color = Color.White,
                                                     fontSize = 16.sp,
                                                     textAlign = TextAlign.Justify
 
                                                 )
                                             }
-                                        }
                                     }
                                 )
                         )
@@ -139,15 +164,47 @@ class MainActivity : ComponentActivity() {
                                 3,
                                 state = coachMarkState,
                                 content = {
-                                    Surface(color = coachStyle.backGroundColor.invert()) {
-                                        Text(text = "Hello #3")
-                                    }
+                                        Text(text = "here text could be more and lets see if it breaks after the width is full",
+                                            color = Color.White, modifier = Modifier.padding(horizontal = 20.dp))
                                 }
                             )
                         )
 
                         Greeting("Android 4 ", modifier = Modifier)
+                        FloatingActionButton(onClick = { /*TODO*/ }, modifier = Modifier
+                            .addTarget(4, state = coachMarkState, content = {
+                                Column(modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp),
+                                    verticalArrangement = Arrangement.Center,
+                                    horizontalAlignment = Alignment.CenterHorizontally,) {
+                                    Image(
+                                        painterResource(id = R.drawable.ic_launcher_background),
+                                        contentDescription = null,
+                                        modifier = Modifier.size(100.dp)
+                                    )
+
+                                    Text(
+                                        text = "Search anything!!",
+                                        color = Color.White,
+                                        fontSize = 24.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        textAlign = TextAlign.Justify
+                                    )
+                                    Text(
+                                        text = "You can search anything by clicking here.",
+                                        color = Color.White,
+                                        fontSize = 16.sp,
+                                        textAlign = TextAlign.Justify
+
+                                    )
+                                }
+                            })
+
+                        ) {
+                            Icon(imageVector = Icons.Default.Phone, contentDescription = "phone")
+                        }
+
                     }
+
                     /**
                      *
                      * Step 4 : Call CoachMark Composable

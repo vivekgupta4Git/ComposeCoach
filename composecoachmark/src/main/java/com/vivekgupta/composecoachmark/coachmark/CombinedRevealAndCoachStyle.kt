@@ -25,15 +25,17 @@ import kotlin.math.absoluteValue
 /**
  *@author Vivek Gupta on 14-1-24
  */
-class CombinedRevealAndCoachStyle(private val color: Color,
-                                  private val alpha : Float) : CoachStyle,RevealEffect{
+class CombinedRevealAndCoachStyle(
+    private val color: Color,
+    private val alpha: Float
+) : CoachStyle, RevealEffect {
     override val backGroundColor: Color
         get() = color
     override val backgroundAlpha: Float
         get() = alpha
-    private val radius : Animatable<Float, AnimationVector1D> = Animatable(0f)
+    private val radius: Animatable<Float, AnimationVector1D> = Animatable(0f)
     private val outerRadius: Animatable<Float, AnimationVector1D> = Animatable(0f)
-    private val outerAlphaAnim : Animatable<Float,AnimationVector1D> = Animatable(0f)
+    private val outerAlphaAnim: Animatable<Float, AnimationVector1D> = Animatable(0f)
     private val animationSpec = infiniteRepeatable<Float>(
         animation = tween(500, easing = FastOutSlowInEasing),
         repeatMode = RepeatMode.Restart
@@ -71,7 +73,7 @@ class CombinedRevealAndCoachStyle(private val color: Color,
             )
         }
         return Rect(
-            offset = Offset.Zero -targetBounds.topLeft, size =
+            offset = Offset.Zero - targetBounds.topLeft, size =
             Size(
                 width = drawScope.size.width,
                 height = targetBounds.maxDimension.absoluteValue * 3f
@@ -81,12 +83,14 @@ class CombinedRevealAndCoachStyle(private val color: Color,
 
     override suspend fun enterAnimation(targetBounds: Rect) {
         radius.snapTo(0f)
-        radius.animateTo((targetBounds.maxDimension/2f) + 40f, tween(500, easing = FastOutSlowInEasing))
+        radius.animateTo(
+            (targetBounds.maxDimension / 2f) + 40f,
+            tween(500, easing = FastOutSlowInEasing)
+        )
 
         outerRadius.snapTo(targetBounds.maxDimension)
         outerRadius.animateTo(targetBounds.maxDimension * 2f, animationSpec = animationSpec)
         outerAlphaAnim.animateTo(targetValue = 0f, animationSpec = animationSpec)
-
     }
 
     override fun drawTargetShape(targetBounds: Rect, drawScope: DrawScope): Rect {
@@ -104,11 +108,14 @@ class CombinedRevealAndCoachStyle(private val color: Color,
                 alpha = outerAlphaAnim.value
             )
         }
-        return Rect(offset = Offset(targetBounds.width*2f,targetBounds.height*2f), size = targetBounds.size * 2f)
+        return Rect(
+            offset = Offset(targetBounds.width * 2f, targetBounds.height * 2f),
+            size = targetBounds.size * 2f
+        )
 
     }
 
-    override suspend fun exitAnimation(targetBounds: Rect) {
+    override suspend fun exitAnimation(targetBounds: Rect){
         radius.animateTo(0f, tween(500, easing = FastOutSlowInEasing))
     }
 }
