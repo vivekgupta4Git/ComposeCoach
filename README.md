@@ -37,7 +37,33 @@ dependencies {
 ```             
             val coachMarkState = rememberCoachMarkState()
 ```
-4. Add CoachMark Composable at Last of your screen also above all the content.
+4. Add composable to the coachmark by using addTarget Modifier
+```
+Greeting(
+                            "Compose Coach", modifier = Modifier
+                                .addTarget(
+                                    position = 2,
+                                    state = coachMarkState,
+                                    revealEffect = CircleRevealEffect(),
+                                    content = {
+                                            Column(modifier = Modifier.padding(horizontal = 20.dp),
+                                            verticalArrangement = Arrangement.Center,
+                                                horizontalAlignment = Alignment.CenterHorizontally,) {
+
+                                                Text(
+                                                    text = "A Highly Customizable Coach Mark Library!!",
+                                                    color = Color.White,
+                                                    fontSize = 24.sp,
+                                                    fontWeight = FontWeight.Bold,
+                                                    textAlign = TextAlign.Justify
+                                                )
+
+                                            }
+                                    }
+                                )
+                        )
+```   
+5. Add CoachMark Composable at Last of your screen also above all the content.
 ```
 CoachMark(
                         coachMarkState = coachMarkState,
