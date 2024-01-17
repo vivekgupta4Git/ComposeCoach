@@ -4,7 +4,7 @@ ComposeCoach - Jetpack Compose
 ![compose_coach_gif](https://github.com/vivekgupta4Git/ComposeCoach/assets/91813403/88358976-dc08-43a3-934c-505f4d145020)
 
 ## Overview
-  CoachmarkLib is a highly customizable library built in Jetpack Compose and Kotlin that allows users to easily integrate coachmarks into their Android applications. Coachmarks are a great way to guide users through the features of an app, making the onboarding experience more intuitive and engaging.
+  ComposeCoach is a highly customizable library built in Jetpack Compose and Kotlin that allows users to easily integrate coachmarks into their Android applications. Coachmarks are a great way to guide users through the features of an app, making the onboarding experience more intuitive and engaging.
 
   This library is inspired by Canopas's [compose-intro-showcase](https://github.com/canopas/compose-intro-showcase) library mainly the 2.0.0 version and after draws inspiration from it, ComposeCoach introduces additional features and enhancements to provide a seamless and flexible experience for developers incorporating the best practices and lessons learned from the original implementation. What you can do with canopas's compose-intro-showcase library, you can do with this library and even more. 
 
