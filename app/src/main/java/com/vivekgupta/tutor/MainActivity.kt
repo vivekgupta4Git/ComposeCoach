@@ -45,6 +45,7 @@ import com.vivekgupta.composecoachmark.coachmark.CircleRevealEffect
 import com.vivekgupta.composecoachmark.coachmark.CoachMark
 import com.vivekgupta.composecoachmark.coachmark.DefaultCoachStyle
 import com.vivekgupta.composecoachmark.coachmark.addTarget
+import com.vivekgupta.composecoachmark.coachmark.addTargetOnPlaced
 import com.vivekgupta.composecoachmark.coachmark.invert
 import com.vivekgupta.composecoachmark.coachmark.rememberCoachMarkState
 import com.vivekgupta.tutor.ui.theme.TutorTheme
@@ -138,7 +139,7 @@ class MainActivity : ComponentActivity() {
                                 )
                         )
                         Greeting(
-                            "Default Style", modifier = Modifier.addTarget(
+                            "Default Style", modifier = Modifier.addTargetOnPlaced(
                                 3,
                                 state = coachMarkState,
                                 content = {

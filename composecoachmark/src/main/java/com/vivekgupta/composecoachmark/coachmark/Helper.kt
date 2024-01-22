@@ -13,6 +13,7 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.onGloballyPositioned
+import androidx.compose.ui.layout.onPlaced
 
 /**
  *@author Vivek Gupta on 13-11-23
@@ -49,6 +50,25 @@ fun Modifier.addTarget(
     isForcedAlignment : Boolean = false,
     ) = onGloballyPositioned {
     layoutCoordinates ->
+    state.targetList[position] = CoachData(
+        content= content,
+        coordinates = layoutCoordinates,
+        revealEffect = revealEffect,
+        alignment = alignment,
+        isForcedAlignment = isForcedAlignment,
+        coachStyle = backgroundCoachStyle
+    )
+}
+fun Modifier.addTargetOnPlaced(
+    position : Int,
+    state : CoachMarkState,
+    content : @Composable BoxWithConstraintsScope.() -> Unit,
+    revealEffect: RevealEffect = RectangleRevealEffect(),
+    backgroundCoachStyle: CoachStyle = DefaultCoachStyle(),
+    alignment: Alignment = Alignment.BottomCenter,
+    isForcedAlignment : Boolean = false,
+) = onPlaced {
+        layoutCoordinates ->
     state.targetList[position] = CoachData(
         content= content,
         coordinates = layoutCoordinates,
