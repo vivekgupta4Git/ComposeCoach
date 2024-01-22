@@ -34,7 +34,7 @@ fun CoachMark(
     var count by rememberSaveable {
         mutableStateOf(0)
     }
-    var canShowNext by rememberSaveable(coachMarkState.targetList.size) {
+    var canShowNext by rememberSaveable(coachMarkState.targetList.hashCode()) {
         mutableStateOf(coachMarkState.targetList.hasNextValue(count) && canDrawCoachMark)
     }
     val onShowStart by rememberUpdatedState(onShowBegin)
