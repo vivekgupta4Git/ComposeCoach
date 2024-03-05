@@ -7,9 +7,9 @@ import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.BoxWithConstraintsScope
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
@@ -44,7 +44,7 @@ class DefaultCoachStyle : CoachStyle {
                 },
                 modifier = Modifier.align(Alignment.BottomCenter),
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = backGroundColor.invert(),
+                    containerColor = backGroundColor.invert(),
                     contentColor = backGroundColor
                 )
             ) {
@@ -55,7 +55,7 @@ class DefaultCoachStyle : CoachStyle {
                     onNext()
                 }, modifier = Modifier.align(Alignment.TopEnd),
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = backGroundColor.invert(),
+                    containerColor = backGroundColor.invert(),
                     contentColor = backGroundColor
                 )
             ) {
@@ -66,7 +66,7 @@ class DefaultCoachStyle : CoachStyle {
                     onBack()
                 }, modifier = Modifier.align(Alignment.TopStart),
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = backGroundColor.invert(),
+                    containerColor = backGroundColor.invert(),
                     contentColor = backGroundColor
                 )
             ) {

@@ -16,11 +16,10 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -45,6 +44,7 @@ import com.vivekgupta.composecoachmark.coachmark.CircleRevealEffect
 import com.vivekgupta.composecoachmark.coachmark.CoachMark
 import com.vivekgupta.composecoachmark.coachmark.DefaultCoachStyle
 import com.vivekgupta.composecoachmark.coachmark.addTarget
+import com.vivekgupta.composecoachmark.coachmark.addTargetOnPlaced
 import com.vivekgupta.composecoachmark.coachmark.invert
 import com.vivekgupta.composecoachmark.coachmark.rememberCoachMarkState
 import com.vivekgupta.tutor.ui.theme.TutorTheme
@@ -138,7 +138,7 @@ class MainActivity : ComponentActivity() {
                                 )
                         )
                         Greeting(
-                            "Default Style", modifier = Modifier.addTarget(
+                            "Default Style", modifier = Modifier.addTargetOnPlaced(
                                 3,
                                 state = coachMarkState,
                                 content = {
