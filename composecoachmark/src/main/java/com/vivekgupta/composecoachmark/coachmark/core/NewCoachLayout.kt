@@ -1,4 +1,4 @@
-package com.vivekgupta.composecoachmark.coachmark
+package com.vivekgupta.composecoachmark.coachmark.core
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment

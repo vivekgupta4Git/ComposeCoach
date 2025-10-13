@@ -1,16 +1,16 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
-    id 'maven-publish'
+    alias libs.plugins.android.library
+    alias libs.plugins.androidx.kotlin
+    alias libs.plugins.compose.compiler
 }
 
 android {
     namespace 'com.vivekgupta.composecoachmark'
-    compileSdk 34
+    compileSdkVersion 36
 
     defaultConfig {
         minSdk 24
-        targetSdk 34
+        targetSdk 36
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -28,9 +28,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.0"
     }
     buildFeatures {
         compose = true
@@ -54,7 +51,7 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.vivekgupta4Git'
                 artifactId = 'composecoachmark'
-                version = '2.0.0'
+                version = '3.0.0'
             }
         }
     }

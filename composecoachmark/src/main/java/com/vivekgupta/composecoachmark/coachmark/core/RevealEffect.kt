@@ -1,10 +1,13 @@
-package com.vivekgupta.composecoachmark.coachmark
+package com.vivekgupta.composecoachmark.coachmark.core
 
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.drawscope.DrawScope
 
 /**
- *@author Vivek Gupta on 13-1-24
+ * Defines the contract for drawing and animating the "reveal" effect—the visual highlight or
+ * cutout—around the target element in a coach mark.
+ *
+ * Implementations of this interface control the look and animation of the highlighted area.
  */
 
 interface RevealEffect {
@@ -26,5 +29,3 @@ interface RevealEffect {
      */
     fun drawTargetShape(targetBounds: Rect, drawScope: DrawScope) : Rect
 }
-
-

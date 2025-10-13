@@ -1,7 +1,6 @@
-package com.vivekgupta.composecoachmark.coachmark
+package com.vivekgupta.tutor.ui
 
 import android.annotation.SuppressLint
-import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.animation.core.FastOutSlowInEasing
@@ -19,71 +18,9 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import com.vivekgupta.composecoachmark.coachmark.core.CoachStyle
+import com.vivekgupta.composecoachmark.coachmark.invert
 import kotlin.math.absoluteValue
-
-class DefaultCoachStyle : CoachStyle {
-    override val backGroundColor: Color
-        get() = Color.Black
-    override val backgroundAlpha: Float
-        get() = 0.8f
-
-
-    @SuppressLint("ComposableNaming")
-    @Composable
-    override fun drawCoachButtons(
-        contentScope: BoxWithConstraintsScope,
-        targetBounds: Rect,
-        onBack: () -> Unit,
-        onSkip: () -> Unit,
-        onNext: () -> Unit
-    ) {
-        contentScope.apply {
-            Button(
-                onClick = {
-                    onSkip()
-                },
-                modifier = Modifier.align(Alignment.BottomCenter),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = backGroundColor.invert(),
-                    contentColor = backGroundColor
-                )
-            ) {
-                Text(text = "Skip")
-            }
-            Button(
-                onClick = {
-                    onNext()
-                }, modifier = Modifier.align(Alignment.TopEnd),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = backGroundColor.invert(),
-                    contentColor = backGroundColor
-                )
-            ) {
-                Text(text = "Next")
-            }
-            Button(
-                onClick = {
-                    onBack()
-                }, modifier = Modifier.align(Alignment.TopStart),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = backGroundColor.invert(),
-                    contentColor = backGroundColor
-                )
-            ) {
-                Text(text = "Back")
-            }
-        }
-    }
-
-    override fun drawCoachShape(targetBounds: Rect, drawScope: DrawScope): Rect {
-        drawScope.apply {
-            drawRect(color = backGroundColor.copy(alpha = backgroundAlpha))
-        }
-        return Rect(Offset.Zero, size = drawScope.size)
-    }
-
-}
-
 class CanopasStyle : CoachStyle {
     override val backGroundColor: Color
         get() = Color.Blue

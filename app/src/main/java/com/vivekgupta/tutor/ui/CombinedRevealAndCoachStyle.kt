@@ -1,9 +1,8 @@
-package com.vivekgupta.composecoachmark.coachmark
+package com.vivekgupta.tutor.ui
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.AnimationVector1D
 import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.tween
@@ -11,7 +10,6 @@ import androidx.compose.foundation.layout.BoxWithConstraintsScope
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -20,6 +18,8 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
+import com.vivekgupta.composecoachmark.coachmark.core.CoachStyle
+import com.vivekgupta.composecoachmark.coachmark.core.RevealEffect
 import kotlin.math.absoluteValue
 
 /**
@@ -52,12 +52,12 @@ class CombinedRevealAndCoachStyle(
         contentScope.apply {
             Button(onClick = {
                 onSkip()
-            }, modifier = Modifier.align(Alignment.BottomStart)) {
+            }, modifier = Modifier.Companion.align(Alignment.Companion.BottomStart)) {
                 Text(text = "Skip")
             }
             Button(onClick = {
                 onNext()
-            }, modifier = Modifier.align(Alignment.BottomEnd)) {
+            }, modifier = Modifier.Companion.align(Alignment.Companion.BottomEnd)) {
                 Text(text = "Next")
             }
         }
@@ -73,11 +73,11 @@ class CombinedRevealAndCoachStyle(
             )
         }
         return Rect(
-            offset = Offset.Zero - targetBounds.topLeft, size =
-            Size(
-                width = drawScope.size.width,
-                height = targetBounds.maxDimension.absoluteValue * 3f
-            )
+            offset = Offset.Companion.Zero - targetBounds.topLeft, size =
+                Size(
+                    width = drawScope.size.width,
+                    height = targetBounds.maxDimension.absoluteValue * 3f
+                )
         )
     }
 
@@ -96,10 +96,10 @@ class CombinedRevealAndCoachStyle(
     override fun drawTargetShape(targetBounds: Rect, drawScope: DrawScope): Rect {
         drawScope.apply {
             drawCircle(
-                color = Color.White,
+                color = Color.Companion.White,
                 radius = radius.value,
                 center = targetBounds.center,
-                blendMode = BlendMode.Xor
+                blendMode = BlendMode.Companion.Xor
             )
             drawCircle(
                 color = backGroundColor,

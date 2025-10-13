@@ -32,15 +32,50 @@ object CloudShape : Shape {
             moveTo(firstCurveStartPointX, firstCurveStartPointY)
 
             //    quadraticBezierTo(x2=size.width,y2=size.height/2, x1 = size.width/2, y1 = 0f)
-            quadraticBezierTo(x2 = firstCurveEndPointX, y2 = firstCurveEndPointY, x1 = 0f, y1 = size.height / 4f)
-            quadraticBezierTo(x2 = secondCurveEndPointX, y2 = secondCurveEndPointY, x1 = size.width / 4, y1 = 0f)
-            quadraticBezierTo(x2 = thirdCurveEndPointX, y2 = thirdCurveEndPointY, x1 = size.width * 3f / 4f, y1 = 0f)
-            quadraticBezierTo(x2 = fourthCurveEndPointX, y2 = fourthCurveEndPointY, x1 = size.width, y1 = size.height / 4f)
+            quadraticTo(
+                x1 = 0f,
+                y1 = size.height / 4f,
+                x2 = firstCurveEndPointX,
+                y2 = firstCurveEndPointY
+            )
+            quadraticTo(
+                x1 = size.width / 4,
+                y1 = 0f,
+                x2 = secondCurveEndPointX,
+                y2 = secondCurveEndPointY
+            )
+            quadraticTo(
+                x1 = size.width * 3f / 4f,
+                y1 = 0f,
+                x2 = thirdCurveEndPointX,
+                y2 = thirdCurveEndPointY
+            )
+            quadraticTo(
+                x1 = size.width,
+                y1 = size.height / 4f,
+                x2 = fourthCurveEndPointX,
+                y2 = fourthCurveEndPointY
+            )
             // quadraticBezierTo(x2=0f, y2 = size.height/2,x1=size.width/2, y1 = size.height)
-            quadraticBezierTo(x2 = size.width * 3f / 4f, y2 = size.height * 3f / 4f, x1 = size.width, y1 = size.height * 3f / 4f)
-            quadraticBezierTo(x2 = size.width / 2f, y2 = size.height, x1 = size.width * 3f / 4f, y1 = size.height)
-            quadraticBezierTo(x2 = size.width / 4f, y2 = size.height * 3f / 4f, x1 = size.width / 4f, y1 = size.height)
-            quadraticBezierTo(x2 = 0f, y2 = size.height / 2, x1 = 0f, y1 = size.height * 3f / 4f)
+            quadraticTo(
+                x1 = size.width,
+                y1 = size.height * 3f / 4f,
+                x2 = size.width * 3f / 4f,
+                y2 = size.height * 3f / 4f
+            )
+            quadraticTo(
+                x1 = size.width * 3f / 4f,
+                y1 = size.height,
+                x2 = size.width / 2f,
+                y2 = size.height
+            )
+            quadraticTo(
+                x1 = size.width / 4f,
+                y1 = size.height,
+                x2 = size.width / 4f,
+                y2 = size.height * 3f / 4f
+            )
+            quadraticTo(x1 = 0f, y1 = size.height * 3f / 4f, x2 = 0f, y2 = size.height / 2)
 
             close()
         }
@@ -55,19 +90,24 @@ class MessageShape(private val roundedCorner: Float = 20f, private val pointerLe
         val path = Path().apply {
             moveTo(0f, 0f)
             lineTo(size.width - roundedCorner, 0f)
-            quadraticBezierTo(x2 = size.width, y2 = roundedCorner, x1 = size.width, y1 = 0f)
+            quadraticTo(x1 = size.width, y1 = 0f, x2 = size.width, y2 = roundedCorner)
             lineTo(size.width, size.height - roundedCorner)
-            quadraticBezierTo(x2 = size.width - roundedCorner, y2 = size.height, x1 = size.width, y1 = size.height)
+            quadraticTo(
+                x1 = size.width,
+                y1 = size.height,
+                x2 = size.width - roundedCorner,
+                y2 = size.height
+            )
             // lineTo(size.width/4f,size.height)
             // lineTo(size.width/8f,size.height+50f)
             // lineTo(size.width/8f,size.height)
             lineTo(roundedCorner, size.height)
-            quadraticBezierTo(x2 = 0f, y2 = size.height - roundedCorner, x1 = 0f, y1 = size.height)
+            quadraticTo(x1 = 0f, y1 = size.height, x2 = 0f, y2 = size.height - roundedCorner)
             lineTo(0f, size.height * 3f / 4f)
             lineTo(-pointerLength, size.height * 3f / 4f)
             lineTo(0f, size.height / 2f)
             lineTo(0f, roundedCorner)
-            quadraticBezierTo(x2 = roundedCorner, y2 = 0f, x1 = 0f, y1 = 0f)
+            quadraticTo(x1 = 0f, y1 = 0f, x2 = roundedCorner, y2 = 0f)
             close()
         }
         return Outline.Generic(path)
