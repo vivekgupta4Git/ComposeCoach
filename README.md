@@ -24,7 +24,7 @@ To get started with ComposeCoach, follow these steps:
 1. Add the CoachmarkLib dependency to your project.
 ```
 dependencies {
-	        implementation 'com.github.vivekgupta4Git:Composecoach:2.0.0'
+	        implementation 'com.ruviapps.compose-coach:<insert latest vestion>'
 	}
 ```
 2. Create a state variable to show Coach Mark
@@ -36,19 +36,38 @@ dependencies {
 3. Create a CoachMarkState
 ```             
             val coachMarkState = rememberCoachMarkState()
+``` 
+4. Wrap your Compose Content with CoachMarkHost and pass the state 
 ```
-4. Add composable to the coachmark by using addTarget Modifier
+ CoachMarkHost(     showCoach = showCoachMark,
+                    state = coachMarkState,
+                    actions = object : DefaultCoachMarkActions(){
+                        override fun onComplete() {
+                            super.onComplete()
+                            showCoachMark = false
+                        }
+                        override fun onSkip() {
+                            super.onSkip()
+                            showCoachMark = false
+                        }
+                    }
+                ){
+                    //your content goes here...
+                }
 ```
-Greeting(
-                            "Compose Coach", modifier = Modifier
-                                .addTarget(
-                                    position = 2,
-                                    state = coachMarkState,
-                                    revealEffect = CircleRevealEffect(),
-                                    content = {
-                                            Column(modifier = Modifier.padding(horizontal = 20.dp),
-                                            verticalArrangement = Arrangement.Center,
-                                                horizontalAlignment = Alignment.CenterHorizontally,) {
+5. Add composable to the coachmark by using addTarget Modifier
+```
+     Greeting(
+                                "Compose Coach", modifier = Modifier
+                                    .addTarget(
+                                        position = 2,
+                                        revealEffect = CircleRevealEffect(),
+                                        content = {
+                                            Column(
+                                                modifier = Modifier.padding(horizontal = 20.dp),
+                                                verticalArrangement = Arrangement.Center,
+                                                horizontalAlignment = Alignment.CenterHorizontally,
+                                            ) {
 
                                                 Text(
                                                     text = "A Highly Customizable Coach Mark Library!!",
@@ -59,37 +78,10 @@ Greeting(
                                                 )
 
                                             }
-                                    }
-                                )
-                        )
-```   
-5. Add CoachMark Composable at Last of your screen also above all the content.
-```
-CoachMark(
-                        coachMarkState = coachMarkState,
-                        showCoachMark = showCoachMark,
-                        onBack = {
-                            Log.d(TAG, "Re-showing CoachMark!!")
-                        },
-                        onCancelled = {
-                            canDrawCoachMark = false
-                            Log.d(TAG, "On Show Cancelled...")
-                        },
-                        onCompleted = {
-                            canDrawCoachMark = false
-                            Log.d(TAG, "End of the show...")
-                        },
-                        onShowBegin = {
-                            Log.d(TAG, "Beginning of the show...")
-                        },
-                        onBeforeShowingCoachMark = { index, position ->
-                            Log.d(TAG, "Before Showing for CoachMark $position, at index = $index")
-
-                        }, onAfterShowingCoachMark = { index, position ->
-                            Log.d(TAG, "After Showing for CoachMark $position, at index = $index")
-
-                        }
-                    )
+                                        },
+                                        backgroundCoachStyle = NoCoachMarkButtons
+                                    )
+                            )
 ```
 Customize the coachmarks according to your app's requirements.
 

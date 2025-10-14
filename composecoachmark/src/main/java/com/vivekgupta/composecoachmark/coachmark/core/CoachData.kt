@@ -50,5 +50,6 @@ data class CoachData(
     val revealEffect: RevealEffect,
     val alignment: Alignment = Alignment.BottomCenter,
     val isForcedAlignment: Boolean = false,
-    val coachStyle: CoachStyle
+    val coachStyle: CoachStyle,
+    val isOutsideClickDismissable: Boolean = true,
 )

@@ -20,6 +20,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -31,7 +35,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.vivekgupta.composecoachmark.coachmark.core.CoachMarkActions
 import com.vivekgupta.composecoachmark.coachmark.core.CoachMarkHost
 import com.vivekgupta.composecoachmark.coachmark.core.DefaultCoachMarkActions
 import com.vivekgupta.composecoachmark.coachmark.core.rememberCoachMarkState
@@ -45,19 +48,20 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
+            var showCoachMark by remember {
+                mutableStateOf(true)
+            }
             val coachMarkState = rememberCoachMarkState()
             val scrollState = rememberScrollState()
 
             TutorTheme {
-                // A surface container using the 'background' color from the theme
                 CoachMarkHost(
+                    showCoach = showCoachMark ,
                     state = coachMarkState,
-                    isOutsideClickDismissable = false,
                     actions = object : DefaultCoachMarkActions(){
                         override fun onComplete() {
                             super.onComplete()
-                            Log.d("MyLog","Competed...")
+                            Log.d("CoachMark","Show Complete")
                         }
                     }
                 ) {
@@ -80,7 +84,7 @@ class MainActivity : ComponentActivity() {
                                 "Canopas FTW",
                                 modifier = Modifier.addTarget(
                                     1,
-                                    //  state = coachMarkState,
+                                    isOutsideClickDismissable = false,
                                     revealEffect = CanopasRevealEffect(),
                                     backgroundCoachStyle = CanopasStyle(),
                                     content = {
@@ -114,7 +118,6 @@ class MainActivity : ComponentActivity() {
                                 "Compose Coach", modifier = Modifier
                                     .addTarget(
                                         position = 2,
-                                        //   state = coachMarkState,
                                         revealEffect = CircleRevealEffect(),
                                         content = {
                                             Column(
@@ -139,7 +142,6 @@ class MainActivity : ComponentActivity() {
                             Greeting(
                                 "Default Style", modifier = Modifier.addTarget(
                                     3,
-                                    //  state = coachMarkState,
                                     content = {
                                         Text(
                                             text = "Use Samples to Create your own Style !!",
@@ -160,7 +162,6 @@ class MainActivity : ComponentActivity() {
                                 onClick = { }, modifier = Modifier
                                     .addTarget(
                                         4,
-                                        // state = coachMarkState,
                                         revealEffect = CircleRevealEffect(),
                                         content = {
                                             Column(

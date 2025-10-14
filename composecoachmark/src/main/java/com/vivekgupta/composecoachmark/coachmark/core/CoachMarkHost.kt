@@ -17,8 +17,6 @@ import androidx.compose.ui.Modifier
  * the overlay, effectively pausing the tour. Defaults to `true`.
  * @param state The state object that manages the coach mark targets and the current step in the tour.
  * Defaults to a remembered [CoachMarkState]. Use this parameter to control the tour externally.
- * @param isOutsideClickDismissable If `true`, a tap on the scrim area of the active coach mark
- * will advance to the next step. This setting overrides the individual target's setting.
  * @param actions An interface providing callbacks for key lifecycle and navigation events in the tour,
  * such as when a step is completed, skipped, or the entire tour finishes. Defaults to a no-op implementation.
  * @param content The primary content of the screen. Within this lambda, use the
@@ -29,7 +27,6 @@ import androidx.compose.ui.Modifier
 fun CoachMarkHost(
     showCoach: Boolean = true,
     state: CoachMarkState = rememberCoachMarkState(),
-    isOutsideClickDismissable: Boolean = true,
     actions: CoachMarkActions = DefaultCoachMarkActions(),
     content: @Composable CoachMarkScope.() -> Unit
 ) {
@@ -54,7 +51,6 @@ fun CoachMarkHost(
         if (showCoach) {
             state.currentCoach?.let { coach ->
                 Coach(
-                    modifier = Modifier,
                     coordinates = coach.coordinates,
                     content = coach.content,
                     coachStyle = coach.coachStyle,
@@ -73,7 +69,7 @@ fun CoachMarkHost(
                         state.hideCoach()
                         actions.onSkipCalled()
                     },
-                    isOutsideClickDismissable = isOutsideClickDismissable
+                    isOutsideClickDismissable = coach.isOutsideClickDismissable
                 )
             }
         }

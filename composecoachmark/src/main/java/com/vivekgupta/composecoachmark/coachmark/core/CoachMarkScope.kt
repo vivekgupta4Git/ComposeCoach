@@ -35,6 +35,7 @@ interface CoachMarkScope {
      * @param backgroundCoachStyle The style used to draw the coach mark background (scrim and buttons). Defaults to [DefaultCoachStyle].
      * @param alignment The preferred alignment of the coach mark content relative to the target. Defaults to [Alignment.BottomCenter].
      * @param isForcedAlignment If true, the coach mark content will strictly adhere to the [alignment] even if it causes clipping.
+     * @param isOutsideClickDismissable If true, tapping on the scrim outside the target area will dismiss the coach mark and move to the next step.
      * @param content The composable content to display within the coach mark overlay when this target is active.
      * @return A [Modifier] that tracks the composable's position and registers it as a coach mark target.
      */
@@ -44,6 +45,7 @@ interface CoachMarkScope {
         backgroundCoachStyle: CoachStyle = DefaultCoachStyle,
         alignment: Alignment = Alignment.BottomCenter,
         isForcedAlignment : Boolean = false,
+        isOutsideClickDismissable: Boolean = true,
         content : @Composable BoxWithConstraintsScope.() -> Unit,
     ) = onGloballyPositioned {
             layoutCoordinates ->
@@ -53,7 +55,8 @@ interface CoachMarkScope {
             revealEffect = revealEffect,
             alignment = alignment,
             isForcedAlignment = isForcedAlignment,
-            coachStyle = backgroundCoachStyle
+            coachStyle = backgroundCoachStyle,
+            isOutsideClickDismissable = isOutsideClickDismissable
         ))
     }
 }

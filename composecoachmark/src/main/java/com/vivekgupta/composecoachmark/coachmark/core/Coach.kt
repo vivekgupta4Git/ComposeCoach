@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.BoxWithConstraintsScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -18,14 +19,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.CompositingStrategy
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.LayoutCoordinates
 import androidx.compose.ui.layout.boundsInRoot
-import kotlinx.coroutines.launch
-import androidx.compose.material3.Surface
 import com.vivekgupta.composecoachmark.coachmark.DefaultCoachStyle
 import com.vivekgupta.composecoachmark.coachmark.DefaultRevealEffect
+import kotlinx.coroutines.launch
 
 /**
  * A highly customizable composable that displays a single coach mark overlay, highlighting a
@@ -56,16 +57,15 @@ import com.vivekgupta.composecoachmark.coachmark.DefaultRevealEffect
  */
 @Composable
 internal fun Coach(
-    modifier: Modifier = Modifier,
     coordinates: LayoutCoordinates,
     content: @Composable BoxWithConstraintsScope.() -> Unit,
-    coachStyle: CoachStyle = DefaultCoachStyle,
-    revealEffect: RevealEffect = DefaultRevealEffect,
-    alignment: Alignment = Alignment.BottomCenter,
-    isForcedAlignment: Boolean = false,
-    isOutsideClickDismissable: Boolean = true,
-    onBack: () -> Unit = {},
-    onSkip: () -> Unit = {},
+    coachStyle: CoachStyle,
+    revealEffect: RevealEffect,
+    alignment: Alignment,
+    isForcedAlignment: Boolean,
+    isOutsideClickDismissable: Boolean,
+    onBack: () -> Unit,
+    onSkip: () -> Unit,
     onNext: () -> Unit,
 ) {
     val bounds = coordinates.boundsInRoot()
@@ -82,27 +82,19 @@ internal fun Coach(
         revealEffect.enterAnimation(bounds)
     }
 
-    // Common action for dismissal/next
     val handleDismiss: () -> Unit = {
         scope.launch {
             revealEffect.exitAnimation(bounds)
             onNext()
         }
     }
+
     Surface(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
-            .graphicsLayer(alpha = 0.99f)
-            .pointerInput(bounds) {
-                detectTapGestures { offset ->
-                    if (isOutsideClickDismissable) {
-                        // Check if tap is OUTSIDE the newBound/target area
-                        if (!targetBoundary.contains(offset)) {
-                            handleDismiss()
-                        }
-                    }
-                }
-            },
+            .graphicsLayer(
+                compositingStrategy = CompositingStrategy.Offscreen
+            ),
         color = Color.Transparent
     )
     {
@@ -111,7 +103,9 @@ internal fun Coach(
                 // This ensures the pointerInput block restarts and uses the LATEST bounds.
                 .pointerInput(targetBoundary) {
                     detectTapGestures { offset ->
-                        if (targetBoundary.contains(offset)) {
+                        if (isOutsideClickDismissable)
+                            handleDismiss()
+                        else if (targetBoundary.contains(offset)) {
                             handleDismiss()
                         }
                     }
@@ -134,12 +128,7 @@ internal fun Coach(
                         onSkip()
                     }
                 },
-                onNext = {
-                    scope.launch {
-                        revealEffect.exitAnimation(bounds)
-                        onNext()
-                    }
-                },
+                onNext = { handleDismiss() },
                 onBack = {
                     scope.launch {
                         revealEffect.exitAnimation(bounds)
@@ -149,7 +138,7 @@ internal fun Coach(
                 },
                 targetBounds = bounds
             )
-            NewCoachLayout(
+            CoachMessageLayout(
                 canvasRect = scrimBoundary,
                 targetBound = targetBoundary,
                 alignment = alignment,
