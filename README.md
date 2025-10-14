@@ -1,7 +1,9 @@
 # ComposeCoach [![](https://jitpack.io/v/vivekgupta4Git/Composecoach.svg)](https://jitpack.io/#vivekgupta4Git/Composecoach)
 
 ComposeCoach - Jetpack Compose
-![compose_coach_gif](https://github.com/vivekgupta4Git/ComposeCoach/assets/91813403/88358976-dc08-43a3-934c-505f4d145020)
+<div align="center">
+<img src="https://github.com/vivekgupta4Git/ComposeCoach/assets/91813403/88358976-dc08-43a3-934c-505f4d145020" width=200 height=400 alt="Default"/>
+</div>
 
 ## Overview
   ComposeCoach is a highly customizable library built in Jetpack Compose and Kotlin that allows users to easily integrate coachmarks into their Android applications. Coachmarks are a great way to guide users through the features of an app, making the onboarding experience more intuitive and engaging.
