@@ -26,7 +26,7 @@ To get started with ComposeCoach, follow these steps:
 1. Add the CoachmarkLib dependency to your project.
 ```
 dependencies {
-	        implementation 'com.ruviapps.compose-coach:3.0.0'
+	        implementation 'com.ruviapps:compose-coach:3.0.0'
 	}
 ```
 2. Create a state variable to show Coach Mark
