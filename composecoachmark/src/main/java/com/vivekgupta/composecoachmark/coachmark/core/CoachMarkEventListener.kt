@@ -7,7 +7,7 @@ package com.vivekgupta.composecoachmark.coachmark.core
  * This allows external controllers (e.g., ViewModels or higher-level composables) to react
  * to user navigation and the completion of the entire tour sequence.
  */
-interface CoachMarkActions {
+interface CoachMarkEventListener {
     /**
      * Called when the user explicitly triggers navigation to the previous coach mark step.
      *
@@ -36,7 +36,7 @@ interface CoachMarkActions {
     fun onComplete()
 }
 
-open class DefaultCoachMarkActions : CoachMarkActions {
+open class EmptyCoachMarkEventListener : CoachMarkEventListener {
     override fun onPreviousCalled() {}
     override fun onNextCalled() {}
     override fun onSkipCalled() {}

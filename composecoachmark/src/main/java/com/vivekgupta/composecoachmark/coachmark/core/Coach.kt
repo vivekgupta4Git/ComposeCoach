@@ -35,7 +35,6 @@ import kotlinx.coroutines.launch
  * This component handles the drawing of the transparent scrim, the reveal effect over the target,
  * input dismissal logic, and the layout of the instructional content and navigation buttons.
  *
- * @param modifier The modifier to be applied to the top-level Surface containing the coach mark.
  * @param coordinates The [LayoutCoordinates] of the target composable element being highlighted,
  * used to determine the target's position and bounds within the screen.
  * @param content The composable lambda defining the instructional content (text, image, etc.)
@@ -50,11 +49,11 @@ import kotlinx.coroutines.launch
  * even if it risks clipping. If false, the layout may adjust the alignment
  * to keep the content on screen.
  * @param isOutsideClickDismissable If true, tapping anywhere on the scrim *outside* the target area
- * will trigger the [onNext] action (dismissal).
- * @param onBack Callback invoked when the 'Back' button is pressed.
- * @param onSkip Callback invoked when the 'Skip' button is pressed.
- * @param onNext Callback invoked when the 'Next' button is pressed or the coach mark is dismissed.
- */
+ * will also dismiss the Coach.
+ * @param state The state object that manages the coach mark targets and the current step in the tour.
+ * Defaults to a remembered [CoachMarkState]. Use this parameter to control the tour externally.
+ * such as when a step is completed, skipped, or the entire tour finishes. Defaults to a no-op implementation.
+  */
 @Composable
 internal fun Coach(
     coordinates: LayoutCoordinates,
@@ -64,14 +63,9 @@ internal fun Coach(
     alignment: Alignment,
     isForcedAlignment: Boolean,
     isOutsideClickDismissable: Boolean,
-    onBack: () -> Unit,
-    onSkip: () -> Unit,
-    onNext: () -> Unit,
+    state: CoachMarkState,
 ) {
     val bounds = coordinates.boundsInRoot()
-    LaunchedEffect(key1 = bounds) {
-        revealEffect.enterAnimation(bounds)
-    }
     val scope = rememberCoroutineScope()
     // Target Bounds for the tap area
     var targetBoundary by remember { mutableStateOf(Rect.Zero) }
@@ -80,13 +74,6 @@ internal fun Coach(
 
     LaunchedEffect(key1 = bounds) {
         revealEffect.enterAnimation(bounds)
-    }
-
-    val handleDismiss: () -> Unit = {
-        scope.launch {
-            revealEffect.exitAnimation(bounds)
-            onNext()
-        }
     }
 
     Surface(
@@ -103,11 +90,11 @@ internal fun Coach(
                 // This ensures the pointerInput block restarts and uses the LATEST bounds.
                 .pointerInput(targetBoundary) {
                     detectTapGestures { offset ->
-                        if (isOutsideClickDismissable)
-                            handleDismiss()
-                        else if (targetBoundary.contains(offset)) {
-                            handleDismiss()
-                        }
+                        if (isOutsideClickDismissable || targetBoundary.contains(offset))
+                            scope.launch {
+                                revealEffect.exitAnimation(bounds)
+                                state.next()
+                            }
                     }
                 },
             onDraw = {
@@ -125,14 +112,17 @@ internal fun Coach(
                 onSkip = {
                     scope.launch {
                         revealEffect.exitAnimation(bounds)
-                        onSkip()
+                        state.hideCoach()
                     }
                 },
-                onNext = { handleDismiss() },
+                onNext = {  scope.launch {
+                    revealEffect.exitAnimation(bounds)
+                    state.next()
+                } },
                 onBack = {
                     scope.launch {
                         revealEffect.exitAnimation(bounds)
-                        onBack()
+                        state.previous()
                     }
 
                 },

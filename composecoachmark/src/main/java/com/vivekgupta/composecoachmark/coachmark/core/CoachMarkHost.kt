@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 
@@ -17,8 +19,6 @@ import androidx.compose.ui.Modifier
  * the overlay, effectively pausing the tour. Defaults to `true`.
  * @param state The state object that manages the coach mark targets and the current step in the tour.
  * Defaults to a remembered [CoachMarkState]. Use this parameter to control the tour externally.
- * @param actions An interface providing callbacks for key lifecycle and navigation events in the tour,
- * such as when a step is completed, skipped, or the entire tour finishes. Defaults to a no-op implementation.
  * @param content The primary content of the screen. Within this lambda, use the
  * [CoachMarkScope.addTarget] modifiers on composables
  * that should be highlighted as targets in the tour.
@@ -27,7 +27,6 @@ import androidx.compose.ui.Modifier
 fun CoachMarkHost(
     showCoach: Boolean = true,
     state: CoachMarkState = rememberCoachMarkState(),
-    actions: CoachMarkActions = DefaultCoachMarkActions(),
     content: @Composable CoachMarkScope.() -> Unit
 ) {
     val scopeImpl = remember {
@@ -36,42 +35,30 @@ fun CoachMarkHost(
                 get() = state
         }
     }
+    scopeImpl.content()
 
-    // Observer to detect when the tour completes
-    val hasCompleted = state.hasCompleted
+
+    val hasCompleted by remember {
+        derivedStateOf { state.hasCompleted }
+    }
     LaunchedEffect(hasCompleted) {
         if (hasCompleted) {
-            actions.onComplete()
+            state.eventListener.onComplete()
+        }
+    }
+    if (showCoach) {
+        state.currentCoach?.let { coach ->
+            Coach(
+                coordinates = coach.coordinates,
+                content = coach.content,
+                coachStyle = coach.coachStyle,
+                revealEffect = coach.revealEffect,
+                alignment = coach.alignment,
+                isForcedAlignment = coach.isForcedAlignment,
+                state = state,
+                isOutsideClickDismissable = coach.isOutsideClickDismissable
+            )
         }
     }
 
-    Box(modifier = Modifier.fillMaxSize()) {
-        scopeImpl.content()
-
-        if (showCoach) {
-            state.currentCoach?.let { coach ->
-                Coach(
-                    coordinates = coach.coordinates,
-                    content = coach.content,
-                    coachStyle = coach.coachStyle,
-                    revealEffect = coach.revealEffect,
-                    alignment = coach.alignment,
-                    isForcedAlignment = coach.isForcedAlignment,
-                    onBack = {
-                        state.previous()
-                        actions.onPreviousCalled()
-                    },
-                    onNext = {
-                        state.next()
-                        actions.onNextCalled()
-                    },
-                    onSkip = {
-                        state.hideCoach()
-                        actions.onSkipCalled()
-                    },
-                    isOutsideClickDismissable = coach.isOutsideClickDismissable
-                )
-            }
-        }
-    }
 }

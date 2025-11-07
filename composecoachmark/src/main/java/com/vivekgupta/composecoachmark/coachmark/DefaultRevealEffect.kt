@@ -45,9 +45,9 @@ object DefaultRevealEffect : RevealEffect {
         val newBound = Rect(newOffset, newSize)
         drawScope.apply {
             drawRect(
-                color = Color.White,
+                color = Color.Transparent,
                 size = rect.value.size,
-                blendMode = BlendMode.Clear,
+                blendMode = BlendMode.Clear,        //this is important for custom implementation
                 topLeft = rect.value.topLeft
             )
         }
