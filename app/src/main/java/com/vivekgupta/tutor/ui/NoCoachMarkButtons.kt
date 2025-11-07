@@ -10,7 +10,7 @@ import com.vivekgupta.composecoachmark.coachmark.core.CoachStyle
 
 object NoCoachMarkButtons : CoachStyle {
     override val backGroundColor: Color
-        get() = Color.Companion.Blue
+        get() = Color.Companion.Black
     override val backgroundAlpha: Float
         get() = 0.8f
 

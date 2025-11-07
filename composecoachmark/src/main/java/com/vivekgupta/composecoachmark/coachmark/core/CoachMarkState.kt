@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+
 /**
  * A stable state holder class responsible for managing the entire coach mark tour sequence.
  *
@@ -17,10 +18,13 @@ import androidx.compose.runtime.setValue
  *
  * @property startPosition The initial position index for the tour. This is the index the tour starts
  * from and resets to if no targets are registered. Defaults to 1.
+ *
+ * @property eventListener The event listener for the tour. Default provides empty event listener.
  */
 @Stable
 class CoachMarkState(
-    private val startPosition: Int = 1
+    private val startPosition: Int = 1,
+    val eventListener: CoachMarkEventListener = EmptyCoachMarkEventListener(),
 ) {
 
     /**
@@ -63,6 +67,7 @@ class CoachMarkState(
      */
     val hasCompleted: Boolean
         get() = currentKeyPosition == -1
+
     /**
      * Registers a new coach mark target with its associated data.
      *
@@ -83,6 +88,7 @@ class CoachMarkState(
      * Hides the coach mark overlay by setting the position to an invalid index (-1) and clearing the current coach data.
      */
     fun hideCoach() {
+        eventListener.onSkipCalled()
         currentKeyPosition = -1
         currentCoach = null
     }
@@ -93,12 +99,15 @@ class CoachMarkState(
      * If the current step is the last one, the tour is hidden via [hideCoach].
      */
     fun next() {
+
         val currentPos = sortedKeys.indexOf(currentKeyPosition)
         if (currentPos >= 0 && currentPos < sortedKeys.size - 1) {
+            eventListener.onNextCalled()
             currentKeyPosition = sortedKeys[currentPos + 1]
             currentCoach = targets[currentKeyPosition]
         } else {
-            hideCoach()
+            currentKeyPosition = -1
+            currentCoach = null
         }
     }
 
@@ -110,10 +119,14 @@ class CoachMarkState(
     fun previous() {
         val currentPos = sortedKeys.indexOf(currentKeyPosition)
         if (currentPos > 0) {
+            eventListener.onPreviousCalled()
             currentKeyPosition = sortedKeys[currentPos - 1]
             currentCoach = targets[currentKeyPosition]
-        } else
-            hideCoach()
+        } else {
+            currentKeyPosition = -1
+            currentCoach = null
+        }
+
     }
 
     /**
@@ -133,11 +146,16 @@ class CoachMarkState(
  * is used across recompositions.
  *
  * @param startPosition The initial index to begin the coach mark tour from.
+ * @param listener   An interface providing callbacks for key lifecycle and navigation events in the tour,
+ * such as when a step is completed, skipped, or the entire tour finishes. Defaults to a no-op implementation.
  * @return A remembered instance of [CoachMarkState].
  */
 @Composable
-fun rememberCoachMarkState(startPosition : Int= 1) : CoachMarkState {
+fun rememberCoachMarkState(
+    startPosition: Int = 1,
+    listener: CoachMarkEventListener = EmptyCoachMarkEventListener()
+): CoachMarkState {
     return remember(startPosition) {
-        CoachMarkState(startPosition)
+        CoachMarkState(startPosition, listener)
     }
 }

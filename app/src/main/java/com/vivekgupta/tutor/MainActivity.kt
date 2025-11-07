@@ -9,20 +9,21 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,7 +37,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vivekgupta.composecoachmark.coachmark.core.CoachMarkHost
-import com.vivekgupta.composecoachmark.coachmark.core.DefaultCoachMarkActions
+import com.vivekgupta.composecoachmark.coachmark.core.CoachMarkScope
+import com.vivekgupta.composecoachmark.coachmark.core.EmptyCoachMarkEventListener
 import com.vivekgupta.composecoachmark.coachmark.core.rememberCoachMarkState
 import com.vivekgupta.tutor.ui.CanopasRevealEffect
 import com.vivekgupta.tutor.ui.CanopasStyle
@@ -45,45 +47,69 @@ import com.vivekgupta.tutor.ui.NoCoachMarkButtons
 import com.vivekgupta.tutor.ui.theme.TutorTheme
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            var showCoachMark by remember {
+            var showCoachMark by rememberSaveable {
                 mutableStateOf(true)
             }
-            val coachMarkState = rememberCoachMarkState()
+            val coachMarkState = rememberCoachMarkState(
+                listener = object : EmptyCoachMarkEventListener() {
+                    override fun onComplete() {
+                        showCoachMark = false
+                        Log.d("CoachMark", "Show Complete")
+                    }
+
+                    override fun onNextCalled() {
+                        Log.d("CoachMark","On Next Called...")
+                    }
+
+                    override fun onSkipCalled() {
+                        Log.d("CoachMark","On Skip Called...")
+                    }
+                }
+            )
             val scrollState = rememberScrollState()
 
             TutorTheme {
                 CoachMarkHost(
-                    showCoach = showCoachMark ,
+                    showCoach = showCoachMark,
                     state = coachMarkState,
-                    actions = object : DefaultCoachMarkActions(){
-                        override fun onComplete() {
-                            super.onComplete()
-                            Log.d("CoachMark","Show Complete")
-                        }
-                    }
                 ) {
-                    Surface(
-                        modifier = Modifier.fillMaxSize(),
-                        color = MaterialTheme.colorScheme.background
-                    )
-                    {
+                    Scaffold(
+                        topBar = {
+                            CoachMarkTopBar()
+                        },
+                        floatingActionButton = {
+                            CoachMarkFloatingActionButton()
+                        }
+                    ) {
                         Column(
                             Modifier
-                                .safeContentPadding()
+                                .padding(it)
                                 .fillMaxSize()
                                 .padding(20.dp)
                                 .verticalScroll(scrollState),
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.spacedBy(120.dp)
                         ) {
-
+                            LazyColumn(modifier = Modifier.weight(1f)) {
+                                items(3) { index ->
+                                    Text(
+                                        " Hello $index",
+                                        modifier = Modifier
+                                            .padding(10.dp)
+                                            .addTarget(position = index + 1) {
+                                                Text("Hello $index")
+                                            }
+                                    )
+                                }
+                            }
                             Greeting(
-                                "Canopas FTW",
+                                "Canopus FTW",
                                 modifier = Modifier.addTarget(
-                                    1,
+                                    6,
                                     isOutsideClickDismissable = false,
                                     revealEffect = CanopasRevealEffect(),
                                     backgroundCoachStyle = CanopasStyle(),
@@ -104,100 +130,19 @@ class MainActivity : ComponentActivity() {
 
                                             Text(
                                                 text = "Welcome to The Compose Coach",
-                                                color = Color.White,
+                                                color = Color.Black,
                                                 fontSize = 24.sp,
                                                 fontWeight = FontWeight.Bold,
                                             )
-
                                         }
-
                                     }
                                 )
                             )
-                            Greeting(
-                                "Compose Coach", modifier = Modifier
-                                    .addTarget(
-                                        position = 2,
-                                        revealEffect = CircleRevealEffect(),
-                                        content = {
-                                            Column(
-                                                modifier = Modifier.padding(horizontal = 20.dp),
-                                                verticalArrangement = Arrangement.Center,
-                                                horizontalAlignment = Alignment.CenterHorizontally,
-                                            ) {
-
-                                                Text(
-                                                    text = "A Highly Customizable Coach Mark Library!!",
-                                                    color = Color.White,
-                                                    fontSize = 24.sp,
-                                                    fontWeight = FontWeight.Bold,
-                                                    textAlign = TextAlign.Justify
-                                                )
-
-                                            }
-                                        },
-                                        backgroundCoachStyle = NoCoachMarkButtons
-                                    )
-                            )
-                            Greeting(
-                                "Default Style", modifier = Modifier.addTarget(
-                                    3,
-                                    content = {
-                                        Text(
-                                            text = "Use Samples to Create your own Style !!",
-                                            color = Color.White,
-                                            modifier = Modifier.padding(
-                                                horizontal = 20.dp,
-                                                vertical = 10.dp
-                                            )
-                                        )
-                                    },
-                                    alignment = Alignment.TopStart,
-                                    isForcedAlignment = true
-                                )
-                            )
-
-                            Greeting("Happy Coding !!", modifier = Modifier)
-                            FloatingActionButton(
-                                onClick = { }, modifier = Modifier
-                                    .addTarget(
-                                        4,
-                                        revealEffect = CircleRevealEffect(),
-                                        content = {
-                                            Column(
-                                                modifier = Modifier.padding(
-                                                    horizontal = 20.dp,
-                                                    vertical = 10.dp
-                                                ),
-                                                verticalArrangement = Arrangement.Center,
-                                                horizontalAlignment = Alignment.CenterHorizontally,
-                                            ) {
-                                                Image(
-                                                    painterResource(id = R.drawable.animated_insightful_bulb),
-                                                    contentDescription = null,
-                                                    modifier = Modifier.size(100.dp)
-                                                )
-
-                                                Text(
-                                                    text = "Happy Coding !!",
-                                                    color = Color.White,
-                                                    fontSize = 24.sp,
-                                                    fontWeight = FontWeight.Bold,
-                                                    textAlign = TextAlign.Justify
-                                                )
-                                            }
-                                        })
-
-                            ) {
-                                Icon(
-                                    imageVector = ImageVector.vectorResource(R.drawable.phone__streamline_plump),
-                                    contentDescription = "phone"
-                                )
-                            }
-
-                            Button(onClick = {
-                                state.reset()
-                            }
+                            Button(
+                                onClick = {
+                                    showCoachMark = true
+                                    state.reset()
+                                }
                             ) {
                                 Text("Reset")
                             }
@@ -209,6 +154,64 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@Composable
+private fun CoachMarkScope.CoachMarkFloatingActionButton() {
+    FloatingActionButton(
+        onClick = { },
+        modifier = Modifier
+            .addTarget(
+                5,
+                revealEffect = CircleRevealEffect(),
+                backgroundCoachStyle = NoCoachMarkButtons,
+                content = {
+                    Column(
+                        modifier = Modifier.padding(
+                            horizontal = 20.dp,
+                            vertical = 10.dp
+                        ),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        Image(
+                            painterResource(id = R.drawable.animated_insightful_bulb),
+                            contentDescription = null,
+                            modifier = Modifier.size(100.dp)
+                        )
+
+                        Text(
+                            text = "Happy Coding !!",
+                            color = Color.White,
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Justify
+                        )
+                    }
+                }
+            )
+
+    ) {
+        Icon(
+            imageVector = ImageVector.vectorResource(R.drawable.phone__streamline_plump),
+            contentDescription = "phone"
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun CoachMarkScope.CoachMarkTopBar() {
+    TopAppBar(title = {
+        Text(
+            "Compose Coach",
+            modifier = Modifier.addTarget(
+                position = 4,
+                backgroundCoachStyle = CanopasStyle()
+            ) {
+                Text("Top Bar")
+            }
+        )
+    })
+}
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
@@ -225,4 +228,3 @@ fun GreetingPreview() {
         Greeting("Android")
     }
 }
-
