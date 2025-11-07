@@ -100,7 +100,7 @@ class MainActivity : ComponentActivity() {
                                         " Hello $index",
                                         modifier = Modifier
                                             .padding(10.dp)
-                                            .addTarget(position = index + 1) {
+                                            .addTarget(position = index + 4) {
                                                 Text("Hello $index")
                                             }
                                     )
@@ -109,7 +109,7 @@ class MainActivity : ComponentActivity() {
                             Greeting(
                                 "Canopus FTW",
                                 modifier = Modifier.addTarget(
-                                    6,
+                                    1,
                                     isOutsideClickDismissable = false,
                                     revealEffect = CanopasRevealEffect(),
                                     backgroundCoachStyle = CanopasStyle(),
@@ -160,7 +160,7 @@ private fun CoachMarkScope.CoachMarkFloatingActionButton() {
         onClick = { },
         modifier = Modifier
             .addTarget(
-                5,
+                3,
                 revealEffect = CircleRevealEffect(),
                 backgroundCoachStyle = NoCoachMarkButtons,
                 content = {
@@ -204,7 +204,7 @@ private fun CoachMarkScope.CoachMarkTopBar() {
         Text(
             "Compose Coach",
             modifier = Modifier.addTarget(
-                position = 4,
+                position = 2,
                 backgroundCoachStyle = CanopasStyle()
             ) {
                 Text("Top Bar")
