@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="composecoachmark">
-    <output-path>$PROJECT_DIR$/composecoachmark/build/libs</output-path>
-    <root id="archive" name="composecoachmark.jar">
-      <element id="module-output" name="Tutor.composecoachmark.androidMain" />
-    </root>
-  </artifact>
-</component>

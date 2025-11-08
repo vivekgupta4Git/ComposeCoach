@@ -1,17 +1,20 @@
 @file:OptIn(ExperimentalKotlinGradlePluginApi::class)
 
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 
+val LIBRARY_VERSION: String by project
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.android.kotlin.multiplatform.library)
     kotlin("plugin.compose")
     id("maven-publish")
 }
-version = "0.0.1"
+version = LIBRARY_VERSION
 group = "com.ruviapps.coachmark"
 
 kotlin {
+    val xcf = XCFramework("CoachMark")
     listOf(
         iosX64(),
         iosArm64(),
@@ -19,6 +22,7 @@ kotlin {
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
             baseName = "CoachMark"
+            xcf.add(this)
             isStatic = true
         }
     }
