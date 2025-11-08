@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.vivekgupta.composecoachmark.coachmark.core.CoachMessageLayoutLogicTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-11-07T03:12:59.995Z" hostname="Viveks-MacBook-Air.local" time="0.004">
+  <properties/>
+  <testcase name="adaptive offset should clamp X position within canvas" classname="com.vivekgupta.composecoachmark.coachmark.core.CoachMessageLayoutLogicTest" time="0.003"/>
+  <testcase name="findOffset clamps to canvas boundaries" classname="com.vivekgupta.composecoachmark.coachmark.core.CoachMessageLayoutLogicTest" time="0.001"/>
+  <testcase name="findOffset with BottomCenter aligns below target center" classname="com.vivekgupta.composecoachmark.coachmark.core.CoachMessageLayoutLogicTest" time="0.0"/>
+  <testcase name="when more space above, adaptive offset should place content above target" classname="com.vivekgupta.composecoachmark.coachmark.core.CoachMessageLayoutLogicTest" time="0.0"/>
+  <testcase name="when enough space below, adaptive offset should place content below target" classname="com.vivekgupta.composecoachmark.coachmark.core.CoachMessageLayoutLogicTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

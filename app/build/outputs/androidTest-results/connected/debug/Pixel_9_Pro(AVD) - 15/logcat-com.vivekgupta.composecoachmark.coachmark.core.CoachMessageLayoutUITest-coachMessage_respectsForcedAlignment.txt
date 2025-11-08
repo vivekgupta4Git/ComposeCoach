@@ -1,0 +1,424 @@
+11-08 21:50:16.721  7388  7405 I TestRunner: started: coachMessage_respectsForcedAlignment(com.vivekgupta.composecoachmark.coachmark.core.CoachMessageLayoutUITest)
+11-08 21:50:16.731  7388  7405 D IdlingRegistry: Registering idling resources: [androidx.compose.ui.test.EspressoLink@7552e49]
+11-08 21:50:16.739  7388  7405 W Settings: Setting always_finish_activities has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+11-08 21:50:16.746   595   941 V GrammaticalInflectionUtils: AttributionSource: android.content.AttributionSource@8ff9512d does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-08 21:50:16.764   595   928 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10213 pid=0
+11-08 21:50:16.779   595   928 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10213 => denied (15124 us)
+11-08 21:50:16.779   595   928 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10213 pid=0
+11-08 21:50:16.779   595   928 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10213 => denied (116 us)
+11-08 21:50:16.780   595   928 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10213 pid=0
+11-08 21:50:16.780   595   928 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10213 => denied (1624 us)
+11-08 21:50:16.783   420   420 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+11-08 21:50:16.787  1175  1175 I TopTaskTracker: onTaskMovedToFront: (moved taskInfo to front) taskId=331, baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=com.vivekgupta.tutor/androidx.activity.ComponentActivity }
+11-08 21:50:16.802   595   639 I ActivityTaskManager: Displayed com.vivekgupta.tutor.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity for user 0: +728ms
+11-08 21:50:16.849  7388  7388 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@a3350bd in: PRE_ON_CREATE
+11-08 21:50:16.849  7388  7388 V ActivityScenario: Activity lifecycle changed event received but ignored because the reported transition was not ON_CREATE while the last known transition was PRE_ON_CREATE
+11-08 21:50:16.882  7388  7388 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@a3350bd in: CREATED
+11-08 21:50:16.882  7388  7388 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=androidx.activity.ComponentActivity@a3350bd
+11-08 21:50:16.883  7388  7388 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@a3350bd in: STARTED
+11-08 21:50:16.883  7388  7388 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=androidx.activity.ComponentActivity@a3350bd
+11-08 21:50:16.887  7388  7388 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@a3350bd in: RESUMED
+11-08 21:50:16.887  7388  7388 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=androidx.activity.ComponentActivity@a3350bd
+11-08 21:50:17.021   595   773 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-08 21:50:17.032   595   773 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-08 21:50:17.032   595   773 D InetDiagMessage: Destroyed live tcp sockets for uids={10204} in 23ms
+11-08 21:50:17.033   595   773 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET, states=14
+11-08 21:50:17.036   595   639 I ActivityTaskManager: Displayed com.vivekgupta.tutor/androidx.activity.ComponentActivity for user 0: +286ms
+11-08 21:50:17.037   595   773 D InetDiagMessage: Destroyed 0 sockets, proto=IPPROTO_TCP, family=AF_INET6, states=14
+11-08 21:50:17.037   595   773 D InetDiagMessage: Destroyed live tcp sockets for uids={20204} in 4ms
+11-08 21:50:17.062  7417  7417 I MetricsManager: MetricsManager.startCaching():406 Start caching metrics.
+11-08 21:50:17.067   401   442 I RanchuHwc: logCompositionFallbackIfChanged: layer 3 CompositionType fallback from 2 to 1
+11-08 21:50:17.067   401   442 I RanchuHwc: logCompositionFallbackIfChanged: layer 2 CompositionType fallback from 2 to 1
+11-08 21:50:17.067   401   442 I RanchuHwc: logCompositionFallbackIfChanged: layer 20 CompositionType fallback from 2 to 1
+11-08 21:50:17.067   401   442 I RanchuHwc: logCompositionFallbackIfChanged: layer 21 CompositionType fallback from 2 to 1
+11-08 21:50:17.067   401   442 I RanchuHwc: logCompositionFallbackIfChanged: layer 29 CompositionType fallback from 3 to 1
+11-08 21:50:17.095   404   404 I android.hardware.power-service.example: Power isModeSupported: 6
+11-08 21:50:17.177   595   740 I ImeTracker: com.vivekgupta.tutor:f19d87ce: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false
+11-08 21:50:17.178   447   510 W IPCThreadState: Sending oneway calls to frozen process.
+11-08 21:50:17.179   595   740 I ImeTracker: com.vivekgupta.tutor:f19d87ce: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-08 21:50:17.179   869  1019 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@4e4a3cd
+11-08 21:50:17.181   595  1711 W InputManager-JNI: Input channel object 'b84089e Splash Screen com.vivekgupta.tutor.test (client)' was disposed without first being removed with the input manager!
+11-08 21:50:17.231  7417  7417 I CrossProfileSharedPreferences: CrossProfileSharedPreferences.initializeCrossProfile():125 work profile is unavailable
+11-08 21:50:17.236  7417  7417 E LibraryModuleRegistry: LibraryModuleRegistry.register():48 Module mobilebert_classifier_android_jni has already been registered to integrated_shared_object
+11-08 21:50:17.253  7417  7417 D nativeloader: Load /data/app/~~i-k1dUxd4E2QXYQqE35bzg==/com.google.android.inputmethod.latin-K6Vj3GOy8s9FkgWanBlX3w==/base.apk!/lib/arm64-v8a/libjni_signalinitializer.so using class loader ns clns-7 (caller=/data/app/~~i-k1dUxd4E2QXYQqE35bzg==/com.google.android.inputmethod.latin-K6Vj3GOy8s9FkgWanBlX3w==/base.apk!classes2.dex): ok
+11-08 21:50:17.253  7417  7417 I NativeLibHelper: NativeLibHelper.loadLibrary():210 Loaded native library:jni_signalinitializer (result=true)
+11-08 21:50:17.280  7435  7445 I upta.tutor.test: Compiler allocated 5127KB to compile void android.view.ViewRootImpl.performTraversals()
+11-08 21:50:17.309  7417  7417 I OemConfigs: OemConfigs.<init>():150 OEM configs apply status: 1
+11-08 21:50:17.335  7417  7417 I ModuleManager: ModuleManager.<init>():164 ModuleManager is created on process com.google.android.inputmethod.latin
+11-08 21:50:17.337   595  1706 D FileUtils: Rounded bytes from 3120193536 to 4000000000
+11-08 21:50:17.357  7417  7417 I DeviceModeNotification: DeviceModeNotification.getCurrentDeviceMode():75 device mode is unknown before initializing the notification.
+11-08 21:50:17.357  7417  7417 I DeviceModeNotification: DeviceModeNotification.getCurrentDeviceMode():75 device mode is unknown before initializing the notification.
+11-08 21:50:17.367  7417  7417 I ModuleManager: ModuleManager.initModules():263 GenAiDelegate is forbidden to run on current process
+11-08 21:50:17.371  7417  7417 I CustomStickerGenerationExtensionProvider: CustomStickerGenerationExtensionProvider.getModuleDef():20
+11-08 21:50:17.371  7417  7417 I CustomStickerKeyboardProviderModuleProvider: CustomStickerKeyboardProviderModuleProvider.getModuleDef():35
+11-08 21:50:17.375  7417  7417 I ModuleManager: ModuleManager.initModules():287 hij is forbidden by device ram size 2975 MB
+11-08 21:50:17.378  7417  7417 I DeviceModeNotification: DeviceModeNotification.getCurrentDeviceMode():75 device mode is unknown before initializing the notification.
+11-08 21:50:17.378  7417  7417 I DeviceModeNotification: DeviceModeNotification.getCurrentDeviceMode():75 device mode is unknown before initializing the notification.
+11-08 21:50:17.378  7417  7417 I DeviceModeNotification: DeviceModeNotification.getCurrentDeviceMode():75 device mode is unknown before initializing the notification.
+11-08 21:50:17.381  7417  7417 I ModuleManager: ModuleManager.initModules():263 lhn is forbidden to run on current process
+11-08 21:50:17.385  7417  7417 W ModuleManager: ModuleManager.initModules():273 nmb is forbidden by min_api_level (36) or max_api_level (2147483647): 35
+11-08 21:50:17.386  7417  7417 W ModuleManager: ModuleManager.initModules():273 oba is forbidden by min_api_level (28) or max_api_level (28): 35
+11-08 21:50:17.387  7417  7417 I ModuleManager: ModuleManager.initModules():263 ohg is forbidden to run on current process
+11-08 21:50:17.391  7417  7417 I DeviceModeNotification: DeviceModeNotification.getCurrentDeviceMode():75 device mode is unknown before initializing the notification.
+11-08 21:50:17.393  7417  7417 I Module  : FlagPersistModuleProvider$Module.onCreate():108
+11-08 21:50:17.394  7417  7474 I Module  : FlagHermeticOverrideModuleProvider$Module.onCreate():67
+11-08 21:50:17.406   869  1019 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@7ff442e
+11-08 21:50:17.408   595  2233 W InputManager-JNI: Input channel object 'ae2d7b3 Splash Screen com.vivekgupta.tutor (client)' was disposed without first being removed with the input manager!
+11-08 21:50:17.416  7417  7477 I EmojiSuperpacksManager: EmojiSuperpacksManager.triggerSync():411 triggerSync(1) : isBundled=false, isUserInitiated=false
+11-08 21:50:17.416  7417  7477 I EmojiSuperpacksManager: EmojiSuperpacksManager.sync():500 Registering manifest for emoji
+11-08 21:50:17.416  7417  7476 I EmojiSuperpacksManager: EmojiSuperpacksManager.triggerSync():411 triggerSync(2) : isBundled=false, isUserInitiated=false
+11-08 21:50:17.416  7417  7476 I EmojiSuperpacksManager: EmojiSuperpacksManager.sync():496 Reusing register manifest for emoji
+11-08 21:50:17.421  7417  7417 I PhenotypeModule: PhenotypeModule.onCreate():183 onCreate()
+11-08 21:50:17.425  7417  7417 I PhenotypeModule: PhenotypeModule.maybeFetchAndUpdate():277 maybeFetchAndUpdate: start new task to fetch
+11-08 21:50:17.425  7417  7479 I DeviceModeNotification: DeviceModeNotification.getCurrentDeviceMode():75 device mode is unknown before initializing the notification.
+11-08 21:50:17.425  7417  7479 I PhenotypeModule: PhenotypeModule.maybeSetRuntimeProperties():438 Skip register runtime properties as device mode is unknown.
+11-08 21:50:17.424  2707  2711 W ding:background: Suspending all threads took: 27.932ms
+11-08 21:50:17.434  2060  2064 W android.vending: Suspending all threads took: 25.748ms
+11-08 21:50:17.439  7417  7417 I DeviceStatusMonitor: DeviceStatusMonitor.updateCountryInfo():154 updateCountryInfo(), notifyAnyway = true
+11-08 21:50:17.492  7417  7417 I DeviceStatusMonitor: DeviceStatusMonitor.notifyIfNetworkChanged():196 notifyIfNetworkChanged: newState = NON_METERED, airplaneModeOn = false, notifyAnyway = true
+11-08 21:50:17.497  7417  7417 I DeviceLockTags: DeviceLockTags.notifyDeviceLockStatusChanged():108 notifyDeviceLockStatusChanged(): deviceLocked=false, blockPersonalData=false
+11-08 21:50:17.500  7417  7417 I LatinApp: LatinApp.initialize():202 initialize()
+11-08 21:50:17.507  7417  7417 I DeviceModeNotification: DeviceModeNotification.getCurrentDeviceMode():75 device mode is unknown before initializing the notification.
+11-08 21:50:17.513  7417  7485 I SuperpacksManagerImpl: SuperpacksManagerImpl.initializeInternal():472 initializeInternal()
+11-08 21:50:17.517  7417  7417 I ShortcutKeyAvailableChecker: ShortcutKeyAvailableChecker.updateShortcutKeysBlocklist():38 ShortcutKeysBlocklist:
+11-08 21:50:17.526  7417  7474 I DeviceModeNotification: DeviceModeNotification.getCurrentDeviceMode():75 device mode is unknown before initializing the notification.
+11-08 21:50:17.536  7417  7417 I SystemHapticSettings: SystemHapticSettings.updateSystemVibrationState():113 update vibration state: true
+11-08 21:50:17.536  7417  7417 I SystemHapticSettings: SystemHapticSettings.initialize():65 vibration enabled: true
+11-08 21:50:17.536  7417  7474 I DeviceModeNotification: DeviceModeNotification.getCurrentDeviceMode():75 device mode is unknown before initializing the notification.
+11-08 21:50:17.536  7417  7474 I DeviceModeNotification: DeviceModeNotification.getCurrentDeviceMode():75 device mode is unknown before initializing the notification.
+11-08 21:50:17.536  7417  7474 I DeviceModeNotification: DeviceModeNotification.getCurrentDeviceMode():75 device mode is unknown before initializing the notification.
+11-08 21:50:17.536  7417  7474 I DeviceModeNotification: DeviceModeNotification.getCurrentDeviceMode():75 device mode is unknown before initializing the notification.
+11-08 21:50:17.544  7417  7417 I DeviceModeModule: DeviceModeModule.calculateAndNotify():197 Window metrics is not available, fallback to app context.
+11-08 21:50:17.546  7417  7481 D CompatChangeReporter: Compat change id reported: 279646685; UID 10156; state: ENABLED
+11-08 21:50:17.549  7417  7473 I BrellaConfigModule: BrellaConfigModule.onCreate():33 set BrellaInit fields for in-app training.
+11-08 21:50:17.561  7417  7417 I DeviceModeModule: DeviceModeModule.calculateAndNotify():224 Device mode 'phone' from display metrics 'DisplayMetrics{density=0.0, width=1280, height=2856, scaledDensity=0.0, xdpi=480.0, ydpi=480.0}' or smallestScreenWidthDp: 427
+11-08 21:50:17.562  7417  7417 I InputMethodEntryManager: InputMethodEntryManager.resetLanguages():2756 resetLanguages(): languages=null, conditionName=device
+11-08 21:50:17.565  7417  7417 W NotificationCenter: NotificationCenter$NotificationQueue.notifyPendingNotificationsOnExecutor():877 Heavy notify work detected on UI thread: [nvw->lhl] takes 21ms
+11-08 21:50:17.581  7435  7435 D VRI[InstrumentationActivityInvoker$EmptyActivity]: visibilityChanged oldVisibility=true newVisibility=false
+11-08 21:50:17.585  7417  7472 D nativeloader: Load /data/app/~~i-k1dUxd4E2QXYQqE35bzg==/com.google.android.inputmethod.latin-K6Vj3GOy8s9FkgWanBlX3w==/base.apk!/lib/arm64-v8a/libintegrated_shared_object.so using class loader ns clns-7 (caller=/data/app/~~i-k1dUxd4E2QXYQqE35bzg==/com.google.android.inputmethod.latin-K6Vj3GOy8s9FkgWanBlX3w==/base.apk!classes2.dex): ok
+11-08 21:50:17.585  7417  7472 I NativeLibHelper: NativeLibHelper.loadLibrary():210 Loaded native library:integrated_shared_object (result=true)
+11-08 21:50:17.589  7417  7472 I native  : I0000 00:00:1762618817.588396    7472 scoped-profiler.cc:90] signal_log: Initialized signal 41
+11-08 21:50:17.589  7417  7472 I native  : I0000 00:00:1762618817.589451    7472 scoped-profiler.cc:90] signal_log: Initialized signal 42
+11-08 21:50:17.589  7417  7472 I native  : I0000 00:00:1762618817.589472    7472 scoped-profiler.cc:90] signal_log: Initialized signal 43
+11-08 21:50:17.589  7417  7472 I native  : I0000 00:00:1762618817.589480    7472 scoped-profiler.cc:90] signal_log: Initialized signal 44
+11-08 21:50:17.589  7417  7472 I native  : I0000 00:00:1762618817.589491    7472 scoped-profiler.cc:90] signal_log: Initialized signal 45
+11-08 21:50:17.589  7417  7472 I native  : I0000 00:00:1762618817.589498    7472 scoped-profiler.cc:90] signal_log: Initialized signal 46
+11-08 21:50:17.589  7417  7472 I native  : I0000 00:00:1762618817.589509    7472 scoped-profiler.cc:90] signal_log: Initialized signal 47
+11-08 21:50:17.589  7417  7472 I native  : I0000 00:00:1762618817.589524    7472 scoped-profiler.cc:90] signal_log: Initialized signal 48
+11-08 21:50:17.592  7417  7417 W NotificationCenter: NotificationCenter$NotificationQueue.notifyPendingNotificationsOnExecutor():877 Heavy notify work detected on UI thread: [koz->nhv, koz->nhv, koz->nhv, nvw->dza, nft->nhv, nft->nhv] takes 82ms
+11-08 21:50:17.593  7417  7417 I PreferenceMigrator: PreferenceMigrator.doMigration():99 doMigration()
+11-08 21:50:17.607  7435  7435 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@5f20d87
+11-08 21:50:17.613   595   941 W InputManager-JNI: Input channel object '7020027 com.vivekgupta.tutor.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity (client)' was disposed without first being removed with the input manager!
+11-08 21:50:17.614  7417  7417 I ThemePreferenceMigrationUtil: ThemePreferenceMigrationUtil.doMigration():19 doMigration.
+11-08 21:50:17.622  7417  7417 I FirebaseApp: Device unlocked: initializing all Firebase APIs for app [DEFAULT]
+11-08 21:50:17.631   869  1073 D EGL_emulation: app_time_stats: avg=100.04ms min=1.28ms max=859.39ms count=9
+11-08 21:50:17.640  1175  1175 I TopTaskTracker: onTaskRemoved: taskId=330
+11-08 21:50:17.640  1175  1175 I TopTaskTracker: onTaskRemoved: taskId=330
+11-08 21:50:17.649  7417  7485 I SuperpacksManagerImpl: SuperpacksManagerImpl.initializeInternal():529 Switched background task scheduler: false
+11-08 21:50:17.651  7417  7475 E FlagManager: FlagManager.setFlagValue():661 Unknown type for flag: server_token{type=String, finalValue=CAMSXw1a15vyAAPvD8cZ4w0FDapOoCLJEwP_BQe4Cg-RDw-9BgCGAccGp_fdAwS0DAQBBLsXBCkEAQTfDwT8AwSiBgS9BQSOAQVtgQYE4QSvBAQBBAEE6AEAjQYChgMP-wUO, DEFAULT=, PHENOTYPE=CAMSXw1a15vyAAPvD8cZ4w0FDapOoCLJEwP_BQe4Cg-RDw-9BgCGAccGp_fdAwS0DAQBBLsXBCkEAQTfDwT8AwSiBgS9BQSOAQVtgQYE4QSvBAQBBAEE6AEAjQYChgMP-wUO}
+11-08 21:50:17.652  7417  7417 I AccessibilityUtils: AccessibilityUtils.registerContentObserver():507 Register content observer to setting uri content://settings/system/font_scale
+11-08 21:50:17.654  7417  7486 I LauncherIconVisibilityModule: LauncherIconVisibilityModule.updateLauncherIconVisibility():76 updateLauncherIconVisibility() : Visible = false
+11-08 21:50:17.654  7417  7417 I AccessibilityUtils: AccessibilityUtils.registerContentObserver():507 Register content observer to setting uri content://settings/system/high_text_contrast_enabled
+11-08 21:50:17.656  7417  7475 I PhenotypeModule: PhenotypeModule.handlePhenotypeConfigurationUpdatesInternal():569 Latency of updating configurations from phenotype (experiment v4): 5
+11-08 21:50:17.656  7417  7475 I PhenotypeModule: PhenotypeModule.handlePhenotypeConfigurationUpdates():513 Latency of updating configurations from phenotype (ExperimentV4): 5
+11-08 21:50:17.660  7417  7417 W NotificationCenter: NotificationCenter$NotificationQueue.notifyPendingNotificationsOnExecutor():877 Heavy notify work detected on UI thread: [ogg->nhv, kpb->nhv, kpb->nhv, kpb->nhv, kpb->nhv, kpb->nhv, kpb->nhv, mft->nhv, mfw->nhv, mfw->nhv, osg->nhv, ogi->nhv, ogi->nhv, nwq->nhv] takes 37ms
+11-08 21:50:17.660  7417  7417 W NotificationCenter: NotificationCenter$NotificationQueue.notifyPendingNotificationsOnExecutor():877 Heavy notify work detected on UI thread: [oqb->nhv] takes 68ms
+11-08 21:50:17.662  7417  7474 I SpeechPackManager: SpeechPackManager.init():179 init()
+11-08 21:50:17.663  7417  7474 I SpeechPackManager: SpeechPackManager.registerManifest():511 registerManifest() : https://dl.google.com/android/voice/gboard/terse/superpacks-manifest-20210519.json
+11-08 21:50:17.668  7417  7417 I ModuleManager: ModuleManager$ModuleInitListener.maybeUnloadModuleOnUnavailable():1386 module olo is unavailable
+11-08 21:50:17.669  7417  7417 I ModuleManager: ModuleManager$ModuleInitListener.maybeUnloadModuleOnUnavailable():1386 module ect is unavailable
+11-08 21:50:17.669  7417  7473 I FileRestoreModule: FileRestoreModule.maybePerformRestore():46 There is no restore app version, skip restore
+11-08 21:50:17.670  7417  7473 I UFCGuarder: UFCGuarder.onCreate():58 onCreate
+11-08 21:50:17.670  7417  7476 I HttpFlagsLoader: HTTP flags log line (API): Using live production flag values from Google
+11-08 21:50:17.671  7417  7417 I InputMethodEntryManager: InputMethodEntryManager.startLoadingInputMethodEntrySettings():740 Start loading input method entry settings: [LanguageTagVariantTuple{languageTag=en-US, variant=qwerty}, LanguageTagVariantTuple{languageTag=zz, variant=qwerty}]
+11-08 21:50:17.672  7417  7473 I FeatureSplitObservationModule: FeatureSplitObservationModule.notifyComponentIfAlreadyInstalled():144 Module brella_feature_split has already been installed (Installed: [brella_feature_split, tenoranimation_feature_split]). Notifying.
+11-08 21:50:17.672  7417  7473 I FeatureSplitObservationModule: FeatureSplitObservationModule.notifyComponentIfAlreadyInstalled():144 Module tenoranimation_feature_split has already been installed (Installed: [brella_feature_split, tenoranimation_feature_split]). Notifying.
+11-08 21:50:17.675  7417  7475 I LatinApp: LatinApp.getWorkManagerConfiguration():176 Customized configuration for Hilt WorkManager
+11-08 21:50:17.675  7417  7417 I InputMethodEntryManager: InputMethodEntryManager.updateInputMethodEntrySettingsLoadingTask():872 update loading task with resetImplicitlyEnabledEntries is false
+11-08 21:50:17.675  7417  7417 I PhenotypeModule: PhenotypeModule$3.onDeviceModeChanged():215 onDeviceModeChanged(): phone
+11-08 21:50:17.675  7417  7417 I DeviceModeModule: DeviceModeModule.calculateAndNotify():197 Window metrics is not available, fallback to app context.
+11-08 21:50:17.676  7417  7417 I DeviceModeModule: DeviceModeModule.calculateAndNotify():224 Device mode 'phone' from display metrics 'DisplayMetrics{density=0.0, width=1280, height=2856, scaledDensity=0.0, xdpi=480.0, ydpi=480.0}' or smallestScreenWidthDp: 427
+11-08 21:50:17.685  7417  7478 I SpeechPackManager: SpeechPackManager.registerManifest():518 registerManifest() : Reusing hash 1327534105
+11-08 21:50:17.685  7417  7485 I SP      : Registering emoji.2025081522, url: https://www.gstatic.com/android/keyboard/modelpack/emoji/20250815223343/superpacks_manifest.zip, constraints: m:*:*:*, flags: *, requested: 2025081522, current: 2025081522
+11-08 21:50:17.692  7417  7488 D nativeloader: Load /data/app/~~i-k1dUxd4E2QXYQqE35bzg==/com.google.android.inputmethod.latin-K6Vj3GOy8s9FkgWanBlX3w==/base.apk!/lib/arm64-v8a/libnative_crash_handler_jni.so using class loader ns clns-7 (caller=/data/app/~~i-k1dUxd4E2QXYQqE35bzg==/com.google.android.inputmethod.latin-K6Vj3GOy8s9FkgWanBlX3w==/base.apk!classes2.dex): ok
+11-08 21:50:17.703   595   928 V GrammaticalInflectionUtils: AttributionSource: android.content.AttributionSource@840764d4 does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-08 21:50:17.708  7417  7485 E EmojiSlicingStrategy: EmojiSlicingStrategy.getSlices():88 getSlices() : Received null or empty userEnabledLocales.
+11-08 21:50:17.716  7388  7388 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@a3350bd in: PAUSED
+11-08 21:50:17.716   420   420 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+11-08 21:50:17.716  7388  7388 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=androidx.activity.ComponentActivity@a3350bd
+11-08 21:50:17.717  7417  7485 I SP      : Syncing emoji (2025081522) with slices: [], metadata: false
+11-08 21:50:17.718  7417  7485 E EmojiSlicingStrategy: EmojiSlicingStrategy.getSlices():88 getSlices() : Received null or empty userEnabledLocales.
+11-08 21:50:17.718  7417  7485 I SP      : Syncing emoji (2025081522) with slices: [], metadata: false
+11-08 21:50:17.725  7417  7485 I SP      : GC for 'emoji' (10) with ttl of 0 ms took 0 ms (0/0/0)
+11-08 21:50:17.725  7417  7485 I AbstractSyncResultCallback: AbstractSyncResultCallback.onFailure():38 onFailure(): emoji.sync cancelled; expected if new request supersedes pending one.
+11-08 21:50:17.725  7417  7485 I SP      : Sync for emoji succeeded in 17 ms: {removed: [62a32c6ad94db1ab86cebbe06b49eb2a], metadata: false
+11-08 21:50:17.728  1175  1175 I TopTaskTracker: onTaskMovedToFront: (moved taskInfo to front) taskId=332, baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=com.vivekgupta.tutor.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity }
+11-08 21:50:17.731  7417  7417 I GoogleInputMethodService: GoogleInputMethodService.onCreate():612
+11-08 21:50:17.732   447   510 W IPCThreadState: Sending oneway calls to frozen process.
+11-08 21:50:17.736  7417  7477 W EmojiSuperpacksManager: EmojiSuperpacksManager.triggerSync():453 triggerSync(1) : canceled
+11-08 21:50:17.736  7417  7477 W EmojiSuperpacksManager: java.util.concurrent.CancellationException: Task was cancelled.
+11-08 21:50:17.736  7417  7477 W EmojiSuperpacksManager: 	at tlm.i(PG:33)
+11-08 21:50:17.736  7417  7477 W EmojiSuperpacksManager: 	at tlu.s(PG:23)
+11-08 21:50:17.736  7417  7477 W EmojiSuperpacksManager: 	at tlm.get(PG:1)
+11-08 21:50:17.736  7417  7477 W EmojiSuperpacksManager: 	at a.s(PG:2)
+11-08 21:50:17.736  7417  7477 W EmojiSuperpacksManager: 	at syk.C(PG:10)
+11-08 21:50:17.736  7417  7477 W EmojiSuperpacksManager: 	at tnl.run(PG:87)
+11-08 21:50:17.736  7417  7477 W EmojiSuperpacksManager: 	at kya.run(PG:49)
+11-08 21:50:17.736  7417  7477 W EmojiSuperpacksManager: 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1156)
+11-08 21:50:17.736  7417  7477 W EmojiSuperpacksManager: 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:651)
+11-08 21:50:17.736  7417  7477 W EmojiSuperpacksManager: 	at java.lang.Thread.run(Thread.java:1119)
+11-08 21:50:17.736  7417  7477 W EmojiSuperpacksManager: 	at kxp.run(PG:8)
+11-08 21:50:17.736  7417  7491 I SpeechPackManager: SpeechPackManager$4.onSuccess():497 updatePackSetCacheAsync() : Updated the PackSet cache
+11-08 21:50:17.743  7417  7473 I PhenotypeModule: PhenotypeModule.handleResult():379 fetchAndUpdate() : Success, hasFlags=true, fetchStatus=nlr[reason=ON_CREATE, timestamp=1762618817425, isFullFetch=true, success=true, fetchedFlagsCount=1398, deletedFlagsCount=0, isEmpty=false, isDelta=false, totalTime=318, failureMessage=null, registeredFormFactor=null, fetchedFormFactor=phone, serverToken=CAMSXw1a15vyAAPvD8cZ4w0FDapOoCLJEwP_BQe4Cg-RDw-9BgCGAccGp_fdAwS0DAQBBLsXBCkEAQTfDwT8AwSiBgS9BQSOAQVtgQYE4QSvBAQBBAEE6AEAjQYChgMP-wUO]
+11-08 21:50:17.744  7417  7473 I PhenotypeModule: PhenotypeModule$2.onSuccess():194 Fetch at onCreate(): true
+11-08 21:50:17.747  7417  7476 I DynamiteModule: Considering local module com.google.android.gms.cronet_dynamite:0 and remote module com.google.android.gms.cronet_dynamite:4011
+11-08 21:50:17.747  7417  7476 I DynamiteModule: Selected remote version of com.google.android.gms.cronet_dynamite, version >= 4011
+11-08 21:50:17.751  7417  7486 I KeyboardModeUtils: KeyboardModeUtils.getKeyboardBottomOffset():435 inch: 0.000000 ydpi: 480.000000 adjustKeyboardBottomByDisplaySize: false currentDensityDpi: 480 defaultDensityDpi: 480 keyboardBottomToScreenPx: 0 keyboardBottomToNavBarPx: 0 navBarHeight: 0
+11-08 21:50:17.764  7417  7485 I SP      : GC for 'emoji' (10) with ttl of 0 ms took 0 ms (0/0/0)
+11-08 21:50:17.786  7417  7417 E putmethod.latin: Invalid resource ID 0x00000000.
+11-08 21:50:17.797  7435  7456 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+11-08 21:50:17.798  7435  7456 I EGL_emulation: Opening libGLESv2_emulation.so
+11-08 21:50:17.810  7417  7417 I GoogleInputMethodService: GoogleInputMethodService.onCreate():636 Maybe update OEM display config because of service creation
+11-08 21:50:17.810  7417  7417 I DeviceModeModule: DeviceModeModule.calculateAndNotify():224 Device mode 'phone' from display metrics 'DisplayMetrics{density=0.0, width=1280, height=2856, scaledDensity=0.0, xdpi=480.0, ydpi=480.0}' or smallestScreenWidthDp: 427
+11-08 21:50:17.810  7417  7417 I WindowMetricsNotification: WindowMetricsNotification.notify():159 pup[bounds=Rect(0, 156 - 1280, 2856), insets=Rect(0, 0 - 0, 0), densityDpi=480, smallestScreenWidthDp=427, displayWidth=1280, displayHeight=2856, xdpi=480.0, ydpi=480.0, isTrustable=true, displayId=0]; DisplayMetrics{density=3.0, width=1280, height=2856, scaledDensity=3.0, xdpi=480.0, ydpi=480.0}
+11-08 21:50:17.810  7417  7417 I WindowMetricsHelper: WindowMetricsHelper.predictAndNotify():145 Window metrics predicted.
+11-08 21:50:17.818  7417  7498 D CompatChangeReporter: Compat change id reported: 311402873; UID 10156; state: ENABLED
+11-08 21:50:17.818  7417  7498 D CompatChangeReporter: Compat change id reported: 323349338; UID 10156; state: ENABLED
+11-08 21:50:17.823  7417  7417 I InputMethodEntryManager: InputMethodEntryManager.notifyCurrentInputMethodEntryOnContextChanged():545 notifyCurrentInputMethodEntryOnContextChanged()
+11-08 21:50:17.823  7417  7417 I InputMethodEntryManager: InputMethodEntryManager.notifyCurrentInputMethodEntryOnContextChanged():550 The context is changed before initialized
+11-08 21:50:17.823  7417  7417 I KeyboardContextProvider: KeyboardContextProvider.setBaseContextAndInvalidKeyboardContextCache():88 setBaseContextAndInvalidKeyboardContextCache(): com.android.inputmethod.latin.LatinIME@1f710d4
+11-08 21:50:17.823  7417  7476 W System  : ClassLoader referenced unknown path:
+11-08 21:50:17.824  7417  7476 D nativeloader: Configuring clns-8 for other apk . target_sdk_version=36, uses_libraries=, library_path=/data/app/~~orUAuFkeUy7O6j92tFNeqA==/com.google.android.gms-7WjM4rxaniaCBcjTKZbZOg==/lib/arm64:/data/app/~~orUAuFkeUy7O6j92tFNeqA==/com.google.android.gms-7WjM4rxaniaCBcjTKZbZOg==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+11-08 21:50:17.827  7417  7417 I ContentCaptureHelper: Setting logging level to OFF
+11-08 21:50:17.828  7435  7456 W HWUI    : Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+11-08 21:50:17.829  7435  7456 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+11-08 21:50:17.832  7417  7417 E GoogleInputMethodService: GoogleInputMethodService.getAppEditorInfo():1875 App EditorInfo should never be null.
+11-08 21:50:17.833   401   442 I RanchuHwc: logCompositionFallbackIfChanged: layer 32 CompositionType fallback from 3 to 1
+11-08 21:50:17.836  7417  7479 I ShortcutsDataManager: ShortcutsDataManager.onContentChanged():72 onContentChanged()
+11-08 21:50:17.838  7417  7479 I ContactsDataManager: ContactsDataManager.onContentChanged():153 onContentChanged()
+11-08 21:50:17.857  7417  7479 I EmailDataManager: EmailDataManager.onContentChanged():118 onContentChanged()
+11-08 21:50:17.871  7417  7490 I DownloadManager: DownloadManager.downloadInternal():419 Download for nebulae-lc-artifacts scheduled with params mwm[allowMetered=false, requireCharging=false, foreground=false, immediately=false, priority=0]
+11-08 21:50:17.873  1175  1175 I TopTaskTracker: onTaskMovedToFront: (moved taskInfo to front) taskId=328, baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.HOME] flg=0x10000100 cmp=com.google.android.apps.nexuslauncher/.NexusLauncherActivity }
+11-08 21:50:17.874  7417  7417 I KeyboardThemeProvider: KeyboardThemeProvider.applyKeyboardTheme():27 Apply keyboard theme: theme,!gsf,!pgsans,!pgsf,!use_system_font,BORDER,FLAVOR_DPI=XXHDPI,GOOGLE_ICONS,IS_LIGHT,KEYBOARD_WIDTH_CATEGORY=NORMAL,KEY_BORDER_SHAPE=1,LIGHT_THEME=true,PHYSICAL_DIAGONAL=6.225089,POPUP,SCREEN_SHORTEST_WIDTH=427,SCREEN_SHORTEST_WIDTH_NO_SCALE=427,SW400DP,XXHDPI,bottom4dp,enable_google_fonts_icons=true,enable_popup_on_keypress=true,keyboard_redesign_google_sans=true,non_linear_scale,noshadow,overlay_builtin_dynamic_color_light_base.binarypb:gm3-light-fffaf8ff-ff2a4174-24c2614f42d28deefdb4edcedd8f31ed,silkpopup
+11-08 21:50:17.874  7417  7490 E MDDTaskScheduler: MDDTaskScheduler.scheduleDownload():191 work Data {charging : false, mdd_task_tag : download, network : false} scheduled
+11-08 21:50:17.876  7417  7476 D nativeloader: Configuring clns-9 for other apk . target_sdk_version=35, uses_libraries=ALL, library_path=/data/app/~~orUAuFkeUy7O6j92tFNeqA==/com.google.android.gms-7WjM4rxaniaCBcjTKZbZOg==/split_CronetDynamite_installtime.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand
+11-08 21:50:17.878  7417  7417 I HardKeyTracker: HardKeyTracker.registerKeySequence():170 Register key sequence nul{labelResId=2132020475, callback=cnx@202e2ea, lastModifier=2, keyCodes=[47], actions=[0]}
+11-08 21:50:17.879   595   639 I ActivityTaskManager: Displayed com.vivekgupta.tutor.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity for user 0: +166ms
+11-08 21:50:17.880  7417  7417 I HardKeyTracker: HardKeyTracker.registerKeySequence():170 Register key sequence nul{labelResId=0, callback=lkj@f9fec78, lastModifier=0, keyCodes=[204], actions=[0]}
+11-08 21:50:17.884  7417  7417 I UniversalDictationExtension: UniversalDictationExtension.onCreateExtension():66 onCreate [UD]
+11-08 21:50:17.890  7417  7417 I PersonalizeTopBarHandler: PersonalizeTopBarHandler.loadPersonalizedAccessPoints():110 Load remained access points null
+11-08 21:50:17.896  7417  7474 I NewS3RecognizerModule: NewS3RecognizerModule.onCreate():21 onCreate [news3]
+11-08 21:50:17.896  7417  7474 I JapaneseMozcExtension: JapaneseMozcExtension.onCreate():44
+11-08 21:50:17.897  7417  7498 D CompatChangeReporter: Compat change id reported: 312399441; UID 10156; state: ENABLED
+11-08 21:50:17.897  7417  7486 I InputActionMetricsProcessor: InputActionMetricsProcessor.onAttached():104 Attached to metrics manager.
+11-08 21:50:17.897  7417  7475 I OnDevicePackDownloadModule: OnDevicePackDownloadModule.onCreate():67 onCreate()
+11-08 21:50:17.897  7417  7485 I SP      : Registering emoticon_content_description.2022081613, url: https://www.gstatic.com/android/keyboard/emoticon_content_desc/202208161305/superpacks_manifest.json, constraints: W:*:*:*, flags: bg, requested: 2022081613, current: 2022081613
+11-08 21:50:17.901  7417  7417 I MetricsProcessorProviderManager: MetricsProcessorProviderManager.onClearcutAdapterReady():112 onClearcutAdapterReady
+11-08 21:50:17.910  7417  7482 I NetworkInfoNotification: NetworkInfoNotification$Listener.onReceive():107 onNetworkAvailable: networkState = NON_METERED, isAirplaneModeOn = false
+11-08 21:50:17.914  7417  7417 I MetricsProcessorProviderManager: MetricsProcessorProviderManager.onClearcutAdapterReady():115 Stop caching metrics after clearcut and available modules ready.
+11-08 21:50:17.915  7417  7417 I MetricsManager: MetricsManager.maybeStopCaching():421 Stop caching metrics.
+11-08 21:50:17.915  1175  1175 D NexusLauncherModelDelegate: notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget=null, mSmartspaceActionId='null', mEventType=6}
+11-08 21:50:17.917  7417  7417 I BaseClearcutAdapter: BaseClearcutAdapter.queryAndUpdateUserCheckboxOptIn():273 Checkbox = false
+11-08 21:50:17.917  7417  7417 I InputMethodEntryManager: InputMethodEntryManager$4.onSuccess():891 Success load entries: [LanguageTagVariantTuple{languageTag=en-US, variant=qwerty}, LanguageTagVariantTuple{languageTag=zz, variant=qwerty}], resetImplicitlyEnabledEntries=false, initialized=false
+11-08 21:50:17.917  7417  7417 I InputMethodEntryManager: InputMethodEntryManager.changeEnabledInputMethodEntries():1711 Change enabled input method entries, useSystemLanguage=true, old=, new=en-US:qwerty
+11-08 21:50:17.917  7417  7417 I InputMethodEntryManager: InputMethodEntryManager.changeCurrentInputMethodEntry():2967 Set current input method entry: source=UNSPECIFIED, entryChanged=true, mff{languageTag=en-US, variant=qwerty, hasLocalizedResources=true, conditionCacheKey=_android_software_xr_api_spatial=false_app_first_start_timestamp=1758647702143_cache_additional_ime_defs_for_condition_change=false_cache_ime_defs_for_condition_change=false_deprecate_long_press_space_for_ime_picker=false_device=phone_device_size=default_enable_correction_settings_updates=true_enable_flick_symbols=true_enable_more_candidates_view_for_multilingual=false_enable_number_row=false_enable_number_row_in_password=true_enable_pk_simulator=false_enable_pk_simulator_setting=false_enable_preemptive_decode=true_enable_scrub_move=true_enable_secondary_digits=true_enable_secondary_symbols=false_expressions=normal_four_or_more_letter_rows=false_keyboard_mode=normal_language=en-US_layout_9key_split=false_orientation=portrait_physical_keyboard=qwerty_pk_simulator_vk_ready=false_pref_enable_flick_symbols=false_rtl_layout=false_show_comma_key=true_show_period_key=true_show_secondary_digits=true_show_suggestion_strip=true_show_suggestions=true_split_with_duplicate_keys=true_true=true_variant=qwerty_writing_helper_enable_by_word_revert=false, imeDef.stringId=ime_english_united_states, imeDef.className=com.google.android.apps.inputmethod.libs.latin5.LatinIme, imeDef.languageTag=en-US}
+11-08 21:50:17.919  7417  7417 I InputMethodEntryManager: InputMethodEntryManager.loadAdditionalImeDefsForCurrentEntry():2990 loadAdditionalImeDefsForCurrentEntry(): mff{languageTag=en-US, variant=qwerty, hasLocalizedResources=true, conditionCacheKey=_android_software_xr_api_spatial=false_app_first_start_timestamp=1758647702143_cache_additional_ime_defs_for_condition_change=false_cache_ime_defs_for_condition_change=false_deprecate_long_press_space_for_ime_picker=false_device=phone_device_size=default_enable_correction_settings_updates=true_enable_flick_symbols=true_enable_more_candidates_view_for_multilingual=false_enable_number_row=false_enable_number_row_in_password=true_enable_pk_simulator=false_enable_pk_simulator_setting=false_enable_preemptive_decode=true_enable_scrub_move=true_enable_secondary_digits=true_enable_secondary_symbols=false_expressions=normal_four_or_more_letter_rows=false_keyboard_mode=normal_language=en-US_layout_9key_split=false_orientation=portrait_physical_keyboard=qwerty_pk_simulator_vk_ready=false_pref_enable_flick_symbols=false_rtl_layout=false_show_comma_key=true_show_period_key=true_show_secondary_digits=true_show_suggestion_strip=true_show_suggestions=true_split_with_duplicate_keys=true_true=true_variant=qwerty_writing_helper_enable_by_word_revert=false, imeDef.stringId=ime_english_united_states, imeDef.className=com.google.android.apps.inputmethod.libs.latin5.LatinIme, imeDef.languageTag=en-US}
+11-08 21:50:17.920  7417  7417 W InputMethodEntryManager: InputMethodEntryManager.getEnabledMultilingualSecondaryLanguages():2264 getEnabledMultilingualSecondaryLanguages is called before initialized
+11-08 21:50:17.920  7417  7417 I AdditionalImeDefCache: AdditionalImeDefCache.loadAdditionalImeDefsForEntryWithoutCache():247 Start loading additional ime defs for entry: mff{languageTag=en-US, variant=qwerty, hasLocalizedResources=true, conditionCacheKey=_android_software_xr_api_spatial=false_app_first_start_timestamp=1758647702143_cache_additional_ime_defs_for_condition_change=false_cache_ime_defs_for_condition_change=false_deprecate_long_press_space_for_ime_picker=false_device=phone_device_size=default_enable_correction_settings_updates=true_enable_flick_symbols=true_enable_more_candidates_view_for_multilingual=false_enable_number_row=false_enable_number_row_in_password=true_enable_pk_simulator=false_enable_pk_simulator_setting=false_enable_preemptive_decode=true_enable_scrub_move=true_enable_secondary_digits=true_enable_secondary_symbols=false_expressions=normal_four_or_more_letter_rows=false_keyboard_mode=normal_language=en-US_layout_9key_split=false_orientation=portrait_physical_keyboard=qwerty_pk_simulator_vk_ready=false_pref_enable_flick_symbols=false_rtl_layout=false_show_comma_key=true_show_period_key=true_show_secondary_digits=true_show_suggestion_strip=true_show_suggestions=true_split_with_duplicate_keys=true_true=true_variant=qwerty_writing_helper_enable_by_word_revert=false, imeDef.stringId=ime_english_united_states, imeDef.className=com.google.android.apps.inputmethod.libs.latin5.LatinIme, imeDef.languageTag=en-US}
+11-08 21:50:17.937   595   740 W InputManager-JNI: Input channel object 'stylus-handwriting-event-receiver-0 (client)' was disposed without first being removed with the input manager!
+11-08 21:50:17.941  7417  7476 D nativeloader: Load /data/app/~~orUAuFkeUy7O6j92tFNeqA==/com.google.android.gms-7WjM4rxaniaCBcjTKZbZOg==/split_CronetDynamite_installtime.apk!/lib/arm64-v8a/libcronet.142.0.7432.0.so using isolated ns clns-9 (caller=/data/app/~~orUAuFkeUy7O6j92tFNeqA==/com.google.android.gms-7WjM4rxaniaCBcjTKZbZOg==/split_CronetDynamite_installtime.apk): ok
+11-08 21:50:17.942  7417  7485 I SP      : Registering emoticon_content_description.2022081613, url: https://www.gstatic.com/android/keyboard/emoticon_content_desc/202208161305/superpacks_manifest.json, constraints: W:*:*:*, flags: bg, requested: 2022081613, current: 2022081613
+11-08 21:50:17.942  7417  7474 I KeyboardGroupDefParser: KeyboardGroupDefParser.parseKeyboardGroupDef():86 parseKeyboardGroupDef() 2132213760 -> 0_resource_name_obfuscated : WaitTime = 30 ms : RunTime = 22 ms
+11-08 21:50:17.948  7417  7417 W NotificationCenter: NotificationCenter$NotificationQueue.notifyPendingNotificationsOnExecutor():877 Heavy notify work detected on UI thread: [mfu->nhv, mfu->nhv, mfu->nhv, mfu->nhv, mfu->nhv, mfu->nhv, neb->nea, neb->nea] takes 25ms
+11-08 21:50:17.949  7417  7472 I DelightKLPDownloader: DelightKLPDownloader.downloadKLPInternal():203 downloading KLP for en_840
+11-08 21:50:17.953  1175  1180 I s.nexuslauncher: NativeAlloc concurrent mark compact GC freed 3105KB AllocSpace bytes, 7(608KB) LOS objects, 49% free, 6621KB/12MB, paused 3.035ms,3.940ms total 153.883ms
+11-08 21:50:17.953  1175  1180 W s.nexuslauncher: Reducing the number of considered missed Gc histogram windows from 108 to 100
+11-08 21:50:17.962  7417  7489 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-08 21:50:17.962  7417  7489 W Binder  : java.lang.UnsupportedOperationException
+11-08 21:50:17.962  7417  7489 W Binder  : 	at iyi.b(PG:3)
+11-08 21:50:17.962  7417  7489 W Binder  : 	at iyi.gt(PG:34)
+11-08 21:50:17.962  7417  7489 W Binder  : 	at dsa.onTransact(PG:21)
+11-08 21:50:17.962  7417  7489 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+11-08 21:50:17.962  7417  7489 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1444)
+11-08 21:50:17.963  1175  1175 D BaseDepthController: setSurface:
+11-08 21:50:17.963  1175  1175 D BaseDepthController: 	mWaitingOnSurfaceValidity: false
+11-08 21:50:17.963  1175  1175 D BaseDepthController: 	mSurface: Surface(name=com.google.android.apps.nexuslauncher/com.google.android.apps.nexuslauncher.NexusLauncherActivity)/@0x28f4ad7
+11-08 21:50:17.971  7417  7473 I HandwritingSuperpacks: HandwritingSuperpacks.register():265 register(): version '86', url 'https://dl.google.com/handwriting/models/handwriting_release.superpack_manifest.20231127.json' [ONLINE]
+11-08 21:50:17.971  7417  7472 I SystemSubtypesReportModule: SystemSubtypesReportModule.onCreate():56
+11-08 21:50:17.974  7417  7472 I DelightKLPDownloader: DelightKLPDownloader.getBundledLmVersion():312 bundled KLP for en_840 version = 0
+11-08 21:50:17.986  7417  7472 I ManifestedDataDownloader: ManifestedDataDownloader.download():67 downloading manifest https://www.gstatic.com/android/keyboard/dictionarypack/2025100823/metadata.json-perlang/en-840.json?v=2025103000
+11-08 21:50:17.988  7417  7417 I HardKeyTracker: HardKeyTracker.registerKeySequence():170 Register key sequence nul{labelResId=2132020472, callback=null, lastModifier=2, keyCodes=[8], actions=[0]}
+11-08 21:50:17.988  7417  7417 I HardKeyTracker: HardKeyTracker.registerKeySequence():170 Register key sequence nul{labelResId=2132020474, callback=gqg@8556b97, lastModifier=2, keyCodes=[62], actions=[0]}
+11-08 21:50:17.988  7417  7502 I HttpFlagsLoader: HTTP flags log line (Impl): Using live production flag values from Google
+11-08 21:50:17.990  7417  7417 I AbstractOpenableExtension: AbstractOpenableExtension.createKeyboardGroupManagerListenableFuture():121 Create keyboard group manager listenable future in hjj
+11-08 21:50:18.001  7417  7485 I SP      : Syncing emoticon_content_description (2022081613) with slices: [7a635888cb828dfa2fc744b7b9b50f04], metadata: false
+11-08 21:50:18.002  7417  7473 I HandwritingOfflineSuperpacks: HandwritingOfflineSuperpacks.syncInternal():80 no bundled lm for handwriting.
+11-08 21:50:18.002  7417  7473 I HandwritingSuperpacks: HandwritingSuperpacks.register():265 register(): version '86', url 'https://dl.google.com/handwriting/models/handwriting_release.superpack_manifest.20231127.json' [ONLINE]
+11-08 21:50:18.002  7417  7485 I SP      : Syncing emoticon_content_description (2022081613) with slices: [7a635888cb828dfa2fc744b7b9b50f04], metadata: false
+11-08 21:50:18.002  7417  7473 I HandwritingOfflineSuperpacks: HandwritingOfflineSuperpacks.syncInternal():80 no bundled lm for handwriting.
+11-08 21:50:18.005  7417  7490 I DownloadManager: DownloadManager.downloadInternal():419 Download for __KLP_manifest_delight__en-840 scheduled with params mwm[allowMetered=true, requireCharging=false, foreground=false, immediately=true, priority=0]
+11-08 21:50:18.006  1175  1182 W System  : A resource failed to call release.
+11-08 21:50:18.008   595   943 D ConnectivityService: Returning BLOCKED NetworkInfo to uid=10156
+11-08 21:50:18.009  1175  1182 W s.nexuslauncher: ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~bsm0kEyJy5u6YYU069SDcg==/com.vivekgupta.tutor-lw1WtwcTRGvfwe16FgKsQg==/base.apk' with 1 weak references
+11-08 21:50:18.011  7417  7490 I DownloadManager: DownloadManager.startDownload():503 start download of __KLP_manifest_delight__en-840
+11-08 21:50:18.011  7417  7512 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-08 21:50:18.011  7417  7512 W Binder  : java.lang.UnsupportedOperationException
+11-08 21:50:18.011  7417  7512 W Binder  : 	at iyi.b(PG:3)
+11-08 21:50:18.011  7417  7512 W Binder  : 	at iyi.gt(PG:34)
+11-08 21:50:18.011  7417  7512 W Binder  : 	at dsa.onTransact(PG:21)
+11-08 21:50:18.011  7417  7512 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+11-08 21:50:18.011  7417  7512 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1444)
+11-08 21:50:18.011  7417  7512 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-08 21:50:18.011  7417  7512 W Binder  : java.lang.UnsupportedOperationException
+11-08 21:50:18.011  7417  7512 W Binder  : 	at iyi.b(PG:3)
+11-08 21:50:18.011  7417  7512 W Binder  : 	at iyi.gt(PG:34)
+11-08 21:50:18.011  7417  7512 W Binder  : 	at dsa.onTransact(PG:21)
+11-08 21:50:18.011  7417  7512 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+11-08 21:50:18.011  7417  7512 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1444)
+11-08 21:50:18.012  7417  7512 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-08 21:50:18.012  7417  7512 W Binder  : java.lang.UnsupportedOperationException
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.b(PG:3)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.gt(PG:34)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at dsa.onTransact(PG:21)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1444)
+11-08 21:50:18.012  7417  7512 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-08 21:50:18.012  7417  7512 W Binder  : java.lang.UnsupportedOperationException
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.b(PG:3)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.gt(PG:34)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at dsa.onTransact(PG:21)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1444)
+11-08 21:50:18.012  7417  7512 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-08 21:50:18.012  7417  7512 W Binder  : java.lang.UnsupportedOperationException
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.b(PG:3)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.gt(PG:34)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at dsa.onTransact(PG:21)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1444)
+11-08 21:50:18.012  7417  7512 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-08 21:50:18.012  7417  7512 W Binder  : java.lang.UnsupportedOperationException
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.b(PG:3)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.gt(PG:34)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at dsa.onTransact(PG:21)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1444)
+11-08 21:50:18.012  7417  7512 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-08 21:50:18.012  7417  7512 W Binder  : java.lang.UnsupportedOperationException
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.b(PG:3)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.gt(PG:34)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at dsa.onTransact(PG:21)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1444)
+11-08 21:50:18.012  7417  7512 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-08 21:50:18.012  7417  7512 W Binder  : java.lang.UnsupportedOperationException
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.b(PG:3)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.gt(PG:34)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at dsa.onTransact(PG:21)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1444)
+11-08 21:50:18.012  7417  7512 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-08 21:50:18.012  7417  7512 W Binder  : java.lang.UnsupportedOperationException
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.b(PG:3)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.gt(PG:34)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at dsa.onTransact(PG:21)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1444)
+11-08 21:50:18.012  7417  7512 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-08 21:50:18.012  7417  7512 W Binder  : java.lang.UnsupportedOperationException
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.b(PG:3)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.gt(PG:34)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at dsa.onTransact(PG:21)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1444)
+11-08 21:50:18.012  7417  7512 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-08 21:50:18.012  7417  7512 W Binder  : java.lang.UnsupportedOperationException
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.b(PG:3)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at iyi.gt(PG:34)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at dsa.onTransact(PG:21)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+11-08 21:50:18.012  7417  7512 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1444)
+11-08 21:50:18.022  1175  1182 W s.nexuslauncher: ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~tDQ5t07_o7lQUHHq66SoWQ==/com.google.android.googlequicksearchbox--kKihroOpdpE_laiStpViQ==/base.apk' with 1 weak references
+11-08 21:50:18.034  7417  7513 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-08 21:50:18.034  7417  7513 W Binder  : java.lang.UnsupportedOperationException
+11-08 21:50:18.034  7417  7513 W Binder  : 	at iyi.b(PG:3)
+11-08 21:50:18.034  7417  7513 W Binder  : 	at iyi.gt(PG:34)
+11-08 21:50:18.034  7417  7513 W Binder  : 	at dsa.onTransact(PG:21)
+11-08 21:50:18.034  7417  7513 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+11-08 21:50:18.034  7417  7513 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1444)
+11-08 21:50:18.036  1175  1182 W s.nexuslauncher: ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~tDQ5t07_o7lQUHHq66SoWQ==/com.google.android.googlequicksearchbox--kKihroOpdpE_laiStpViQ==/split_config.xxhdpi.apk' with 1 weak references
+11-08 21:50:18.039  7417  7417 I HardKeyTracker: HardKeyTracker.registerKeySequence():170 Register key sequence nul{labelResId=2132018771, callback=cth@62dc355, lastModifier=2, keyCodes=[39], actions=[0]}
+11-08 21:50:18.042  1175  1182 W s.nexuslauncher: ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~tDQ5t07_o7lQUHHq66SoWQ==/com.google.android.googlequicksearchbox--kKihroOpdpE_laiStpViQ==/split_lens_ondevice_engine_play_ml_module.apk' with 1 weak references
+11-08 21:50:18.042  7417  7417 I HardKeyTracker: HardKeyTracker.registerKeySequence():170 Register key sequence nul{labelResId=2132020469, callback=cth@e0ffd37, lastModifier=65536, keyCodes=[76], actions=[0]}
+11-08 21:50:18.042  7417  7417 I PkDeviceHelper: PkDeviceHelper.refreshDevices():93 refreshing devices
+11-08 21:50:18.042  1175  1182 W System  : A resource failed to call release.
+11-08 21:50:18.042  1175  1182 W System  : A resource failed to call release.
+11-08 21:50:18.042  1175  1182 W System  : A resource failed to call release.
+11-08 21:50:18.042  7417  7417 I PkDeviceHelper: PkDeviceHelper.addDevice():133 device qwerty2 added
+11-08 21:50:18.043  7417  7417 I KeyboardContextProvider: KeyboardContextProvider$KeyboardContextCache.createKeyboardContext():173 createKeyboardContext(): en-US, lew@18c080d(com.android.inputmethod.latin.LatinIME@1f710d4), {1.0 310mcc260mnc [en_US] ldltr sw427dp w427dp h952dp 480dpi nrml long port finger qwerty/v/v dpad/v winConfig={ mBounds=Rect(0, 0 - 1280, 2856) mAppBounds=Rect(0, 0 - 1280, 2856) mMaxBounds=Rect(0, 0 - 1280, 2856) mDisplayRotation=ROTATION_0 mWindowingMode=fullscreen mActivityType=undefined mAlwaysOnTop=undefined mRotation=ROTATION_0} as.3 s.62 fontWeightAdjustment=0}
+11-08 21:50:18.045  1086  1086 D BoundBrokerSvc: onRebind: Intent { act=com.google.android.gms.common.telemetry.service.START dat=chimera-action:/... cmp=com.google.android.gms/.chimera.PersistentApiService }
+11-08 21:50:18.046  7417  7489 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-08 21:50:18.046  7417  7489 W Binder  : java.lang.UnsupportedOperationException
+11-08 21:50:18.046  7417  7489 W Binder  : 	at iyi.b(PG:3)
+11-08 21:50:18.046  7417  7489 W Binder  : 	at iyi.gt(PG:34)
+11-08 21:50:18.046  7417  7489 W Binder  : 	at dsa.onTransact(PG:21)
+11-08 21:50:18.046  7417  7489 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+11-08 21:50:18.046  7417  7489 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1444)
+11-08 21:50:18.048  1175  1175 D StatsLog: LAUNCHER_ALLAPPS_COUNT
+11-08 21:50:18.055  7417  7429 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-08 21:50:18.055  7417  7429 W Binder  : java.lang.UnsupportedOperationException
+11-08 21:50:18.055  7417  7429 W Binder  : 	at iyi.b(PG:3)
+11-08 21:50:18.055  7417  7429 W Binder  : 	at iyi.gt(PG:34)
+11-08 21:50:18.055  7417  7429 W Binder  : 	at dsa.onTransact(PG:21)
+11-08 21:50:18.055  7417  7429 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+11-08 21:50:18.055  7417  7429 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1444)
+11-08 21:50:18.056  7417  7490 I DownloadManager: DownloadManager$4.onSuccess():572 download for __KLP_manifest_delight__en-840 is finished with files # pyf@4b6e7b1e
+11-08 21:50:18.059  7417  7475 I ManifestedDataDownloader: ManifestedDataDownloader.checkVersionAndDownload():98 filegroup __KLP_delight__en-840 with version 2025092900 is already downloaded
+11-08 21:50:18.074   595  1711 D ConnectivityService: requestNetwork for uid/pid:10156/7417 activeRequest: null callbackRequest: 251 [NetworkRequest [ REQUEST id=252, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.inputmethod.latin UnderlyingNetworks: Null] ]] callback flags: 0 order: 2147483647 isUidTracked: false declaredMethods: AVAIL|LOST|NC|LP
+11-08 21:50:18.081  7417  7417 I AccessPointsListHolderController: AccessPointsListHolderController.removeAccessPoint():581 The access point settings is not added
+11-08 21:50:18.081  7417  7417 I HardKeyTracker: HardKeyTracker.registerKeySequence():170 Register key sequence nul{labelResId=2132020468, callback=cth@b44ee9, lastModifier=2, keyCodes=[37], actions=[0]}
+11-08 21:50:18.081  7417  7417 I AccessPointsListHolderController: AccessPointsListHolderController.removeAccessPoint():581 The access point textediting is not added
+11-08 21:50:18.081  7417  7417 I AccessPointsListHolderController: AccessPointsListHolderController.removeAccessPoint():581 The access point theme_setting is not added
+11-08 21:50:18.081  7417  7417 I HardKeyTracker: HardKeyTracker.unregisterKeySequence():221 Unregister key sequence nul{labelResId=2132020469, callback=cth@e0ffd37, lastModifier=65536, keyCodes=[76], actions=[0]}
+11-08 21:50:18.081  7417  7417 I HardKeyTracker: HardKeyTracker.registerKeySequence():170 Register key sequence nul{labelResId=2132020469, callback=cth@6ba9e0f, lastModifier=65536, keyCodes=[76], actions=[0]}
+11-08 21:50:18.081  7417  7417 I HardKeyTracker: HardKeyTracker.registerKeySequence():170 Register key sequence nul{labelResId=2132020466, callback=cth@cf9f0a5, lastModifier=2, keyCodes=[56], actions=[0]}
+11-08 21:50:18.081  7417  7417 I HardKeyTracker: HardKeyTracker.registerKeySequence():170 Register key sequence nul{labelResId=2132020466, callback=cth@25bec7a, lastModifier=0, keyCodes=[317], actions=[0]}
+11-08 21:50:18.082  7417  7417 I AccessPointsListHolderController: AccessPointsListHolderController.removeAccessPoint():581 The access point share is not added
+11-08 21:50:18.082  7417  7474 I KeyboardGroupDefParser: KeyboardGroupDefParser.parseKeyboardGroupDef():86 parseKeyboardGroupDef() 2132213994 -> 0_resource_name_obfuscated : WaitTime = 8 ms : RunTime = 83 ms
+11-08 21:50:18.087  7417  7474 I KeyboardGroupDefParser: KeyboardGroupDefParser.parseKeyboardGroupDef():86 parseKeyboardGroupDef() 2132213995 -> 0_resource_name_obfuscated : WaitTime = 91 ms : RunTime = 6 ms
+11-08 21:50:18.089   595   773 D ConnectivityService: NetReassign [252 : null → 100] [c 0] [a 8] [i 0]
+11-08 21:50:18.090  7417  7417 W NotificationCenter: NotificationCenter$NotificationQueue.notifyPendingNotificationsOnExecutor():877 Heavy notify work detected on UI thread: [kgz->nhv, kgz->nhv, kgz->nhv, kgz->nhv, kgz->nhv, kgz->nhv, kgz->nhv, kgz->nhv, kgz->nhv, neb->nea, nvz->nhv, neb->nea, nvz->nhv, neb->nea, nvz->nhv, neb->nea, nvz->nhv, neb->nea, nvz->nhv, neb->nea, khe->gyg, khe->gyg, khe->gyg, khe->gyg, nvz->nhv, mef->keb, mev->met, mgy->nyk, neb->nea, neb->nea, neb->nea, neb->nea, nvz->nhv, neb->nea, neb->nea, neb->nea, neb->nea, neb->nea, neb->nea, nvz->nhv, neb->nea, khg->gyg, khe->gyg, khe->gyg, khg->gyg, khg->gyg, khe->gyg, khe->gyg, khe->gyg, khg->gyg] takes 133ms
+11-08 21:50:18.102   595   765 D WifiNetworkFactory: got request NetworkRequest [ REQUEST id=252, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.inputmethod.latin UnderlyingNetworks: Null] ]
+11-08 21:50:18.102   595   765 D UntrustedWifiNetworkFactory: got request NetworkRequest [ REQUEST id=252, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.inputmethod.latin UnderlyingNetworks: Null] ]
+11-08 21:50:18.102   595   765 D OemPaidWifiNetworkFactory: got request NetworkRequest [ REQUEST id=252, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.inputmethod.latin UnderlyingNetworks: Null] ]
+11-08 21:50:18.103   595   765 D MultiInternetWifiNetworkFactory: got request NetworkRequest [ REQUEST id=252, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&NOT_VCN_MANAGED&NOT_BANDWIDTH_CONSTRAINED Uid: 10156 RequestorUid: 10156 RequestorPkg: com.google.android.inputmethod.latin UnderlyingNetworks: Null] ]
+11-08 21:50:18.105   595   773 D ConnectivityService: NetReassign [no changes] [c 0] [a 1] [i 0]
+11-08 21:50:18.106  7417  7512 W Binder  : Caught a RuntimeException from the binder stub implementation.
+11-08 21:50:18.106  7417  7512 W Binder  : java.lang.UnsupportedOperationException
+11-08 21:50:18.106  7417  7512 W Binder  : 	at iyi.b(PG:3)
+11-08 21:50:18.106  7417  7512 W Binder  : 	at iyi.gt(PG:34)
+11-08 21:50:18.106  7417  7512 W Binder  : 	at dsa.onTransact(PG:21)
+11-08 21:50:18.106  7417  7512 W Binder  : 	at android.os.Binder.execTransactInternal(Binder.java:1505)
+11-08 21:50:18.106  7417  7512 W Binder  : 	at android.os.Binder.execTransact(Binder.java:1444)
+11-08 21:50:18.108  7417  7479 E HandwritingSuperpacksUtil: HandwritingSuperpacksUtil.getPackMappingPackName():42 No pack mapping pack found in []
+11-08 21:50:18.108  7417  7479 I HandwritingSuperpacks: HandwritingSuperpacks.reloadCache():229 updatePackMappingsCache(): pack mapping pack unavailable [OFFLINE]
+11-08 21:50:18.108  7417  7472 I DelightKLPDownloader: DelightKLPDownloader$2.onSuccess():233 klp en_840 downloaded with version 2025092900
+11-08 21:50:18.110  7388  7388 D VRI[ComponentActivity]: visibilityChanged oldVisibility=true newVisibility=false
+11-08 21:50:18.116  7388  7388 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@a3350bd in: STOPPED
+11-08 21:50:18.116  7388  7388 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=androidx.activity.ComponentActivity@a3350bd
+11-08 21:50:18.133  1388  1670 I AiAiEcho: Predicting[0]:  [CONTEXT sampling_count=5 ]
+11-08 21:50:18.134  1388  1670 I AiAiEcho: EchoTargets:
+11-08 21:50:18.134  1388  1670 I AiAiEcho: Filtered by AiAi flag check:
+11-08 21:50:18.134  1388  1670 I AiAiEcho: [CONTEXT ratelimit_period="10 SECONDS" ]
+11-08 21:50:18.134  1388  1670 I AiAiEcho: Ranked targets strategy: SORT, count: 0, ranking metadata:  [CONTEXT ratelimit_period="10 SECONDS" ]
+11-08 21:50:18.135  1388  1670 I AiAiEcho: #remoteViewsTwiddler: feature disabled.
+11-08 21:50:18.138  1388  1670 I AiAiEcho: #postPredictionTargets: Sending updates to UISurface home with targets# 0 (types=[])
+11-08 21:50:18.138  1175  1503 D EGL_emulation: app_time_stats: avg=116.64ms min=0.58ms max=1668.88ms count=20
+11-08 21:50:18.148  7388  7388 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@a3350bd in: DESTROYED
+11-08 21:50:18.149  7388  7388 V ActivityScenario: Update currentActivityStage to DESTROYED, currentActivity=null
+11-08 21:50:18.149  7388  7388 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@a49a8f1
+11-08 21:50:18.161  7388  7405 D IdlingRegistry: Unregistering idling resources: [androidx.compose.ui.test.EspressoLink@7552e49]
+11-08 21:50:18.168   595   857 W InputManager-JNI: Input channel object '45113a3 com.vivekgupta.tutor/androidx.activity.ComponentActivity (client)' was disposed without first being removed with the input manager!
+11-08 21:50:18.174  7417  7476 I cn_CronetLibraryLoader: Cronet version: 142.0.7432.0, arch: aarch64
+11-08 21:50:18.174  7417  7417 I GoogleInputMethodService: GoogleInputMethodService$GoogleInputMethodImpl.attachToken():2701
+11-08 21:50:18.175  7388  7405 I TestRunner: finished: coachMessage_respectsForcedAlignment(com.vivekgupta.composecoachmark.coachmark.core.CoachMessageLayoutUITest)

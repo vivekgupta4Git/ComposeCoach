@@ -1,0 +1,184 @@
+11-08 21:50:14.978  7388  7405 I TestRunner: started: coachMessage_isAdaptivelyPlacedAboveOrBelowTarget(com.vivekgupta.composecoachmark.coachmark.core.CoachMessageLayoutUITest)
+11-08 21:50:15.047  7388  7405 I Tracing : Tracer added: class androidx.test.platform.tracing.AndroidXTracer
+11-08 21:50:15.053  7388  7388 I ivekgupta.tutor: hiddenapi: Accessing hidden method Landroid/os/MessageQueue;->next()Landroid/os/Message; (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/test/espresso/base/TestLooperManagerCompat; (domain=app) using reflection: allowed
+11-08 21:50:15.053  7388  7388 I ivekgupta.tutor: hiddenapi: Accessing hidden field Landroid/os/MessageQueue;->mMessages:Landroid/os/Message; (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/test/espresso/base/TestLooperManagerCompat; (domain=app) using reflection: allowed
+11-08 21:50:15.053  7388  7388 I ivekgupta.tutor: hiddenapi: Accessing hidden method Landroid/os/Message;->recycleUnchecked()V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/test/espresso/base/TestLooperManagerCompat; (domain=app) using reflection: allowed
+11-08 21:50:15.054  7388  7405 D IdlingRegistry: Registering idling resources: [androidx.compose.ui.test.EspressoLink@fad5076]
+11-08 21:50:15.062  7388  7405 W Settings: Setting always_finish_activities has moved from android.provider.Settings.System to android.provider.Settings.Global, returning read-only value.
+11-08 21:50:15.102   595  2379 V GrammaticalInflectionUtils: AttributionSource: android.content.AttributionSource@8ff9512d does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-08 21:50:15.230  1175  1175 W SplitSelectStateCtor: Missing session instanceIds
+11-08 21:50:15.230  1175  1175 D StatsLog: LAUNCHER_SPLIT_SELECTION_EXIT_INTERRUPTED
+11-08 21:50:15.248   420   420 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+11-08 21:50:15.266  1175  1175 I TopTaskTracker: onTaskMovedToFront: (moved taskInfo to front) taskId=329, baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10008000 cmp=com.vivekgupta.tutor/androidx.activity.ComponentActivity }
+11-08 21:50:15.300  7388  7388 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@3f409bd in: PRE_ON_CREATE
+11-08 21:50:15.300  7388  7388 V ActivityScenario: Activity lifecycle changed event received but ignored because the reported transition was not ON_CREATE while the last known transition was PRE_ON_CREATE
+11-08 21:50:15.307  7388  7388 E ivekgupta.tutor: Invalid resource ID 0x00000000.
+11-08 21:50:15.323   447   510 W IPCThreadState: Sending oneway calls to frozen process.
+11-08 21:50:15.345  7388  7388 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@3f409bd in: CREATED
+11-08 21:50:15.345  7388  7388 V ActivityScenario: Update currentActivityStage to CREATED, currentActivity=androidx.activity.ComponentActivity@3f409bd
+11-08 21:50:15.346  7388  7388 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@3f409bd in: STARTED
+11-08 21:50:15.346  7388  7388 V ActivityScenario: Update currentActivityStage to STARTED, currentActivity=androidx.activity.ComponentActivity@3f409bd
+11-08 21:50:15.349  7388  7388 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@3f409bd in: RESUMED
+11-08 21:50:15.349  7388  7388 V ActivityScenario: Update currentActivityStage to RESUMED, currentActivity=androidx.activity.ComponentActivity@3f409bd
+11-08 21:50:15.381  7388  7388 W HWUI    : Unknown dataspace 0
+11-08 21:50:15.439  1175  1503 D EGL_emulation: app_time_stats: avg=15224.31ms min=15224.31ms max=15224.31ms count=1
+11-08 21:50:15.484   420   582 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10220 pid=0
+11-08 21:50:15.484   420   582 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10220 => denied (2343 us)
+11-08 21:50:15.485   420   582 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10220 pid=0
+11-08 21:50:15.485   420   582 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10220 => denied (273 us)
+11-08 21:50:15.486   420   582 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10220 pid=0
+11-08 21:50:15.486   420   582 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10220 => denied (1521 us)
+11-08 21:50:15.487   420  1116 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10220 pid=7388
+11-08 21:50:15.487   420  1116 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10220 => denied (1324 us)
+11-08 21:50:15.487  7388  7407 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+11-08 21:50:15.488  7388  7407 I EGL_emulation: Opening libGLESv2_emulation.so
+11-08 21:50:15.549  1175  1503 D EGL_emulation: app_time_stats: avg=4533935.00ms min=4533935.00ms max=4533935.00ms count=1
+11-08 21:50:15.590  7388  7407 W HWUI    : Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+11-08 21:50:15.591  7388  7407 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+11-08 21:50:15.612   869  1073 D EGL_emulation: app_time_stats: avg=15451.25ms min=15451.25ms max=15451.25ms count=1
+11-08 21:50:15.677   160   160 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+11-08 21:50:15.677  7388  7407 I Gralloc4: mapper 4.x is not supported
+11-08 21:50:15.737   595  1706 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10220 pid=0
+11-08 21:50:15.737   595  1706 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10220 => denied (246 us)
+11-08 21:50:15.737   595  1706 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10220 pid=0
+11-08 21:50:15.737   595  1706 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10220 => denied (37 us)
+11-08 21:50:15.737   595  1706 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10220 pid=0
+11-08 21:50:15.737   595  1706 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10220 => denied (30 us)
+11-08 21:50:15.750   595   639 I ActivityTaskManager: Displayed com.vivekgupta.tutor/androidx.activity.ComponentActivity for user 0: +663ms
+11-08 21:50:15.778   595   740 I ImeTracker: com.vivekgupta.tutor:a773f4df: onRequestHide at ORIGIN_SERVER reason HIDE_UNSPECIFIED_WINDOW fromUser false
+11-08 21:50:15.780   595   740 I ImeTracker: com.vivekgupta.tutor:a773f4df: onCancelled at PHASE_SERVER_SHOULD_HIDE
+11-08 21:50:15.781  7388  7392 I ivekgupta.tutor: Compiler allocated 5127KB to compile void android.view.ViewRootImpl.performTraversals()
+11-08 21:50:15.789   595   740 V GrammaticalInflectionUtils: AttributionSource: android.content.AttributionSource@22c3296d does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-08 21:50:15.825  1175  1175 D VRI[NexusLauncherActivity]: visibilityChanged oldVisibility=true newVisibility=false
+11-08 21:50:15.838  1175  1175 D NexusLauncherModelDelegate: notifySmartspaceEvent: SmartspaceTargetEvent{mSmartspaceTarget=null, mSmartspaceActionId='null', mEventType=7}
+11-08 21:50:15.863  1175  1175 D BaseDepthController: setSurface:
+11-08 21:50:15.863  1175  1175 D BaseDepthController: 	mWaitingOnSurfaceValidity: false
+11-08 21:50:15.863  1175  1175 D BaseDepthController: 	mSurface: null
+11-08 21:50:15.865  1175  1175 D BaseDepthController: mSurface is null and mCurrentBlur is: 0
+11-08 21:50:15.868  1175  1175 I ActivityThread: Schedule relaunch activity: com.google.android.apps.nexuslauncher.NexusLauncherActivity
+11-08 21:50:15.875  1175  1175 D StateManager: goToState - fromState: Normal, toState: Normal, partial trace:
+11-08 21:50:15.875  1175  1175 D StateManager: 	at com.android.launcher3.statemanager.StateManager.moveToRestState(go/retraceme 2855a437b73635ce9cad76b9289087e631bbb67fc90008a0da13d343a00e5041:4)
+11-08 21:50:15.875  1175  1175 D StateManager: 	at com.android.launcher3.statemanager.StateManager.moveToRestState(go/retraceme 2855a437b73635ce9cad76b9289087e631bbb67fc90008a0da13d343a00e5041:1)
+11-08 21:50:15.875  1175  1175 D StateManager: 	at com.android.launcher3.statemanager.StatefulActivity.onStop(go/retraceme 2855a437b73635ce9cad76b9289087e631bbb67fc90008a0da13d343a00e5041:34)
+11-08 21:50:15.892   378   378 D Zygote  : Forked child process 7417
+11-08 21:50:15.914  1175  1175 D StatsLog: LAUNCHER_ONSTOP
+11-08 21:50:15.926  1175  1175 D StatsLog: LAUNCHER_GOOGLE_SEARCH_RESTORE_LIST_SIZE_AFTER_ACTIVITY_RESTART
+11-08 21:50:15.931  7417  7417 I putmethod.latin: Using CollectorTypeCMC GC.
+11-08 21:50:15.937  1175  1175 D CannedAnimCoordinator: Wrong controller access from h2.i@b8c07fd, actual provider null
+11-08 21:50:15.949   424   497 I adbd    : jdwp connection from 7417
+11-08 21:50:15.952  1175  1175 D b/254119092: unregistering activity lifecycle callbacks from onActivityDestroyed.
+11-08 21:50:15.953  1175  1175 D b/254119092: clearActivity
+11-08 21:50:15.953  1175  1175 D b/254119092: mActivity and mContext agree taskbarIsPresent=false
+11-08 21:50:15.959  7388  7388 I ivekgupta.tutor: hiddenapi: Accessing hidden method Landroid/os/SystemProperties;->addChangeCallback(Ljava/lang/Runnable;)V (runtime_flags=0, domain=platform, api=unsupported) from Landroidx/compose/ui/platform/AndroidComposeView$Companion; (domain=app) using reflection: allowed
+11-08 21:50:15.965  7417  7417 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+11-08 21:50:15.983   420   420 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+11-08 21:50:16.020  1175  1175 D RecentsView: reset - mEnableDrawingLiveTile: false, mRecentsAnimationController: null
+11-08 21:50:16.031  1086  4363 I FontLog : (REDACTED) Received query %s, URI %s
+11-08 21:50:16.032  7417  7417 I ActivityThread: Relaunch all activities: onCoreSettingsChange
+11-08 21:50:16.033   447   510 W IPCThreadState: Sending oneway calls to frozen process.
+11-08 21:50:16.034  1086  4363 I FontLog : (REDACTED) Query [%s] resolved to %s
+11-08 21:50:16.043   869  1019 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@7a3ab58
+11-08 21:50:16.044   595  2379 W InputManager-JNI: Input channel object '5e4dde Splash Screen com.vivekgupta.tutor (client)' was disposed without first being removed with the input manager!
+11-08 21:50:16.054  7417  7417 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+11-08 21:50:16.054  7417  7417 D ApplicationLoaders: Returning zygote-cached class loader: /system_ext/framework/androidx.window.sidecar.jar
+11-08 21:50:16.055  1086  4363 I FontLog : (REDACTED) Fetch %s end status %s
+11-08 21:50:16.058  1175  1175 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=com.android.launcher3.uioverrides.QuickstepLauncher$2@c5db643
+11-08 21:50:16.062  1086  2059 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+11-08 21:50:16.070   595  2379 V GrammaticalInflectionUtils: AttributionSource: android.content.AttributionSource@840764d4 does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-08 21:50:16.078  1086  2059 I FontLog : (REDACTED) Pulling font file for id = %d, cache size = %d
+11-08 21:50:16.084   595   642 V GrammaticalInflectionUtils: AttributionSource: android.content.AttributionSource@840764d4 does not have READ_SYSTEM_GRAMMATICAL_GENDER permission.
+11-08 21:50:16.090  7388  7388 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@3f409bd in: PAUSED
+11-08 21:50:16.090  7388  7388 V ActivityScenario: Update currentActivityStage to PAUSED, currentActivity=androidx.activity.ComponentActivity@3f409bd
+11-08 21:50:16.105   447   510 W IPCThreadState: Sending oneway calls to frozen process.
+11-08 21:50:16.133   378   378 D Zygote  : Forked child process 7435
+11-08 21:50:16.150  7435  7435 I upta.tutor.test: Late-enabling -Xcheck:jni
+11-08 21:50:16.214  1175  1175 D DeviceSearchAlg: search timeout = %d200
+11-08 21:50:16.215  1175  1175 W PageIndicator: Total number of pages invalid: 0. Assuming 1 page.
+11-08 21:50:16.215  1175  1175 W BcSmartspaceView: Current card is not present in the Adapter; cannot log.
+11-08 21:50:16.223  1175  1175 I OverviewComponentObserver: updateOverviewTargets: mIsHomeDisabled=false, isDefaultHomeNull=false, mIsDefaultHome=true
+11-08 21:50:16.223  1175  1175 D OverviewActionsView: updateActionButtonsVisibility() called: showSingleTaskActions = [true], showGroupActions = [false]
+11-08 21:50:16.225  7417  7417 W putmethod.latin: Failed to find entry 'classes.dex': Entry not found
+11-08 21:50:16.225  7417  7417 W putmethod.latin: Failed to find entry 'classes.dex': Entry not found
+11-08 21:50:16.226  7417  7417 W putmethod.latin: Failed to find entry 'classes.dex': Entry not found
+11-08 21:50:16.226  7417  7417 D nativeloader: Configuring clns-7 for other apk /data/app/~~i-k1dUxd4E2QXYQqE35bzg==/com.google.android.inputmethod.latin-K6Vj3GOy8s9FkgWanBlX3w==/base.apk:/data/app/~~i-k1dUxd4E2QXYQqE35bzg==/com.google.android.inputmethod.latin-K6Vj3GOy8s9FkgWanBlX3w==/split_brella_feature_split.apk:/data/app/~~i-k1dUxd4E2QXYQqE35bzg==/com.google.android.inputmethod.latin-K6Vj3GOy8s9FkgWanBlX3w==/split_config.xxhdpi.apk:/data/app/~~i-k1dUxd4E2QXYQqE35bzg==/com.google.android.inputmethod.latin-K6Vj3GOy8s9FkgWanBlX3w==/split_tenoranimation_feature_split.apk. target_sdk_version=35, uses_libraries=, library_path=/data/app/~~i-k1dUxd4E2QXYQqE35bzg==/com.google.android.inputmethod.latin-K6Vj3GOy8s9FkgWanBlX3w==/lib/arm64:/data/app/~~i-k1dUxd4E2QXYQqE35bzg==/com.google.android.inputmethod.latin-K6Vj3GOy8s9FkgWanBlX3w==/base.apk!/lib/arm64-v8a:/data/app/~~i-k1dUxd4E2QXYQqE35bzg==/com.google.android.inputmethod.latin-K6Vj3GOy8s9FkgWanBlX3w==/split_brella_feature_split.apk!/lib/arm64-v8a:/data/app/~~i-k1dUxd4E2QXYQqE35bzg==/com.google.android.inpu
+11-08 21:50:16.234  7417  7417 D CompatChangeReporter: Compat change id reported: 202956589; UID 10156; state: ENABLED
+11-08 21:50:16.234  1175  1175 D ModelCallbacks: startBinding: hotseat layout was vertical: false and is setting to false
+11-08 21:50:16.238  1175  1175 D Launcher.Workspace: addInScreenFromBind: hotseat inflation with x = 0 and y = 0
+11-08 21:50:16.238  1175  1175 D Launcher.Workspace: addInScreenFromBind: hotseat inflation with x = 1 and y = 0
+11-08 21:50:16.238  1175  1175 D Launcher.Workspace: addInScreenFromBind: hotseat inflation with x = 2 and y = 0
+11-08 21:50:16.241  1175  1175 D Launcher.Workspace: addInScreenFromBind: hotseat inflation with x = 3 and y = 0
+11-08 21:50:16.248  7417  7417 V GraphicsEnvironment: Currently set values for:
+11-08 21:50:16.248  7417  7417 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+11-08 21:50:16.248  7417  7417 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+11-08 21:50:16.248  7417  7417 V GraphicsEnvironment: Global.Settings values are invalid: number of packages: 0, number of values: 0
+11-08 21:50:16.249  7417  7417 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+11-08 21:50:16.263  1388  1388 I AiAiEcho: SearchContextManagerImpl::setSearchContext resultTypes=[141151] extras=[Bundle[{launcher.maxInlineIcons=3, dynamic_ranking_m3_enabled=true, qs_tiles_asi_enabled=true, allowlist_enabled=false, one_search_enabled=true, system_clock=true, version_code=12, gms_play_query_lower_bound=2, gms_play_query_upper_bound=20, recent_search_block_enabled=true, gms_play_feature_supported=true, launcher.gridSize=4, showhiddentargets_enabled=false, ose_info=1}]] sessionId=[com.google.android.apps.nexuslauncher:44065f44-9836-4d99-bb6a-9ace47a662e8,0]
+11-08 21:50:16.264  1175  1246 D SearchTargetUtil: queryLength=0 size=1
+11-08 21:50:16.264  1175  1246 D SearchTargetUtil: layoutType=icon_row resultType=4096 packageName= extras=Bundle{aiai_settings_enabled=true,icon_container_enabled=true,zero_state_query_ready=true,zero_state_all_apps_web_suggest_count=3,rank=1.0,toast_settings_toggle_values=16777476,key_ipc_start=4556206,hide_subtitle=true,enable_launch_animations=true,zero_state_qsb_web_suggest_count=10,}ParentID: null targetID: SESSION_INFO:0::zero_state_flags
+11-08 21:50:16.310  7435  7435 I upta.tutor.test: Using CollectorTypeCMC GC.
+11-08 21:50:16.321  1175  1175 D OverviewActionsView: updateActionButtonsVisibility() called: showSingleTaskActions = [true], showGroupActions = [false]
+11-08 21:50:16.330   424   497 I adbd    : jdwp connection from 7435
+11-08 21:50:16.331  1175  1246 D InputMonitorCompat: Input monitor (minus-one-disp0) created
+11-08 21:50:16.337  1175  1246 D InputMonitorCompat: Input event receiver for monitor (minus-one-disp0) created
+11-08 21:50:16.346  1175  1175 W SplitSelectStateCtor: Missing session instanceIds
+11-08 21:50:16.346  1175  1175 D StatsLog: LAUNCHER_SPLIT_SELECTION_EXIT_INTERRUPTED
+11-08 21:50:16.349  1175  1175 D StateManager: goToState - fromState: Normal, toState: Normal, partial trace:
+11-08 21:50:16.349  1175  1175 D StateManager: 	at com.android.launcher3.statemanager.StateManager.moveToRestState(go/retraceme 2855a437b73635ce9cad76b9289087e631bbb67fc90008a0da13d343a00e5041:4)
+11-08 21:50:16.349  1175  1175 D StateManager: 	at com.android.launcher3.statemanager.StateManager.moveToRestState(go/retraceme 2855a437b73635ce9cad76b9289087e631bbb67fc90008a0da13d343a00e5041:1)
+11-08 21:50:16.349  1175  1175 D StateManager: 	at com.android.launcher3.statemanager.StatefulActivity.onStop(go/retraceme 2855a437b73635ce9cad76b9289087e631bbb67fc90008a0da13d343a00e5041:34)
+11-08 21:50:16.350  1175  1175 D StatsLog: LAUNCHER_GOOGLE_SEARCH_RESTORE_LIST_SIZE_AFTER_ACTIVITY_RESTART
+11-08 21:50:16.363  1175  1175 D OverviewActionsView: updateActionButtonsVisibility() called: showSingleTaskActions = [true], showGroupActions = [false]
+11-08 21:50:16.364  7435  7435 D nativeloader: Load libframework-connectivity-tiramisu-jni.so using APEX ns com_android_tethering for caller /apex/com.android.tethering/javalib/framework-connectivity-t.jar: ok
+11-08 21:50:16.394  1175  1175 I SsCardPagerAdapter: [rmv] Rendering flag - enabled: false
+11-08 21:50:16.397  1175  1175 I SsCardPagerAdapter: Use UI template for the feature: 1
+11-08 21:50:16.415  7435  7435 I ActivityThread: Relaunch all activities: onCoreSettingsChange
+11-08 21:50:16.429  1175  1175 D SsBaseTemplateCard: No text view can be set up
+11-08 21:50:16.429  1175  1175 D SsBaseTemplateCard: Passed-in item info is null
+11-08 21:50:16.429  1175  1175 D SsBaseTemplateCard: Passed-in item info is null
+11-08 21:50:16.429  1175  1175 D SsBaseTemplateCard: Passed-in item info is null
+11-08 21:50:16.429  1175  1175 I SsBaseTemplateCard: Secondary card pane is null
+11-08 21:50:16.452  7435  7435 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
+11-08 21:50:16.454  7435  7435 D nativeloader: Configuring clns-7 for other apk /system/framework/android.test.mock.jar. target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~4rhRHbSFLOkyf_-eMqWCyA==/com.vivekgupta.tutor.test-EsVYOEnzfKOY3lJBbA353Q==/lib/arm64, permitted_path=/data:/mnt/expand:/data/user/0/com.vivekgupta.tutor.test
+11-08 21:50:16.455  7435  7435 D ApplicationLoaders: Returning zygote-cached class loader: /system/framework/android.test.base.jar
+11-08 21:50:16.456  7435  7435 D nativeloader: Configuring clns-8 for other apk /system/framework/android.test.runner.jar. target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~4rhRHbSFLOkyf_-eMqWCyA==/com.vivekgupta.tutor.test-EsVYOEnzfKOY3lJBbA353Q==/lib/arm64, permitted_path=/data:/mnt/expand:/data/user/0/com.vivekgupta.tutor.test
+11-08 21:50:16.469  1175  1175 D InputMonitorCompat: Input event receiver for monitor (minus-one-disp0) disposed
+11-08 21:50:16.470  1175  1175 D InputMonitorCompat: Input monitor (minus-one-disp0) disposed
+11-08 21:50:16.470   595  1706 W InputManager-JNI: Input channel object '[Gesture Monitor] minus-one (client)' was disposed without first being removed with the input manager!
+11-08 21:50:16.471  1175  1175 I TopTaskTracker: onTaskMovedToFront: (moved taskInfo to front) taskId=330, baseIntent=Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10000000 cmp=com.vivekgupta.tutor.test/androidx.test.core.app.InstrumentationActivityInvoker$EmptyActivity }
+11-08 21:50:16.473  1175  1175 D TISBindHelper: TIS service connected
+11-08 21:50:16.473  1175  1175 D b/254119092: Set mActivity=com.google.android.apps.nexuslauncher.NexusLauncherActivity@d8c921a
+11-08 21:50:16.473  1175  1175 D b/254119092: mActivity and mContext agree taskbarIsPresent=false
+11-08 21:50:16.473  1175  1175 D b/254119092: registering activity lifecycle callbacks from setActivity().
+11-08 21:50:16.518  7435  7435 D nativeloader: Configuring clns-9 for other apk /data/app/~~4rhRHbSFLOkyf_-eMqWCyA==/com.vivekgupta.tutor.test-EsVYOEnzfKOY3lJBbA353Q==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~4rhRHbSFLOkyf_-eMqWCyA==/com.vivekgupta.tutor.test-EsVYOEnzfKOY3lJBbA353Q==/lib/arm64, permitted_path=/data:/mnt/expand:/data/user/0/com.vivekgupta.tutor.test
+11-08 21:50:16.524  7435  7435 V GraphicsEnvironment: Currently set values for:
+11-08 21:50:16.524  7435  7435 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+11-08 21:50:16.525  7435  7435 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+11-08 21:50:16.525  7435  7435 V GraphicsEnvironment: Global.Settings values are invalid: number of packages: 0, number of values: 0
+11-08 21:50:16.525  7435  7435 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+11-08 21:50:16.570  7388  7388 D VRI[ComponentActivity]: visibilityChanged oldVisibility=true newVisibility=false
+11-08 21:50:16.584   420   420 I BpBinder: onLastStrongRef automatically unlinking death recipients:
+11-08 21:50:16.608  7435  7435 E upta.tutor.test: Invalid resource ID 0x00000000.
+11-08 21:50:16.613   595  7461 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+11-08 21:50:16.618  7388  7388 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@3f409bd in: STOPPED
+11-08 21:50:16.618  7388  7388 V ActivityScenario: Update currentActivityStage to STOPPED, currentActivity=androidx.activity.ComponentActivity@3f409bd
+11-08 21:50:16.623   869  1073 D EGL_emulation: app_time_stats: avg=56.42ms min=1.06ms max=787.09ms count=15
+11-08 21:50:16.626  7435  7435 W HWUI    : Unknown dataspace 0
+11-08 21:50:16.631   595  7461 I EGL_emulation: Opening libGLESv2_emulation.so
+11-08 21:50:16.647   420   582 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10213 pid=0
+11-08 21:50:16.648   420   582 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10213 => denied (81 us)
+11-08 21:50:16.648   420   582 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10213 pid=0
+11-08 21:50:16.648   420   582 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10213 => denied (156 us)
+11-08 21:50:16.648   420   582 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10213 pid=0
+11-08 21:50:16.648   420   582 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10213 => denied (168 us)
+11-08 21:50:16.649  7435  7456 I EGL_emulation: Opening libGLESv1_CM_emulation.so
+11-08 21:50:16.649  7435  7456 I EGL_emulation: Opening libGLESv2_emulation.so
+11-08 21:50:16.690  7388  7388 D LifecycleMonitor: Lifecycle status change: androidx.activity.ComponentActivity@3f409bd in: DESTROYED
+11-08 21:50:16.690  7388  7388 V ActivityScenario: Update currentActivityStage to DESTROYED, currentActivity=null
+11-08 21:50:16.690  7388  7388 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=false callback=android.view.ViewRootImpl$$ExternalSyntheticLambda11@2e36336
+11-08 21:50:16.693  7388  7405 D IdlingRegistry: Unregistering idling resources: [androidx.compose.ui.test.EspressoLink@fad5076]
+11-08 21:50:16.694   595  7461 W HWUI    : Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+11-08 21:50:16.694  7435  7456 W HWUI    : Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+11-08 21:50:16.695  7435  7456 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+11-08 21:50:16.695   595  7461 W HWUI    : Failed to initialize 101010-2 format, error = EGL_SUCCESS
+11-08 21:50:16.698   595   941 W InputManager-JNI: Input channel object '9c03ab6 com.vivekgupta.tutor/androidx.activity.ComponentActivity (client)' was disposed without first being removed with the input manager!
+11-08 21:50:16.704  7388  7405 I TestRunner: finished: coachMessage_isAdaptivelyPlacedAboveOrBelowTarget(com.vivekgupta.composecoachmark.coachmark.core.CoachMessageLayoutUITest)

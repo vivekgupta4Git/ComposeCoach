@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<testsuite name="com.vivekgupta.composecoachmark.coachmark.core.CoachMessageLayoutUITest" tests="2" failures="0" errors="0" skipped="0" time="4.552" timestamp="2025-11-08T16:20:19" hostname="localhost">
+  <properties>
+    <property name="device" value="Pixel_9_Pro(AVD) - 15" />
+    <property name="flavor" value="" />
+    <property name="project" value=":app" />
+  </properties>
+  <testcase name="coachMessage_isAdaptivelyPlacedAboveOrBelowTarget" classname="com.vivekgupta.composecoachmark.coachmark.core.CoachMessageLayoutUITest" time="1.476" />
+  <testcase name="coachMessage_respectsForcedAlignment" classname="com.vivekgupta.composecoachmark.coachmark.core.CoachMessageLayoutUITest" time="1.388" />
+</testsuite>

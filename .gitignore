@@ -1,0 +1,40 @@
+# Gradle
+.gradle/
+build/
+**/*.iml
+.idea/
+.kotlin/
+
+# Android
+local.properties
+.DS_Store
+*.apk
+*.aab
+captures/
+*.jks
+*.keystore
+
+# iOS
+.swiftpm/
+.build/
+DerivedData/
+*.xcworkspace
+xcuserdata/
+Pods/
+.env
+
+# Common build directories
+**/build/
+
+# IDE-specific files
+*.iml
+.vscode/
+
+# Logs and temporary files
+*.log
+*.tmp
+temp/
+
+# Secrets and sensitive files (example)
+secrets.properties
+my-release-key.jks

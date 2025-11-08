@@ -6,7 +6,7 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import com.vivekgupta.composecoachmark.coachmark.core.CoachStyle
+import com.ruviapps.coachmark.core.CoachStyle
 
 object NoCoachMarkButtons : CoachStyle {
     override val backGroundColor: Color

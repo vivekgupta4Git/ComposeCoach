@@ -7,7 +7,6 @@ import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.BoxWithConstraintsScope
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -18,8 +17,7 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import com.vivekgupta.composecoachmark.coachmark.core.CoachStyle
-import com.vivekgupta.composecoachmark.coachmark.invert
+import com.ruviapps.coachmark.core.CoachStyle
 import kotlin.math.absoluteValue
 class CanopasStyle : CoachStyle {
     override val backGroundColor: Color

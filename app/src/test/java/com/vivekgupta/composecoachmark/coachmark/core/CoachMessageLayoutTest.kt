@@ -3,6 +3,8 @@ package com.vivekgupta.composecoachmark.coachmark.core
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.unit.IntSize
+import com.ruviapps.coachmark.core.calculateAdaptiveOffset
+import com.ruviapps.coachmark.core.findOffset
 import org.junit.Assert.assertEquals
 import org.junit.Test
 

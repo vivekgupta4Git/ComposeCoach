@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Tutor"
 include ':app'
-include ':composecoachmark'
+//include ':composecoachmark'
+include ':shared'
