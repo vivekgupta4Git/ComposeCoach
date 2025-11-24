@@ -7,7 +7,7 @@ junit = "4.13.2"
 lifecycle-runtime-ktx = "2.9.4"
 androidxComposeBom = "2025.11.00"
 kotlin-android = "2.2.21"
-androidGradlePlugin = "8.13.0"
+androidGradlePlugin = "8.13.1"
 vaniktech-plugin="0.34.0"
 [libraries]
 
