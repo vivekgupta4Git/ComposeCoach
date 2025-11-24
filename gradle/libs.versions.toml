@@ -8,7 +8,7 @@ lifecycle-runtime-ktx = "2.9.4"
 androidxComposeBom = "2025.11.00"
 kotlin-android = "2.2.21"
 androidGradlePlugin = "8.13.0"
-vaniktech-plugin="0.34.0"
+vaniktech-plugin="0.35.0"
 [libraries]
 
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
