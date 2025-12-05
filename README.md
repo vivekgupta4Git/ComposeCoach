@@ -1,5 +1,5 @@
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.ruviapps.coachmark/compose-coach/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.ruviapps.coachmark/compose-coach)
+[![Maven Central](https://img.shields.io/badge/Maven%20Central-compose--coach-blue)](https://central.sonatype.com/artifact/com.ruviapps.coachmark/compose-coach)
 <a href="https://opensource.org/licenses/Apache-2.0"><img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-blue.svg"/></a>
 <img alt="Kotlin Multiplatform" src="https://img.shields.io/badge/Kotlin-Multiplatform-blueviolet"/>
 <img alt="Compose Multiplatform" src="https://img.shields.io/badge/Compose-Multiplatform-46a2f1"/>
