@@ -16,6 +16,7 @@ runner = "1.7.0"
 core = "1.7.0"
 compose = "1.9.3"
 uiTestJunit4 = "1.9.4"
+composeMultiplatform = "1.9.1"
 [libraries]
 compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose" }
 compose-desktop = { module = "org.jetbrains.compose.desktop:desktop", version.ref = "compose" }
@@ -50,6 +51,8 @@ android-library = { id = "com.android.library", version.ref = "androidGradlePlug
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin-android" }
 vanniktech-plugin = { id = "com.vanniktech.maven.publish",version.ref="vaniktech-plugin"}
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin-android" }
+composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "composeMultiplatform" }
+
 android-kotlin-multiplatform-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "androidGradlePlugin" }
 android-lint = { id = "com.android.lint", version.ref = "androidGradlePlugin" }
 [bundles]

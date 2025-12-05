@@ -57,7 +57,7 @@ class MainActivity : ComponentActivity() {
             val coachMarkState = rememberCoachMarkState(
                 listener = object : EmptyCoachMarkEventListener() {
                     override fun onComplete() {
-                        showCoachMark = false
+                       // showCoachMark = false
                         Log.d("CoachMark", "Show Complete")
                     }
 

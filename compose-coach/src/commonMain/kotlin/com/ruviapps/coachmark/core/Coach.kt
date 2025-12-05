@@ -98,43 +98,47 @@ internal fun Coach(
                     }
                 },
             onDraw = {
-                scrimBoundary = coachStyle.drawCoachShape(bounds, this)
-                targetBoundary = revealEffect.drawTargetShape(bounds, this)
+                if(state.hasCompleted.not()){
+                    scrimBoundary = coachStyle.drawCoachShape(bounds, this)
+                    targetBoundary = revealEffect.drawTargetShape(bounds, this)
+                }
             })
-        BoxWithConstraints(
-            modifier = Modifier
-                .safeDrawingPadding()
-                .fillMaxSize()
-                .background(color = Color.Transparent)
-        ) {
-            coachStyle.drawCoachButtons(
-                contentScope = this,
-                onSkip = {
-                    scope.launch {
-                        revealEffect.exitAnimation(bounds)
-                        state.hideCoach()
-                    }
-                },
-                onNext = {  scope.launch {
-                    revealEffect.exitAnimation(bounds)
-                    state.next()
-                } },
-                onBack = {
-                    scope.launch {
-                        revealEffect.exitAnimation(bounds)
-                        state.previous()
-                    }
-
-                },
-                targetBounds = bounds
-            )
-            CoachMessageLayout(
-                canvasRect = scrimBoundary,
-                targetBound = targetBoundary,
-                alignment = alignment,
-                isForcedAlignment = isForcedAlignment
+        if(state.hasCompleted.not()){
+            BoxWithConstraints(
+                modifier = Modifier
+                    .safeDrawingPadding()
+                    .fillMaxSize()
+                    .background(color = Color.Transparent)
             ) {
-                content()
+                coachStyle.drawCoachButtons(
+                    contentScope = this,
+                    onSkip = {
+                        scope.launch {
+                            revealEffect.exitAnimation(bounds)
+                            state.hideCoach()
+                        }
+                    },
+                    onNext = {  scope.launch {
+                        revealEffect.exitAnimation(bounds)
+                        state.next()
+                    } },
+                    onBack = {
+                        scope.launch {
+                            revealEffect.exitAnimation(bounds)
+                            state.previous()
+                        }
+
+                    },
+                    targetBounds = bounds
+                )
+                CoachMessageLayout(
+                    canvasRect = scrimBoundary,
+                    targetBound = targetBoundary,
+                    alignment = alignment,
+                    isForcedAlignment = isForcedAlignment
+                ) {
+                    content()
+                }
             }
         }
     }

@@ -1,19 +1,34 @@
 @file:OptIn(ExperimentalKotlinGradlePluginApi::class)
-
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 
-val LIBRARY_VERSION: String by project
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
+    alias(libs.plugins.composeMultiplatform)
+    alias(libs.plugins.vanniktech.plugin)
     alias(libs.plugins.android.kotlin.multiplatform.library)
     kotlin("plugin.compose")
     id("maven-publish")
 }
-version = LIBRARY_VERSION
-group = "com.ruviapps.coachmark"
+
 
 kotlin {
+    jvm()
+    js {
+        browser()
+        binaries.executable()
+    }
+
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
+        binaries.executable()
+    }
+
     val xcf = XCFramework("CoachMark")
     listOf(
         iosX64(),
@@ -30,6 +45,7 @@ kotlin {
         namespace = "com.ruviapps.coachmark"
         compileSdk = 36
         minSdk = 24
+        withJava()
 
         withHostTestBuilder {
         }
@@ -38,6 +54,9 @@ kotlin {
             sourceSetTreeName = "androidDeviceTest"
         }.configure {
             instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        }
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
         }
     }
 
@@ -81,6 +100,20 @@ kotlin {
                 // KMP dependencies declared in commonMain.
             }
         }
+        jvmMain.dependencies {
+            implementation(compose.desktop.currentOs)
+        }
     }
 
+}
+compose.desktop {
+    application {
+        mainClass = "com.ruviapps.coachmark.MainKt"
+
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
+            packageName = "com.ruviapps.coachmark"
+            packageVersion = "1.0.0"
+        }
+    }
 }
