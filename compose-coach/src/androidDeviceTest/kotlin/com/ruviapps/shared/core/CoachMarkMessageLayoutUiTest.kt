@@ -1,4 +1,4 @@
-package com.vivekgupta.composecoachmark.coachmark.core
+package com.ruviapps.shared.core
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size

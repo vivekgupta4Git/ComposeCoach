@@ -13,7 +13,7 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
-import com.vivekgupta.composecoachmark.coachmark.core.RevealEffect
+import com.ruviapps.coachmark.core.RevealEffect
 import kotlin.math.absoluteValue
 
 class CircleRevealEffect : RevealEffect {

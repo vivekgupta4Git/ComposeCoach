@@ -36,10 +36,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.vivekgupta.composecoachmark.coachmark.core.CoachMarkHost
-import com.vivekgupta.composecoachmark.coachmark.core.CoachMarkScope
-import com.vivekgupta.composecoachmark.coachmark.core.EmptyCoachMarkEventListener
-import com.vivekgupta.composecoachmark.coachmark.core.rememberCoachMarkState
+import com.ruviapps.coachmark.core.CoachMarkHost
+import com.ruviapps.coachmark.core.CoachMarkScope
+import com.ruviapps.coachmark.core.EmptyCoachMarkEventListener
+import com.ruviapps.coachmark.core.rememberCoachMarkState
 import com.vivekgupta.tutor.ui.CanopasRevealEffect
 import com.vivekgupta.tutor.ui.CanopasStyle
 import com.vivekgupta.tutor.ui.CircleRevealEffect
@@ -57,7 +57,7 @@ class MainActivity : ComponentActivity() {
             val coachMarkState = rememberCoachMarkState(
                 listener = object : EmptyCoachMarkEventListener() {
                     override fun onComplete() {
-                        showCoachMark = false
+                       // showCoachMark = false
                         Log.d("CoachMark", "Show Complete")
                     }
 
