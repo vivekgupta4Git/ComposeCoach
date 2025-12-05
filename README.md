@@ -54,7 +54,7 @@ Add the dependency:
 
 ```gradle
 dependencies {
-    implementation "com.ruviapps.coachmark:compose-coach:<latest-version>"
+    implementation "com.ruviapps.coachmark:compose-coach-android:<latest-version>"
 }
 ```
 </details>
