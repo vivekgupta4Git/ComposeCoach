@@ -7,6 +7,8 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.Saver
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 
 /**
@@ -139,6 +141,23 @@ class CoachMarkState(
         currentCoach = targets[currentKeyPosition]
     }
 
+    /**
+     * Restores the coach mark's progression state by setting the current key position
+     * to a previously saved value.
+     *
+     * This method is intended to be used by the state Saver during process recreation
+     * (e.g., configuration changes or process death) to bring the coach mark tour back
+     * to the correct step. It does **not** attempt to restore `currentCoach` directly,
+     * as coach data depends on runtime-computed targets; once targets are re-registered
+     * through `addTarget()`, the appropriate `currentCoach` will be recalculated
+     * automatically.
+     *
+     * @param keyPosition The saved key position to restore.
+     */
+    fun restoreKey(keyPosition: Int) {
+        currentKeyPosition = keyPosition
+    }
+
 }
 
 /**
@@ -155,7 +174,24 @@ fun rememberCoachMarkState(
     startPosition: Int = 1,
     listener: CoachMarkEventListener = EmptyCoachMarkEventListener()
 ): CoachMarkState {
-    return remember(startPosition) {
+
+    val saver = remember {
+        Saver<CoachMarkState, Int>(
+            save = { state ->
+                // Save only the currentKeyPosition
+                state.currentKeyPosition
+            },
+            restore = { savedKeyPosition ->
+                CoachMarkState(startPosition, listener).apply {
+                    restoreKey(keyPosition = savedKeyPosition)
+                }
+            }
+        )
+    }
+
+    return rememberSaveable(
+        saver = saver
+    ) {
         CoachMarkState(startPosition, listener)
     }
 }
