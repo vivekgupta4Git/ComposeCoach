@@ -15,7 +15,7 @@ kotlinTest = "2.2.21"
 runner = "1.7.0"
 core = "1.7.0"
 compose = "1.9.3"
-uiTestJunit4 = "1.9.4"
+uiTestJunit4 = "1.10.0"
 composeMultiplatform = "1.9.1"
 [libraries]
 compose-ui = { module = "org.jetbrains.compose.ui:ui", version.ref = "compose" }
